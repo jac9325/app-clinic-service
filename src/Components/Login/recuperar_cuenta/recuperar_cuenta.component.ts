@@ -3,12 +3,12 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 @Component({
-  selector: 'app-login',
+  selector: 'recuperar-cuenta',
   standalone: true,
   imports: [ FontAwesomeModule ],
-  templateUrl: './login.component.html',
-  styleUrl: './login.component.sass'
+  templateUrl: './recuperar_cuenta.component.html',
+  styleUrl: './recuperar_cuenta.component.sass'
 })
-export class LoginComponent {
+export class RecuperarCuentaComponent {
 
 }

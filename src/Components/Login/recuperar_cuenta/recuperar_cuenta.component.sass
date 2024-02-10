@@ -13,12 +13,11 @@ $color-primario: #3D82DB
     border-radius: 10px
     display: flex
     align-items: center
-
+    overflow: auto
     @media (max-width: 768px) // ajusta este valor según tus necesidades
         width: 90%
         height: auto
         flex-direction: column-reverse
-
 
 .inner-box
     background-color: $color-primario
@@ -30,14 +29,16 @@ $color-primario: #3D82DB
     display: flex
     flex-direction: column
     justify-content: center
-
     @media (max-width: 768px) // ajusta este valor según tus necesidades
         width: 100%
         height: auto
 
     h1
       text-align: center
-      font-size: 45px
+      font-size: 40px
+    
+    p
+      text-align: center
 
     .form-group 
       margin-bottom: 15px
@@ -52,14 +53,6 @@ $color-primario: #3D82DB
       border: 1px solid #ffffff
       border-radius: 5px
       margin-left: auto
-    input[type="checkbox"] 
-      // Ajusta el tamaño del checkbox según tus preferencias
-      width: 16px
-      height: 16px
-      margin-right: 8px // Espacio entre el checkbox y el texto
-    
-    .form-check
-      margin-bottom: 15px
 
     button
       width: 50%
@@ -95,7 +88,6 @@ $color-primario: #3D82DB
       @media (max-width: 768px) // ajusta este valor según tus necesidades
           width: 100%
           height: auto
-
 
 .hidden
   display: none
