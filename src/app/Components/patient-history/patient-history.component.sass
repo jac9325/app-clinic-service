@@ -1,0 +1,123 @@
+@keyframes fake
+    from
+        opacity: 1
+    to
+        opacity: 1
+
+body
+    animation: fake 1s infinite
+
+.worko-tabs
+    margin: 20px
+    width: 80%
+    margin-top: 135px
+    margin-left: 120px
+
+    .state
+        position: absolute
+        left: -10000px
+
+    .flex-tabs
+        display: flex
+        justify-content: space-between
+        flex-wrap: wrap
+
+        .tab, .panel
+            flex-grow: 1
+            max-height: 40px
+            color: #fff
+            font-weight: bold
+
+        .tab
+            display: inline-block
+            padding: 10px
+            vertical-align: top
+            cursor: pointer
+            border-left: 1.5px solid #EDF5FF
+
+            &:hover
+                background-color: #EDF5FF
+                color: #000
+
+    #tab-one-label
+        border-top-left-radius: 10px
+
+    #tab-one:checked ~ .tabs #tab-one-label,
+    #tab-two:checked ~ .tabs #tab-two-label,
+    #tab-three:checked ~ .tabs #tab-three-label,
+    #tab-four:checked ~ .tabs #tab-four-label,
+    #tab-five:checked ~ .tabs #tab-five-label
+        background-color: #EDF5FF
+        color: #000
+        cursor: default
+        border-left-color: #ccc
+
+    #tab-one:checked ~ .tabs #tab-one-panel,
+    #tab-two:checked ~ .tabs #tab-two-panel,
+    #tab-three:checked ~ .tabs #tab-three-panel,
+    #tab-four:checked ~ .tabs #tab-four-panel,
+    #tab-five:checked ~ .tabs #tab-five-panel
+        display: block
+
+@media (max-width: 600px)
+    .worko-tabs .flex-tabs
+        flex-direction: column
+
+        .tab
+            background: #fff
+            border-bottom: 1px solid #ccc
+
+            &:last-of-type
+                border-bottom: none
+
+    #tab-one-label
+        order: 1
+
+    #tab-two-label
+        order: 3
+
+    #tab-three-label
+        order: 5
+
+    #tab-four-label
+        order: 7
+
+    #tab-five-label
+        order: 9
+
+    #tab-one-panel
+        order: 2
+
+    #tab-two-panel
+        order: 4
+
+    #tab-three-panel
+        order: 6
+
+    #tab-four-panel
+        order: 8
+
+    #tab-five-panel
+        order: 10
+
+    #tab-one:checked ~ .tabs #tab-one-label,
+    #tab-two:checked ~ .tabs #tab-two-label,
+    #tab-three:checked ~ .tabs #tab-three-label,
+    #tab-four:checked ~ .tabs #tab-four-label,
+    #tab-five:checked ~ .tabs #tab-five-label
+        border-bottom: none
+
+    #tab-one:checked ~ .tabs #tab-one-panel,
+    #tab-two:checked ~ .tabs #tab-two-panel,
+    #tab-three:checked ~ .tabs #tab-three-panel,
+    #tab-four:checked ~ .tabs #tab-four-panel,
+    #tab-five:checked ~ .tabs #tab-five-panel
+        border-bottom: 1px solid #ccc
+
+
+.alerta
+    margin-left:1030px
+    margin-top:-500px
+
+    @media(max-width:770px)
+            display:none

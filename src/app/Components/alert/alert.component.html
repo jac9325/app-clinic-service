@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="alertas">
+            <p>Alertas:</p>
+        </div>
+
+        <div class="alergias">
+            <p>Alergias</p>
+            <app-allergy [color]="'#FFF500'" [titulo]="'Sulfa'" [descripcion]="'Reacción cutanea grave, presenta erupciones.'"></app-allergy>
+        </div>
+
+        <div class="enfermedades">
+            <p>Enfermedades</p>
+            <app-allergy [color]="'#FF0000'" [titulo]="'Hipertención Arterial'" [descripcion]="'Condicion presentada desde los 12 años.'"></app-allergy>
+        </div>
+
+    </div>
+</body>
+</html>

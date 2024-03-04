@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+</head>
+<body>
+  <div class="container">
+    <div class="col-md-4">
+        <div class="row">
+            <form>
+                <div class="row">
+                <div class="col-md-6" >
+                    <div class="form-group">
+                        <label for="tipo_documento">Tipo de Documento</label>
+                        <div class="input-group">
+                            <select class="form-select" id="tipo_documento" name="tipo_documento">
+                                <option selected>Selecciona un tipo de documento</option>
+                                <optgroup label="Documentos de Identidad">
+                                    <option value="carnet_estrangeria">Carnet de Estrangería</option>
+                                    <option value="dni">DNI</option>
+                                    <option value="tarjeta_residencia">Tarjeta de Residencia</option>
+                                    <option value="pasaporte">Pasaporte Nacional</option>
+                                </optgroup>
+                                <optgroup label="Otros">
+                                    <option value="cif">CIF</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="numero_documento">Número de Documento</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-address-card"></i></span>
+                            <input type="text" class="form-control" name="numero_documento" id="numero_documento" placeholder="Número de Documento" required="required">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="first_name">Primer Nombre</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                            <input type="text" class="form-control" name="first_name" id="first_name" placeholder="Primer Nombre" required="required">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="last_name">Segundo Nombre</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                            <input type="text" class="form-control" name="last_name" id="last_name" placeholder="Segundo Nombre" required="required">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="primer_apellido">Primer Apellido</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                            <input type="text" class="form-control" name="primer_apellido" id="primer_apellido" placeholder="Primer Apellido" required="required">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="segundo_apellido">Segundo Apellido</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                            <input type="text" class="form-control" name="segundo_apellido" id="segundo_apellido" placeholder="Segundo Apellido" required="required">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="fecha_nacimiento">Fecha de Nacimiento</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-calendar-alt"></i></span>
+                            <input type="text" class="form-control" name="fecha_nacimiento" id="fecha_nacimiento" placeholder="Fecha de Nacimiento" required="required">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="correo_electronico">Correo Electrónico</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-at"></i></span>
+                            <input type="text" class="form-control" name="correo_electronico" id="correo_electronico" placeholder="Correo Electronico" required="required">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="nro_celular">Número de Celular</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-mobile-alt"></i></span>
+                            <input type="text" class="form-control" name="nro_celular" id="nro_celular" placeholder="Número de Celular" required="required">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="telefono">Télefono</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-phone"></i></span>
+                            <input type="text" class="form-control" name="telefono" id="telefono" placeholder="Télefono" required="required">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="pais">País</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-globe"></i></span>
+                            <input type="text" class="form-control" name="pais" id="pais" placeholder="País" required="required">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="departamento">Departamento</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-map-marker-alt"></i></span>
+                            <input type="text" class="form-control" name="departamento" id="departamento" placeholder="Departamento" required="required">
+                        </div>
+                    </div>
+                </div>
+            
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="provincia">Provincia</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-map-marker-alt"></i></span>
+                            <input type="text" class="form-control" name="provincia" id="provincia" placeholder="Provincia" required="required">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="photo"><img src="foto.png" alt="Icono de Foto" class="images container"></label>
+                        <div class="input">
+                            <!-- <input type="file" class="form-control" id="photo" name="photo"> -->
+                            <button type="button" class="btn btn-danger" onclick="uploadPhoto()">
+                                <i class="bi bi-cloud-upload"></i>Subir
+                            </button>
+                            <button type="button" class="btn btn-danger" onclick="deletePhoto()">
+                                <i class="bi bi-trash"></i>Borrar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="signature"><img src="firma.png" alt="Icono de Firma" class="images container"></label>
+                        <div class="input">
+                            <!-- <input type="file" class="form-control" id="signature" name="signature"> -->
+                            <button type="button" class="btn btn-danger	" onclick="uploadSignature()"><i class="bi bi-cloud-upload"></i>Subir</button>
+                            <button type="button" class="btn btn-danger" onclick="deleteSignature()"><i class="bi bi-trash"></i>Borrar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                
+            </form>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+
+    <div class="row">
+        <label for="sexo">Sexo: </label>
+        <div>
+            <input type="radio" name="sexo" value = "femenino" >Femenino
+            <input type="radio" name="sexo" value = "masculino" >Masculino
+        </div>
+        <label for="donador">Es Donador: </label>
+        <div>
+            <input type="radio" name="donador" value = "SI" >SI
+            <input type="radio" name="donador" value = "NO" >NO
+        </div>
+
+        <label for="donador">Es Casado: </label>
+        <div>
+            <input type="radio" name="casado" value = "SI" >SI
+            <input type="radio" name="casado" value = "NO" >NO
+        </div>
+
+        <label for="donador">Es Trabajador: </label>
+        <div>
+            <input type="radio" name="trabajador" value = "SI" >SI
+            <input type="radio" name="trabajador" value = "NO" >NO
+        </div>
+    </div>
+    <div >
+        <div class="row"> 
+            <form>
+                <div class="form-group">
+                    <label for="last_name">Número de hijos</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="n_hijos" id="n_hijos"  required="required">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="primer_apellido">Peso</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="peso" id="peso"  required="required">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="primer_apellido">Talla</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="talla" id="talla"  required="required">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="primer_apellido">Religión</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="religion" id="religion"  required="required">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="primer_apellido">Lengua Materna</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="lengua_materna" id="lengua_materna"  required="required">
+                    </div>
+                </div>
+            </form>    
+        </div>
+    </div>
+    </div>
+        
+
+    
+    <div class="col-md-4">
+        <div class="row"> 
+            <form>
+                <div class="row">
+                <div class="col-6">
+                <div class="form-group">
+                    <label for="lugar_procedencia">Lugar de procedencia</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="procedencia" id="procedencia"  required="required">
+                    </div>
+                </div>
+            </div>
+                <div class="col-6">
+                <div class="form-group">
+                    <label for="direccion">Dirección</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="direccion" id="direccion"  required="required">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <div class="form-group">
+                    <label for="color_piel">Color de Piel</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="color_piel" id="color_piel"  required="required">
+                    </div>
+                </div>
+            </div>
+                <div class="col-6">
+                <div class="form-group">
+                    <label for="raza">Raza</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="raza" id="raza"  required="required">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6">
+                <div class="form-group">
+                    <label for="grupo_sanguineo">Grupo Sanguineo</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="grupo_sanguineo" id="grupo_sanguineo"  required="required">
+                    </div>
+                </div>
+            </div>
+                <div class="col-6">
+                <div class="form-group">
+                    <label for="nivel_estudios">Nivel de Estudios</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="nivel_estudios" id="nivel_estudios"  required="required">
+                    </div>
+                </div>
+            </div>
+        </div >
+            </form>
+        </div>
+        <div class="row">
+        <div class="col-6">
+            <app-habits></app-habits>
+        </div>
+
+        <div class="col-6">
+            <app-habits></app-habits>
+        </div>
+    </div>
+        <div class="row">
+        <div class="col-6">
+            <app-habits></app-habits>
+        </div>
+
+        <div class="col-6">
+            <app-habits></app-habits>
+        </div>
+    </div>
+
+
+        <div class="guardar">
+            <button type="button" id="btnGuardar">Guardar</button>
+        </div>
+    </div>
+    
+    
+    </div>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-B+ezvnyV2S2GcOmhAZXj9gVaB28pLyctcLr/Dm28fTnV2OlQLQnjbpZs5Z4yk+3c" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html>

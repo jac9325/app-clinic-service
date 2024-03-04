@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+ <div class="content">
+  <div class="worko-tabs">
+  
+    <input class="state" type="radio" title="tab-one" name="tabs-state" id="tab-one"  />
+    <input class="state" type="radio" title="tab-two" name="tabs-state" id="tab-two" />
+    <input class="state" type="radio" title="tab-three" name="tabs-state" id="tab-three" checked/>
+    <input class="state" type="radio" title="tab-four" name="tabs-state" id="tab-four" />
+    <input class="state" type="radio" title="tab-five" name="tabs-state" id="tab-five" />
+  
+    <div class="tabs flex-tabs">
+        <label for="tab-one" id="tab-one-label" class="tab">Filiación</label>
+        <label for="tab-two" id="tab-two-label" class="tab">Atenciones Médicas</label>
+        <label for="tab-three" id="tab-three-label" class="tab">Exámenes Complementarios</label>
+        <label for="tab-four" id="tab-four-label" class="tab">Procedimientos Quírurjicos</label>
+        <label for="tab-five" id="tab-five-label" class="tab">Nueva Atención</label>
+
+  
+        <div id="tab-one-panel" class="panel active">
+
+          <div class="sub-container-1">
+            <app-filiacion></app-filiacion>
+          </div>
+      
+        </div>
+        
+        <div id="tab-two-panel" class="panel">
+            <app-atenciones-medicas></app-atenciones-medicas>
+        </div>
+        <div id="tab-three-panel" class="panel">
+            <app-examenes-complementarios></app-examenes-complementarios>
+        </div>
+        <div id="tab-four-panel" class="panel">
+            Tab four content
+            <app-procedimientos-quirurjicos></app-procedimientos-quirurjicos>
+        </div>
+        <div id="tab-five-panel" class="panel">
+          Tab five content
+          <app-nueva-atencion></app-nueva-atencion>
+      </div>
+    </div>
+  
+  </div>
+ </div> 
+</body>
+</html>

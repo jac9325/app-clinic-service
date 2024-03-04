@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>Benitez Astorga Paola</h3>
+    <div class="foto-perfil">
+        <app-profile-photo></app-profile-photo>
+    </div>
+
+    <div class="datos">
+
+    </div>
+
+    <div class="habitos">
+        <app-background [title]="'Habitos'" [elements]="['Alcohol','Re-café','Tabaco']"></app-background>
+    </div>
+
+    <div class="antecedentes">
+        <app-background [title]="'Antecedentes'" [elements]="['Congenitas','Enf. Previas','Traumatismos']"></app-background>
+    </div>
+
+    <div class="familiares">
+        <app-background [title]="'A. Familiares'" [elements]="['Padre','Madre','Hermanos']"></app-background>
+    </div>
+
+    <div class="epidemiologicos">
+        <app-background [title]="'A. Epidemiologicos'" [elements]="['Viaje a zonas','Endemicas','Crianza de animales']"></app-background>
+    </div>
+
+    <div class = "alerta">
+        <app-alert></app-alert>
+    </div>
+</body>
+</html>
+
+

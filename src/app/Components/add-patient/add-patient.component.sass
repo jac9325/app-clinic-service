@@ -1,0 +1,62 @@
+body
+    font-family: 'Poppins', sans-serif
+
+
+
+
+.input-group-text 
+    color: #F8546C
+
+input.form-control 
+    background-color: #EDF5FF
+    font-size:14px
+    
+.form-select
+    background-color: #EDF5FF
+    font-size:14px
+
+.container 
+  display: flex /* Esto activa Flexbox */
+  flex-wrap: wrap /* Esto permite que los elementos se pasen a la siguiente línea si no hay espacio */
+  justify-content: space-between /* Esto distribuye el espacio entre los elementos de manera uniforme */
+  align-items: flex-start /* Esto alinea los elementos al comienzo del contenedor */
+
+
+input[type="radio"] 
+    margin-right: 5px /* Espacio entre los radios y el texto */
+    color: #F8546C
+    --color-borde-seleccionado: #F8546C
+    
+
+input[type="radio"]:checked + label
+    color: #F8546C /* Cambia el color de fondo cuando el radio está seleccionado */
+
+
+.images
+    width: 130px
+    height: 130px
+
+.distance
+    margin-left: 1cm
+
+.btn-red
+    color:#F8546C
+
+#btnGuardar
+    background-color: #F8546C
+    border: none
+    color: white
+    cursor: pointer
+    border-radius: 5px
+    height: 30px
+    width: 100px
+    text-size: 30px
+    &:hover 
+        background-color: #D64558
+    &:active
+        background-color: #B53447
+    
+
+/* Estilos para los contenedores de los radios */
+div 
+    margin-bottom: 10px /* Espacio entre grupos de radios */

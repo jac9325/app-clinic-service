@@ -1,0 +1,153 @@
+:root {
+	--color-principal: #3D82DB; /* Define el color principal */
+}
+
+/* Personaliza tus estilos aquí si es necesario */
+body {
+    font-family: 'Poppins', sans-serif;
+    
+}
+.bg-primary {
+    background-color: #3D82DB!important;
+}
+
+.container-fluid {
+	background-color: var(--color-principal)!important;
+}
+
+.navbar ul,
+.navbar li {
+    margin: 0;
+    padding: 0;
+}
+
+.menu {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 0; /* No se necesita margen negativo aquí */
+}
+
+.bar-menu {
+    margin-bottom: 0; /* No se necesita margen negativo aquí */
+    margin-right: 20px; /* Ajusta según tus necesidades */
+}
+
+#navbarSupportedContent {
+    margin-right: 370px;
+    margin-bottom: -26px;
+}
+
+.navbar-collapse {
+    margin-top: -18px;
+}
+
+.navbar li {
+    display: inline-block; /* Reemplaza float para alinear horizontalmente */
+    position: relative;
+}
+
+.navbar-brand h1{
+    font-size: 44px; 
+    font-weight: bold;
+    margin-left: -80px;
+}
+
+.navbar-brand h1 img {
+    width: 40px; /* Tamaño del logo */
+    height: auto; /* Para mantener la proporción */
+    margin-right: 10px; /* Espaciado entre el logo y el texto */
+}
+
+.navbar a {
+    background: var(--color-principal)!important;
+    color: #FFFFFF;
+    display: block;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 20px;
+    text-align: center;
+    text-decoration: none;
+    padding: 10px 25px;
+    -webkit-transition: all .25s ease;
+    -moz-transition: all .25s ease;
+    -ms-transition: all .25s ease;
+    -o-transition: all .25s ease;
+    transition: all .25s ease;
+}
+
+.navbar li:hover a {
+    background: #ffffff;
+    color: #F8546C;
+    border-radius: 5px;
+}
+
+
+.navbar{
+    margin-left: -110px;
+}
+
+.col-4 a {
+    color: #FFFFFF;
+    display: block;
+    padding: 12px 15px;
+    -webkit-transition: all .25s ease;
+    -moz-transition: all .25s ease;
+    -ms-transition: all .25s ease;
+    -o-transition: all .25s ease;
+    transition: all .25s ease;
+}
+
+.col-4 li:hover a {
+    background: #ffffff;
+    color: #F8546C;
+    border-radius: 100px;
+}
+
+.col-4 {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.col-8 {
+    display: flex;
+    justify-content: flex-start;
+}
+
+
+/* Estilos para pantallas grandes */
+@media (min-width: 992px) {
+    .container-fluid {
+        margin-bottom: 0; /* Ajusta según tus necesidades */
+       
+    }
+    .navbar-brand h1 { 
+        margin-left: -10px;
+    }
+}
+
+/* Estilos para pantallas pequeñas */
+@media (max-width: 768px) {
+    .container-fluid {
+        margin-bottom: 0; /* Ajusta según tus necesidades */
+    }
+}
+
+/* Estilos para pantallas pequeñas */
+@media (max-width: 768px) {
+    .navbar-brand h1 {
+        font-size: 20px; /* Reduce el tamaño del título en 15px */
+        margin-left: 80px;
+    }
+}
+
+@media (max-width: 768px) {
+    .col-4 {
+        display :none;
+    }
+}
+
+@media (max-width: 768px) {
+    .menu {
+        margin-top: -70px;
+    }
+}
