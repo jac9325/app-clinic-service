@@ -1,0 +1,131 @@
+<ng-template #content let-modal>
+    <div class="modal-container">
+        <div class="title-container">
+            <h2>Cierre de Caja</h2>
+        </div>
+        <div class="formulario">
+            <div class="line">
+                <div class="campo">
+                    <div class="title">
+                        <label>Fecha de Inicio:</label>
+                    </div>
+                    <div class="dato">
+                        <input type="text" id="fecha_inicio" name="fecha_inicio" placeholder="Fecha de Inicio" value="Dato existente" readonly>
+                    </div>
+                </div>
+                <div class="campo">
+                    <div class="title">
+                        <label>Fecha de Cierre:</label>
+                    </div>
+                    <div class="dato">
+                        <input type="text" id="fecha_cierre" name="fecha_cierre" placeholder="Fecha de Cierre" value="Dato existente" readonly>
+                    </div>
+                </div>
+            </div>
+            <div class="campo2">
+                <div class="title">
+                    <label>Observación:</label>
+                </div>
+                <div class="dato">
+                    <textarea id="observacion" name="observacion" placeholder="Ingresa la observación"></textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="formulario">
+            <div class="line">
+                <div class="campo">
+                    <div class="title">
+                        <label>Monto Inicial:</label>
+                    </div>
+                    <div class="dato">
+                        <input type="text" id="monto_inicial" name="monto_inicial" placeholder="Monto Inicial" value="Dato existente" readonly>
+                    </div>
+                </div>
+                <div class="campo">
+                    <div class="title">
+                        <label>Monto Final:</label>
+                    </div>
+                    <div class="dato">
+                        <input type="text" id="monto final" name="monto fina" placeholder="Monto Final" value="Dato existente" readonly>
+                    </div>
+                </div>
+            </div>
+            <div class="line">
+                <div class="campo">
+                    <div class="title">
+                        <label>Saldo:</label>
+                    </div>
+                    <div class="dato">
+                        <input type="text" id="saldo" name="saldo" placeholder="Saldo" value="Dato existente" readonly>
+                    </div>
+                </div>
+            </div>
+            <div class="line">
+                <div class="campo">
+                    <div class="title">
+                        <label>Faltante:</label>
+                    </div>
+                    <div class="dato">
+                        <input type="text" id="faltante" name="faltante" placeholder="Ingrese el faltante" >
+                    </div>
+                </div>
+                <div class="campo">
+                    <div class="title">
+                        <label>Sobrante:</label>
+                    </div>
+                    <div class="dato">
+                        <input type="text" id="sobrante" name="sobrante" placeholder="Ingrese el sobrante">
+                    </div>
+                </div>
+            </div>
+            <div class="line">
+                <div class="campo">
+                    <div class="title">
+                        <label>Total Físico:</label>
+                    </div>
+                    <div class="dato">
+                        <input type="text" id="total_fisico" name="total_fisico" placeholder="Ingrese el total físico" >
+                    </div>
+                </div>
+                <div class="campo">
+                    <div class="title">
+                        <label>Saldo Real:</label>
+                    </div>
+                    <div class="dato">
+                        <input type="text" id="saldo_real" name="saldo_real" placeholder="Ingrese el saldo real">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="button-container">
+            <button type="button" class="btn btn-secondary" (click)="modal.close('Close click')">Cancelar</button>
+            <button type="button" class="btn btn-danger" (click)="modal.close('Close click')">Cerrar Caja</button>
+        </div>
+    </div>
+</ng-template>
+<div class="alerta-container">
+    <div class="container1">
+        <div class="title-container">
+            <h2>Nombre de Caja</h2>
+        </div>
+        <div class="info-container">
+            <div class="info">
+                <h3>Fecha de Apertura</h3>
+                <div class="contenido">
+                    <p>Texto</p>
+                </div>
+            </div>
+            <div class="info">
+                <h3>Monto</h3>
+                <div class="contenido">
+                    <p>Texto</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container2">
+        <button type="submit" class="btn btn-danger" (click)="openVerticallyCentered(content)"><b>Cerrar Caja</b></button>
+    </div>
+</div>

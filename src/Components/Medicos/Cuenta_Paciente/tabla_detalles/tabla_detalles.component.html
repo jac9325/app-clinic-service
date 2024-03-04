@@ -1,0 +1,30 @@
+<div class="main-container">
+    <div class="title-container">
+      <i class="fa-solid fa-hand-holding-dollar"></i>
+      <h2>Detalles</h2>
+    </div>
+    <div class="table-container">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Número prefactura</th>
+              <th>Precio Unitario</th>
+              <th>Cantidad</th>
+              <th>Total</th>
+              <th>Sub Total</th>
+              <th>IGV</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let person of people">
+              <td>{{ person.numero_prefactura }}</td>
+              <td>{{ person.precio_unitario }}</td>
+              <td>{{ person.cantidad}}</td>
+              <td>{{ person.total }}</td>
+              <td>{{ person.sub_total }}</td>
+              <td>{{ person.IGV }}</td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+</div>

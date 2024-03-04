@@ -1,0 +1,93 @@
+<div class="main-container">
+  <div class="sub-container">
+    <div class="search-container">
+      <input id="table-filtering-search" class="form-control" type="text" [formControl]="filter" placeholder="Buscar Paciente" />
+      <div ngbDropdown class="d-inline-block">
+        <button type="button" class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>
+          Fecha
+        </button>
+        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+          <ngb-datepicker #dp [(ngModel)]="model" (navigate)="date = $event.next" (dateSelect)="filterPeople()"></ngb-datepicker>
+        </div>
+      </div>
+      
+    </div>
+    <div class="table-container">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Número</th>
+            <th>Nombre</th>
+            <th>Última Atención</th>
+            <th>Número de Historia</th>
+            <th>Número de Documento</th>
+            <th>  </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let person of (filteredPeople | async)" [class.selected]="person === selectedPerson" (click)="selectPerson(person)" class="table-row">
+            <td>{{ person.numero }}</td>
+            <td>{{ person.name }}</td>
+            <td>{{ person.ultima_atencion }}</td>
+            <td>{{ person.numero_histaoria }}</td>
+            <td>{{ person.numero_documento }}</td>
+            <td>
+              <div ngbDropdown>
+                <button type="button" id="dropdownConfig" ngbDropdownToggle><i class="fa-solid fa-list"></i></button>
+                <div ngbDropdownMenu aria-labelledby="dropdownConfig">
+                  <button ngbDropdownItem><i class="fa-solid fa-eye"></i>1</button>
+                  <button ngbDropdownItem><i class="fa-solid fa-pen-to-square"></i>2</button>
+                  <button ngbDropdownItem><i class="fa-solid fa-user-slash"></i>3</button>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div *ngIf="(filteredPeople | async)?.length === 0" class="no-results">
+        No existen coincidencias
+      </div>
+    </div>
+  </div>
+  <div class="sub-container2">
+    <div class="titulo-container">
+      <div class="text">
+        <h2>{{ selectedPerson?.name }}</h2>
+        <h3>Edad: </h3> <p>{{ selectedPerson?.edad }}</p>
+        <div class="text2">
+          <div class="col1">
+            <h3>Peso: </h3> <p>{{ selectedPerson?.peso }}</p>
+          </div>
+          <div class="col2">
+            <h3>Talla: </h3> <p>{{ selectedPerson?.talla }}</p>
+          </div>
+        </div>
+      </div>
+      <div class="person-image">
+        <img *ngIf="selectedPerson?.ruta_imagen; else noImage" [src]="selectedPerson?.ruta_imagen" alt="Person image" />
+        <ng-template #noImage>
+          <div class="placeholder-image">Img</div>
+        </ng-template>
+      </div>
+    </div>
+    <div class="alertas-container">
+      <h3>Alertas:</h3>
+      <div class="alergias">
+        <h3>Alergias:</h3>
+        <div class="alergias-list">
+          <div *ngFor="let alergias of selectedPerson?.alergias" class="alergias-item">
+            <span>{{ alergias }}</span>
+          </div>
+        </div>
+      </div>
+      <div class="cronicos">
+        <h3>Enfermedades Cronicas:</h3>
+        <div class="cronicos-list">
+          <div *ngFor="let cronicos of selectedPerson?.enfermedades_cronicas" class="cronicos-item">
+            <span>{{ cronicos  }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

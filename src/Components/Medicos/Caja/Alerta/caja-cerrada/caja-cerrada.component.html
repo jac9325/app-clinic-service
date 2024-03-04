@@ -1,0 +1,98 @@
+<ng-template #responce_positive let-modal>
+    <div class="pop-responce-positive">
+        <div class="cont1">
+            <i class="fa-solid fa-circle-check"></i>
+        </div>
+        <div class="cont2">
+            <p>La caja se ha iniciado correctamente.</p>
+            <div class="button-container">
+                <button type="button" class="btn btn-danger" (click)="modal.close('Close click')">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #responce_negative let-modal>
+    <div class="pop-responce-negative">
+        <div class="cont1">
+            <i class="fa-solid fa-circle-xmark"></i>
+        </div>
+        <div class="cont2">
+            <p>Hubo un error al iniciar la caja, por favor vuelva a intentarlo.</p>
+            <div class="button-container">
+                <button type="button" class="btn btn-danger" (click)="modal.close('Close click')">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #content let-modal>
+    <div class="modal-container">
+        <div class="title-container">
+            <h2>Inicio de Caja</h2>
+        </div>
+        <div class="formulario">
+            <div class="campo">
+                <div class="title">
+                    <label>Nombre de Caja:</label>
+                </div>
+                <div class="dato">
+                    <input type="text" id="nombre_caja" name="nombre_caja" placeholder="Nombre de Caja" value="Dato existente" readonly>
+                </div>
+            </div>
+            <div class="campo">
+                <div class="title">
+                    <label>Fecha de Inicio:</label>
+                </div>
+                <div class="dato">
+                    <input type="text" id="fecha_inicio" name="fecha_inicio" placeholder="Fecha de Inicio" value="Dato existente" readonly>
+                </div>
+            </div>
+            <div class="campo">
+                <div class="title">
+                    <label>Monto Inicial:</label>
+                </div>
+                <div class="dato">
+                    <input type="text" id="monto_inicial" name="monto_inicial" placeholder="Ingrese el Monto Inical">
+                </div>
+            </div>
+            <div class="campo">
+                <div class="title">
+                    <label>Observación:</label>
+                </div>
+                <div class="dato">
+                    <textarea id="observacion" name="observacion" placeholder="Ingresa la observación"></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="button-container">
+            <button type="button" class="btn btn-secondary" (click)="modal.close('Close click')">Cancelar</button>
+            <button type="button" class="btn btn-danger" (click)="openVerticallyCentered2(responce_positive)">Iniciar Caja</button>
+        </div>
+    </div>
+</ng-template>
+
+<div class="alerta-container">
+    <div class="container1">
+        <div class="title-container">
+            <h2>Nombre de Caja</h2>
+        </div>
+        <div class="info-container">
+            <div class="info">
+                <h3>Fecha de Apertura</h3>
+                <div class="contenido">
+                    <p>Texto</p>
+                </div>
+            </div>
+            <div class="info">
+                <h3>Fecha de Cierre</h3>
+                <div class="contenido">
+                    <p>Texto</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container2">
+        <button type="submit" class="btn btn-danger" (click)="openVerticallyCentered(content)"><b>Abrir Caja</b></button>
+    </div>
+</div>

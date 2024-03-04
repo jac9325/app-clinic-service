@@ -1,0 +1,227 @@
+<div class="main-container">
+    <div class="sub-container">
+        <div class="formulario">
+            <div class="line">
+                <div class="dato">
+                    <h3>Tipo de Documento</h3>
+                    <div ngbDropdown class="d-inline-block">
+                        <button type="button" class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>
+                            Seleccione
+                        </button>
+                        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                            <button ngbDropdownItem>DNI</button>
+                            <button ngbDropdownItem>Carnet de Extrangería</button>
+                            <button ngbDropdownItem>Pasaporte</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="dato">
+                    <h3>Número de Documento</h3>
+                    <div class="icon-box">
+                        <i class="fa-solid fa-id-card"></i>
+                        <input type="text" id="numero_documento" name="numero_documento" placeholder="Ingrese el numero de Documento">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="line">
+                <div class="dato">
+                    <h3>Primer Nombre</h3>
+                    <div class="icon-box">
+                        <i class="fa-solid fa-user"></i>
+                        <input type="text" id="primer_nombre" name="primer_nombre" placeholder="Ingrese el primer nombre">
+                    </div>
+                </div>
+                <div class="dato">
+                    <h3>Segundo Nombre</h3>
+                    <div class="icon-box">
+                        <i class="fa-solid fa-user"></i>
+                        <input type="text" id="segundo_nombre" name="segundo_nombre" placeholder="Ingrese el segundo nombre">
+                    </div>
+                </div>
+            </div>
+
+            <div class="line">
+                <div class="dato">
+                    <h3>Primer Apellido</h3>
+                    <div class="icon-box">
+                        
+                        <input type="text" id="primer_apellido" name="primer_apellido" placeholder="Ingrese el primer apellido">
+                    </div>
+                </div>
+                <div class="dato">
+                    <h3>Segundo Apellido</h3>
+                    <div class="icon-box">
+                        
+                        <input type="text" id="segundo_apellido" name="segundo_apellido" placeholder="Ingrese el segundo apellido">
+                    </div>
+                </div>
+            </div>
+
+            <div class="line">
+                <div class="dato">
+                    <h3>Fecha de Nacimiento</h3>
+                    <div class="icon-box">
+                        <i class="fa-solid fa-calendar-days"></i>
+                        <input type="date" id="password" name="password" #password placeholder="Ingrese su fecha de naciemiento">
+                    </div>
+                </div>
+            </div>
+
+            <div class="line">
+                <div class="dato">
+                    <h3>Número de Celular</h3>
+                    <div class="icon-box">
+                        <i class="fa-brands fa-whatsapp"></i>
+                        <input type="text" id="numero_celular" name="numero_celular" placeholder="Ingrese su número de celular">
+                    </div>
+                </div>
+                <div class="dato">
+                    <h3>Teléfono</h3>
+                    <div class="icon-box">
+                        <i class="fa-solid fa-phone"></i>
+                        <input type="text" id="telefono" name="telefono" placeholder="Ingrese su teléfono">
+                    </div>
+                </div>
+            </div>
+
+            <div class="line">
+                <div class="dato">
+                    <h3>País</h3>
+                    <div class="icon-box">
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="text" id="pais" name="pais" placeholder="Ingrese el país">
+                    </div>
+                </div>
+                <div class="dato">
+                    <h3>Departamento</h3>
+                    <div class="icon-box">
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="text" id="departamento" name="departamento" placeholder="Ingrese el departamento">
+                    </div>
+                </div>
+                <div class="dato">
+                    <h3>Provincia</h3>
+                    <div class="icon-box">
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="text" id="provincia" name="provincia" placeholder="Ingrese la provincia">
+                    </div>
+                </div>
+            </div>
+
+            <div class="line">
+                <div class="dato">
+                    <h3>Provincia</h3>
+                    <div class="image-box">
+                        <img src="../../../../assets/User-img.png">
+                    </div>
+                    <div class="button-container">
+                        <button type="submit" class="btn btn-danger" routerLink="/completar_datos"><b>Subir</b></button>
+                        <button type="submit" class="btn btn-danger" routerLink="/completar_datos"><b>Borrar</b></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="sub-container">
+        <div class="formulario">
+            <div class="line">
+                <div class="dato">
+                    <h3>Perfil Personal</h3>
+                    <div ngbDropdown class="d-inline-block">
+                        <button type="button" class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>
+                            Seleccione
+                        </button>
+                        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                            <button class="item" ngbDropdownItem>Perfil 1</button>
+                            <button class="item" ngbDropdownItem>Perfil 2</button>
+                            <button class="item" ngbDropdownItem>Perfil 3</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="dato">
+                    <h3>Permisos del Personal</h3>
+                    <div class="dato-check">
+                        <div class="icon-box">
+                            <label>Área</label>
+                            <input type="checkbox" id="permiso" name="permiso">
+                        </div>
+                        <div class="icon-box">
+                            <label>Caja</label>
+                            <input type="checkbox" id="permiso" name="permiso">
+                        </div>
+                        <div class="icon-box">
+                            <label>Sucursal</label>
+                            <input type="checkbox" id="permiso" name="permiso">
+                        </div>
+                        <div class="icon-box">
+                            <label>Todo Sucursal</label>
+                            <input type="checkbox" id="permiso" name="permiso">
+                        </div>
+                        <div class="icon-box">
+                            <label>Consultorio</label>
+                            <input type="checkbox" id="permiso" name="permiso">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="formulario">
+            <h2>Usuario</h2>
+        </div>
+
+        <div class="formulario">
+            <div class="line">
+                <div class="dato">
+                    <h3>Usuario</h3>
+                    <div class="icon-box">
+                        <i class="fa-solid fa-user"></i>
+                        <input type="text" id="usuario" name="usuario" placeholder="Ingrese el usuario">
+                    </div>
+                </div>
+                <div class="dato">
+                    <h3>Perfil Usuario</h3>
+                    <div ngbDropdown class="d-inline-block">
+                        <button type="button" class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>
+                            Seleccione
+                        </button>
+                        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                            <button class="item" ngbDropdownItem>Usuario 1</button>
+                            <button class="item" ngbDropdownItem>Usuario 2</button>
+                            <button class="item" ngbDropdownItem>Usuario 3</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="line">
+                <div class="dato" style="width: 100%;">
+                    <h3>Correo Electrónico</h3>
+                    <div class="icon-box">
+                        <i class="fa-solid fa-envelope"></i>
+                        <input type="text" id="usuario" name="usuario" placeholder="Ingrese su correo electrónico">
+                    </div>
+                </div>
+            </div>
+
+            <div class="line">
+                <div class="dato">
+                    <h3>Contraseña</h3>
+                    <div class="icon-box">
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="password" id="contraseña" name="contraseña" placeholder="Ingrese la contraseña">
+                    </div>
+                </div>
+                <div class="dato">
+                    <h3>Confirmar Contraseña</h3>
+                    <div class="icon-box">
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="password" id="conf_contraseña" name="conf-contraseña" placeholder="Confirme la contraseña">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

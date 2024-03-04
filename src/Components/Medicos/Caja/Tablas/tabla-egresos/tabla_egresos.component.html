@@ -1,0 +1,27 @@
+<div class="main-container">
+  <div class="table-container">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Número de Operación</th>
+            <th>Fecha y Hora</th>
+            <th>Monto</th>
+            <th>Motivo</th>
+            <th>       </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let person of people">
+            <td>{{ person.numero_operacion}}</td>
+            <td>{{ person.fecha }}</td>
+            <td>{{ person.monto}}</td>
+            <td>{{ person.motivo }}</td>
+            <td><button type="submit" class="btn btn-danger"><i class="fa-solid fa-circle-xmark"></i></button></td>
+          </tr>
+        </tbody>
+      </table>
+  </div>
+  <div class="button-container">
+    <td><button type="submit" class="btn btn-danger">Nuevo Egreso</button></td>
+  </div>
+</div>

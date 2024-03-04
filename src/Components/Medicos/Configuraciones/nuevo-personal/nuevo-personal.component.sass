@@ -1,0 +1,141 @@
+$color-secundario: #F8546C
+$color-primario: #3D82DB
+    
+    
+.main-container
+    width: 100%
+    height: 100%
+    display: flex
+    justify-content: center
+    align-items: center
+    gap: 20px
+
+    .sub-container
+        gap: 10px
+        display: flex
+        flex-direction: column
+        width: 40%
+        height: 100%
+        background-color: white
+
+        .formulario
+            padding: 10px
+            border-radius: 10px
+            border: 2px solid #ccccccb0
+            border-bottom: 5px solid #979797b0
+            display: flex
+            flex-direction: column
+            gap: 10px
+
+            h2
+                color: $color-primario
+                margin-bottom: 0px
+                font-size: 24px
+                font-weight: 450
+
+            .line
+                display: flex
+                padding: 5px
+                gap: 10px
+                width: 100%
+                justify-content: space-between
+            
+            .dato
+                width: 50%
+                display: flex
+                flex-direction: column
+
+            h3
+                font-size: 14px
+                font-weight: 450
+            
+            input 
+                width: 100%
+                padding: 5px
+                border: 1px solid #dddddd
+                border-bottom: 3px solid #9a9a9a
+                border-radius: 5px
+                text-align: left
+                display: block
+                margin: auto
+                font-size: 12px
+            
+            .btn-outline-primary
+                width: 100%
+                padding: 5px
+                background-color: white
+                border: 1px solid #dddddd
+                border-bottom: 3px solid #9a9a9a
+                border-radius: 5px
+                text-align: left
+                display: block
+                margin: auto
+                font-size: 12px
+                color: black
+                &:hover 
+                    background-color: lightgray
+                    color: $color-secundario
+            
+            button
+                background-color: $color-secundario
+                border: 0px
+                font-size: 12px
+                color: white    
+                font-weight: 400
+                &:hover
+                    color: $color-secundario
+                    background-color: white
+            
+            .icon-box
+                width: 100%
+                height: auto
+                display: flex
+                align-items: center
+
+                i 
+                    color: $color-secundario
+                    margin-left: 3px
+                    margin-right: 3px
+                    font-size: 25px
+            
+            .image-box
+                width: 125px
+                height: 120px
+                border-radius: 10px
+                color: white
+                display: flex
+                justify-content: center
+                /* media (max-width: 768px) // ajusta este valor según tus necesidades
+                    width: 100%
+                    height: 350px*/
+                img
+                    max-width: 100%
+                    max-height: 100%
+            
+            .button-container
+                display: flex
+                width: 100%
+                gap: 5px
+
+            input[type="checkbox"] 
+                // Ajusta el tamaño del checkbox según tus preferencias
+                width: 15px
+                height: 15px
+                margin-right: 5px // Espacio entre el checkbox y el texto
+
+
+            .dato-check
+                width: 100%
+                height: auto
+                display: flex
+                align-items: center 
+                padding: 5px
+                border: 1px solid #dddddd
+                border-bottom: 3px solid #9a9a9a
+                border-radius: 5px
+                text-align: left
+                display: block
+                margin: auto
+                font-size: 12px
+
+
