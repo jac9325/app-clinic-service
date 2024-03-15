@@ -1,0 +1,36 @@
+<div class="main-container">
+    <ul ngbNav #nav="ngbNav" class="nav-tabs">
+        <li ngbNavItem>
+            <a ngbNavLink>Filiacion</a>
+            <ng-template ngbNavContent>
+                <filiacion></filiacion>
+            </ng-template>
+        </li>
+        <li ngbNavItem>
+            <a ngbNavLink>Atenciones Médicas</a>
+            <ng-template ngbNavContent>
+                <atenciones-medicas></atenciones-medicas>
+            </ng-template>
+        </li>
+        <li ngbNavItem>
+            <a ngbNavLink>Exámenes Complementarios</a>
+            <ng-template ngbNavContent>
+                <examenes-complementarios></examenes-complementarios>
+            </ng-template>
+        </li>
+        <li ngbNavItem>
+            <a ngbNavLink>Procedimientos Quirúrgicos</a>
+            <ng-template ngbNavContent>
+                <procedimientos-quirurgicos></procedimientos-quirurgicos>
+            </ng-template>
+        </li>
+        <li ngbNavItem>
+            <a ngbNavLink>Nueva Atención</a>
+            <ng-template ngbNavContent>
+                <nueva-atencion></nueva-atencion>
+            </ng-template>
+        </li>
+    </ul>
+    
+    <div [ngbNavOutlet]="nav" class="mt-2"></div>
+</div>

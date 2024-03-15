@@ -1,0 +1,84 @@
+
+.main-container
+    width: 100%
+    height: 100%
+    display: flex
+    align-items: center
+    justify-content: center
+
+    .sub-container
+        width: 60%
+        height: 650px
+        background-color: var(--selected-color)
+        display: flex
+        @media (max-width: 768px) // ajusta este valor según tus necesidades
+            flex-direction: column
+            width: 100%
+            height: 100%
+
+
+        .cont
+            width: 50%
+            padding: 30px
+            display: flex
+            flex-direction: column
+            justify-content: center
+            align-items: center
+            @media (max-width: 768px) // ajusta este valor según tus necesidades
+                width: 100%
+
+            .title-container
+                background-color: var(--color-primario)
+                text-align: center
+                text-justify: center
+                color: white
+                margin-bottom: 20px
+                border-radius: 10px
+                padding: 10px
+
+                h2
+                    font-weight: 450
+                    margin-bottom: 0px
+
+            
+            .info-container
+                background-color: var(--color-primario)
+                width: 80%
+                padding: 20px
+                display: flex
+                flex-direction: column
+                gap: 15px
+                border-radius: 10px
+                align-items: center
+                justify-content: center
+                color: white
+
+                .dato
+                    display: flex
+                    widows: 80% 
+                    justify-content: center
+                    align-items: center
+
+                    input[type="checkbox"] 
+                        // Ajusta el tamaño del checkbox según tus preferencias
+                        width: 17px
+                        height: 17px
+                        margin-left: 30px
+
+
+                .button-container
+                    width: 100%
+                    display: flex
+                    align-items: center
+                    justify-content: center
+                    button
+                        background-color: var(--color-secundario)
+                        border: 0px
+                        display: block
+                        font-size: 14px
+                        color: white
+                        font-weight: 400
+                        &:hover
+                            color: var(--color-secundario)
+                            background-color: white
+                            font-size: 16px

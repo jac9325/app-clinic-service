@@ -1,0 +1,31 @@
+<div class="main-container">
+    <div class="navbar-container">
+        <div class="sidebar">
+            <div class="d-flex">
+                <div ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-pills flex-column" orientation="vertical">
+                    <ng-container ngbNavItem="1">
+                        <button ngbNavLink ><i class="fas fa-flask"></i></button>
+                        <ng-template ngbNavContent>
+                            <laboratorios></laboratorios>
+                        </ng-template>
+                    </ng-container>
+                    <ng-container ngbNavItem="2">
+                        <button ngbNavLink ><i class="fas fa-radiation"></i></button>
+                        <ng-template ngbNavContent>
+                            <imagenes></imagenes>
+                        </ng-template>
+                    </ng-container>
+                    <ng-container ngbNavItem="3">
+                        <button ngbNavLink ><i class="fas fa-microscope"></i></button>
+                        <ng-template ngbNavContent>
+                            <patologias></patologias>
+                        </ng-template>
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+        <div class="content">
+            <div [ngbNavOutlet]="nav" class="ms-4"></div>
+        </div>
+    </div>
+</div>

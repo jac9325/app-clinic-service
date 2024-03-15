@@ -1,0 +1,186 @@
+
+
+.modal-container
+    background-color: var(--color-primario)
+    width: 100%
+    height: 475px
+    padding: 20px
+    border-radius: 7px
+
+    .title-container
+        padding: 10px
+        color: white
+
+        h2
+            font-weight: 500
+
+    .button-container
+        width: 100%
+        margin-top: 10px
+        display: flex
+        align-items: center
+        justify-content: center
+        gap: 40px
+        .btn-danger
+            background-color: var(--color-secundario)
+            border: 0px
+            display: block
+            font-size: 16px
+            color: white
+            font-weight: 400
+            &:hover
+                color: var(--color-secundario)
+                background-color: white
+                font-size: 18px
+
+        .btn-secondary
+            background-color: #9c9c9c
+            border: 0px
+            display: block
+            font-size: 16px
+            color: white
+            font-weight: 400
+            &:hover
+                color: #9c9c9c
+                background-color: white
+                font-size: 18px
+                
+    .formulario 
+        display: flex
+        background-color: white
+        flex-direction: column
+        width: 100%
+        padding: 5px
+        justify-content: left
+        margin-bottom: 10px
+
+        .campo2 
+            width: 100%
+            display: flex
+            align-items: center
+            justify-content: left
+            gap: 10px
+            margin-bottom: 0px
+            padding: 5px
+
+            .title
+                font-size: 13px
+                
+            .dato
+                width: 65%
+                    
+                textarea
+                    width: 133%
+                    height: 50px  
+                    font-size: 12px
+                    background-color: #d8d8d8
+                    border-radius: 5px
+
+        .line
+            display: flex
+            width: 100%
+
+            .campo 
+                width: 50%
+                display: flex
+                align-items: center
+                justify-content: space-between
+                margin-bottom: 15px
+                padding: 5px
+
+                .title
+                    font-size: 13px
+                
+                .dato
+                    width: 65%
+                    
+                    input 
+                        width: 100%
+                        padding: 5px
+                        border: 1px solid #ffffff
+                        border-radius: 5px
+                        text-align: left
+                        display: block
+                        margin: auto
+                        font-size: 12px
+                        background-color: #d8d8d8
+                        
+                    textarea
+                        width: 100%
+                        height: 100px   
+    
+.alerta-container
+    display: flex 
+    width: 100%
+    height: 100%
+    padding: 10px
+    gap: 10px
+    border-radius: 10px
+    border: 3px solid #42ff31
+    border-right: 50px solid #42ff31
+    align-items: center
+    justify-content: center
+    @media (max-width: 768px) 
+        width: 100%
+
+    .container1
+        width: 70%
+        height: 100%
+        display: flex
+        flex-direction: column
+
+        .title-container
+            align-items: center
+            justify-content: left
+
+            h2
+                font-weight: 500
+        
+        .info-container
+            display: flex
+            gap: 25px
+
+            .info
+                width: 90%
+                display: flex
+                flex-direction: column
+                padding: 10px
+                gap: 5px
+
+                h3
+                    font-weight: 450
+
+                .contenido
+                    display: flex
+                    width: 100%
+                    border-radius: 5px
+                    background-color: #bbbbbb
+                    align-items: center
+                    justify-content: center
+
+                    p
+                        font-weight: 400
+                        margin-top: 10px
+                        margin-bottom: 10px
+
+
+    .container2
+        width: 30%
+        height: auto
+        display: flex
+        justify-content: center
+        align-content: center
+        button
+            width: 90%
+            background-color: var(--color-secundario)
+            border: 0px
+            display: block
+            font-size: 14px
+            color: white
+            font-weight: 400
+            &:hover
+                color: var(--color-secundario)
+                background-color: white
+                font-size: 16px
+
+

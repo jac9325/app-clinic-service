@@ -1,0 +1,139 @@
+
+
+.outer-box
+    background-image: url('../../../../Images/Fondo_Login.jpg')
+    background-size: cover
+    background-position: center
+    width: 80%
+    height: 80vh
+    max-width: 100%
+    max-height: 100%
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    border-radius: 10px
+    display: flex
+    align-items: center
+    overflow: auto
+    justify-content: space-between
+    @media (max-width: 768px) // ajusta este valor según tus necesidades
+        width: 90%
+        height: 90%
+        flex-direction: column-reverse
+
+.inner-box
+    background-color: var(--color-primario)
+    width: 30%
+    height: 100%
+    padding: 20px
+    border-radius: 10px
+    color: white
+    display: flex
+    flex-direction: column
+    justify-content: center
+    @media (max-width: 768px) // ajusta este valor según tus necesidades
+        width: 100%
+        height: auto
+
+    h1
+      text-align: center
+      margin-bottom: 25px
+
+    b
+      font-weight: 560
+    
+    .titulo
+      font-weight: 450
+    
+    p
+      text-align: center
+
+    .form-group 
+      margin-bottom: 15px
+    
+    label 
+      display: block
+      font-weight: 500
+      margin-bottom: 6px
+    
+    input 
+      width: 100%
+      padding: 10px
+      border: 1px solid #ffffff
+      border-radius: 5px
+      text-align: left
+      display: block
+      margin: auto
+      font-size: 14px
+
+    input[type="checkbox"] 
+      // Ajusta el tamaño del checkbox según tus preferencias
+      width: 17px
+      height: 17px
+      margin-right: 8px // Espacio entre el checkbox y el texto
+      margin-left: 5px
+      margin-bottom: 10px
+
+    .remember
+      display: flex
+      align-items: center
+
+    button
+      width: 50%
+      background-color: var(--color-secundario)
+      border: 0px
+      margin: auto
+      display: block
+      font-size: 14px
+      margin-bottom: 15px
+      margin-top: 20px
+      color: white
+      font-weight: 400
+      &:hover
+        color: var(--color-secundario)
+        background-color: white
+        font-size: 16px
+        
+    a 
+      color: #ffffff
+      text-decoration: none
+      text-align: center
+
+      &:hover 
+        text-decoration: underline
+      
+
+    .icon-box
+      background-color: #ffffff
+      width: 100%
+      height: auto
+      border: 1px solid #ffffff
+      border-radius: 5px
+      display: flex
+      margin-bottom: 25px
+      align-items: center
+
+      i 
+        color: var(--color-secundario)
+        margin-left: 3px
+        margin-right: 3px
+        font-size: var(--size-m)
+      
+.image-box
+    width: 60%
+    height: 100%
+    border-radius: 10px
+    color: white
+    display: flex
+    justify-content: center
+    @media (max-width: 768px) // ajusta este valor según tus necesidades
+        width: 100%
+        height: 350px
+    img
+      max-width: 100%
+      max-height: 100%
+
+
+.hidden
+  display: none
