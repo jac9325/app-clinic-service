@@ -9,5 +9,6 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './app.component.sass'
 })
 export class AppComponent {
-  title = 'app-clinic-service';
+  isCollapsed = true;
+  title:string = 'app-clinic-service';
 }
