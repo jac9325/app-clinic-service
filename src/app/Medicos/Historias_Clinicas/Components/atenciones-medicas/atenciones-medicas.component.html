@@ -1,0 +1,32 @@
+<div class="main-container">
+    <div class="sub-container">
+        <div class="table-container">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Fecha</th>
+                  <th>Hora</th>
+                  <th>Consultorio</th>
+                  <th>Doctor</th>
+                  <th>Diagnóstico</th>
+                  <th>Tratamiento</th>
+                  <th>  </th>
+                  <th>  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let atenciones of atenciones">
+                  <td>{{ atenciones.fecha}}</td>
+                  <td>{{ atenciones.hora }}</td>
+                  <td>{{ atenciones.consultorio}}</td>
+                  <td>{{ atenciones.doctor }}</td>
+                  <td>{{ atenciones.diagnostico }}</td>
+                  <td>{{ atenciones.tratamiento }}</td>
+                  <td><button type="submit" class="btn btn-danger"><i class="fas fa-eye"></i></button></td>
+                  <td><button type="submit" class="btn btn-danger"><i class="fas fa-edit"></i></button></td>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+    </div>
+</div>

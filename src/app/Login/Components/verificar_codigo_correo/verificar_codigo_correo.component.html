@@ -1,0 +1,20 @@
+<div class="outer-box">
+    <div class="inner-box">
+      <h1><i class="fas fa-brackets"></i><b class="titulo">Recuperar Cuenta</b></h1>
+      <form>
+        <div class="form-group">
+          <p> *Se envió un código a su correo electrónico. Revise su bandeja de entrada y, si no lo encuentra, verifique la carpeta de spam.* </p>
+          <input type="text" id="codigo_correo" name="codigo_correo" placeholder="Ingresa código de 6 dígitos">
+        </div>
+        <button type="submit" class="btn btn-danger" routerLink="/reestablecer_contraseña"><b>Verificar</b></button>
+        <div class="form-group">
+          <p> *Si aún no ha recibido el código puede volver a solicitarlo.* </p>
+        </div>
+        <button type="submit" class="btn btn-danger"><b>Reenviar código</b></button>
+        <button type="submit" class="btn btn-danger" routerLink="/recuperar_cuenta"><b>Regresar</b></button>
+      </form>
+    </div>
+    <div class="image-box">
+        <img src="../../../assets/Medico2.png" alt="Imagen de Medico">
+    </div>
+</div>

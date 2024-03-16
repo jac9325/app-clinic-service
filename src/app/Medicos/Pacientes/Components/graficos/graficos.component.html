@@ -1,0 +1,23 @@
+<div class="container">
+    <div ngbDropdown class="d-inline-block">
+      <button type="button" class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>
+        {{ selectedTitle }}
+      </button>
+      <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+        <button ngbDropdownItem (click)="onDropdownItemClick('Action - 1')">Action - 1</button>
+        <button ngbDropdownItem (click)="onDropdownItemClick('Another Action')">Another Action</button>
+        <button ngbDropdownItem (click)="onDropdownItemClick('Something else is here')">Something else is here</button>
+      </div>
+    </div>
+    <div class="chart" *ngIf="isBrowser">
+      <canvas
+        baseChart
+        [type]="chartType"
+        [legend]="true"
+        [datasets]="chartData"
+        [labels]="chartLabels"
+        [options]="chartOptions"
+      >
+      </canvas>
+    </div>
+  </div>

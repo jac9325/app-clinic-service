@@ -1,0 +1,74 @@
+
+<div class="main-container">
+    <div class="fechas-container">
+        <div class="title-container">
+            <h2>Fecha</h2>
+        </div>
+        <div class="text-container">
+            <button type="button" class="btn btn-danger" (click)="addDate()"><i class="fas fa-plus-circle"></i></button>
+            <div class="fechas" *ngFor="let date of dates" (click)="selectDate(date)" [class.selected]="date === selectedDate">
+                <h4>{{ date.date }}</h4>
+            </div>
+        </div>
+    </div>
+    <div class="contenido" *ngIf="selectedDate">
+        <div class="title-container">
+            <h2>Procedimientos Quirúrgicos</h2>
+        </div>
+        <div class="text-container">
+            <div ngbAccordion>
+                <div ngbAccordionItem *ngFor="let content of selectedDate.content; let i = index">
+                    <h3 ngbAccordionHeader>
+                        <button ngbAccordionButton>
+                            <input *ngIf="content.isNew" type="text" [(ngModel)]="content.title" placeholder="Ingrese el Título">
+                            <span *ngIf="!content.isNew">{{ content.title }}</span>
+                        </button>
+                    </h3>
+                    <div ngbAccordionCollapse>
+                        <div ngbAccordionBody>
+                            <ng-template>
+                                <!-- Contenido para los datos nuevos -->
+                                <div *ngIf="content.isNew">
+                                    <div class="container">
+                                        <div class="button-container">
+                                            <button type="button" class="btn btn-secondary"><i class="fas fa-check" style="font-size: var(--size-m);"></i></button>
+                                            <button type="button" class="btn btn-secondary" (click)="removeContent(i)"><i class="fas fa-times" style="font-size: var(--size-m);"></i></button>
+                                        </div>
+                                        <div class="descripcion">
+                                            <h4>Diagnóstico Prequirúrgico:</h4>
+                                            <textarea [(ngModel)]="content.prequirurgico" placeholder="Ingrese el diagnóstico prequirúrgico"></textarea>
+                                            <h4>Diagnóstico Posquirúrgico:</h4>
+                                            <textarea [(ngModel)]="content.prequirurgico" placeholder="Ingrese el diagnóstico prequirúrgico"></textarea>
+                                            <h4>Procedimientos:</h4>
+                                            <textarea [(ngModel)]="content.prequirurgico" placeholder="Ingrese el diagnóstico prequirúrgico"></textarea>
+                                            <h4>Hallazgos:</h4>
+                                            <textarea [(ngModel)]="content.prequirurgico" placeholder="Ingrese el diagnóstico prequirúrgico"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Contenido para los datos ya existentes -->
+                                <div *ngIf="!content.isNew">
+                                    <div class="container">
+                                        <div class="descripcion">
+                                            <h4>Diagnóstico Prequirúrgico:</h4>
+                                            <p>{{ content.prequirurgico }}</p>
+                                            <h4>Diagnóstico Posquirúrgico:</h4>
+                                            <p>{{ content.prequirurgico }}</p>
+                                            <h4>Procedimientos:</h4>
+                                            <p>{{ content.prequirurgico }}</p>
+                                            <h4>Hallazgos:</h4>
+                                            <p>{{ content.prequirurgico }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </ng-template>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <button type="button" class="btn btn-outline-primary" (click)="addContent()">Agregar</button>
+            </div>
+        </div>
+    </div>
+</div>

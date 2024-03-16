@@ -1,0 +1,101 @@
+<div class="main-container">
+    <div class="header-container">
+        <div class="title-container">
+            <div class="main-title">
+                <h1><i class="fas fa-ambulance"></i>[PE]Clínica Code</h1>
+            </div>
+            <div class="buttons-container">
+                <div ngbDropdown class="d-inline-block" *ngIf="isSmallScreen">
+                    <button type="button" class="btn btn-primary" id="dropdownBasic1" ngbDropdownToggle>
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <div class="menu" ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                        <button ngbDropdownItem><i class="fas fa-box"></i>Caja</button>
+                        <button ngbDropdownItem><i class="fas fa-hand-holding"></i>Egreso</button>
+                        <button ngbDropdownItem><i class="fas fa-hand-holding-usd"></i>Ingreso</button>
+                        <button ngbDropdownItem><i class="far fa-calendar-plus"></i>Nuevo Cita</button>
+                        <button ngbDropdownItem><i class="fas fa-users"></i>Pacientes</button>
+                        <button ngbDropdownItem><i class="fas fa-cogs"></i>Configuración</button>
+                        <button ngbDropdownItem><i class="fas fa-chart-pie"></i>Reportes</button>
+                    </div>
+                </div>
+                <button type="button" class="navegacion" *ngIf="!isSmallScreen"><i class="fas fa-box"></i>Caja</button>
+                <button type="button" class="navegacion" *ngIf="!isSmallScreen"><i class="fas fa-hand-holding"></i>Egreso</button>
+                <button type="button" class="navegacion" *ngIf="!isSmallScreen"><i class="fas fa-hand-holding-usd"></i>Ingreso</button>
+                <button type="button" class="navegacion" *ngIf="!isSmallScreen"><i class="far fa-calendar-plus"></i>Nuevo Cita</button>
+                <button type="button" class="navegacion" *ngIf="!isSmallScreen"><i class="fas fa-users"></i>Pacientes</button>
+                <button type="button" class="navegacion" *ngIf="!isSmallScreen"><i class="fas fa-cogs"></i>Configuración</button>
+                <button type="button" class="navegacion" *ngIf="!isSmallScreen"><i class="fas fa-chart-pie"></i>Reportes</button>
+            </div>
+            <div class="exit-container">
+                <button type="button" class="exit"><i class="fas fa-user-check"></i></button>
+                <button type="button" class="exit"><i class="fas fa-sign-out-alt"></i></button>
+            </div>
+        </div>
+    </div>
+    <div class="navbar-container">
+        <div class="sidebar">
+            <button type="button" class="navegacion" (click)="toggleSidebar()">
+                <i class="fas fa-angle-double-right"></i>
+            </button>
+            <div class="d-flex">
+                <div ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-pills flex-column" orientation="vertical">
+                    <ng-container ngbNavItem="1">
+                        <button ngbNavLink (click)="isCollapsed = true" ><i class="fas fa-medkit"></i></button>
+                        <ng-template ngbNavContent>
+                            <home-medicos></home-medicos>
+                        </ng-template>
+                    </ng-container>
+                    <ng-container ngbNavItem="3">
+                        <ng-template ngbNavContent>
+                            <nuevo-paciente></nuevo-paciente>
+                        </ng-template>
+                    </ng-container>
+                    <ng-container ngbNavItem="4">
+                        <ng-template ngbNavContent>
+                            <cuenta-paciente></cuenta-paciente>
+                        </ng-template>
+                    </ng-container>
+                    <ng-container ngbNavItem="2">
+                        <button ngbNavLink (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="submenu2"><i class="fas fa-users"></i></button>
+                        <ng-template ngbNavContent>
+                            <pacientes></pacientes>
+                        </ng-template>
+                        <div id="submenu2" [ngbCollapse]="isCollapsed">
+                            <div class="d-flex">
+                                <ng-container ngbNavItem="3">
+                                    <button ngbNavLink><i class="fas fa-user-plus" style="font-size: 23px;"></i></button>
+                                </ng-container>
+                                <ng-container ngbNavItem="4">
+                                    <button ngbNavLink ><i class="fas fa-credit-card" style="font-size: 23px;"></i></button>
+                                </ng-container>
+                            </div>
+                        </div>
+                    </ng-container>
+                    <ng-container ngbNavItem="5">
+                        <button ngbNavLink (click)="isCollapsed = true"><i class="fas fa-file"></i></button>
+                        <ng-template ngbNavContent>
+                            <historias-clinicas></historias-clinicas>
+                        </ng-template>
+                    </ng-container>
+                    <ng-container ngbNavItem="6">
+                        <button ngbNavLink (click)="isCollapsed = true"><i class="fas fa-box"></i></button>
+                        <ng-template ngbNavContent>
+                            <caja></caja>
+                        </ng-template>
+                    </ng-container>
+                    <ng-container ngbNavItem="7">
+                        <ng-template ngbNavContent>
+                            <configuraciones></configuraciones>
+                        </ng-template>
+                    </ng-container>
+                </div>
+            </div>
+            <button (click)="isCollapsed = true; active = '7'" ><i class="fas fa-cogs"></i></button>
+        </div>
+        <div class="content">
+            <div [ngbNavOutlet]="nav" class="ms-4"></div>
+        </div>
+    </div>
+    
+</div>

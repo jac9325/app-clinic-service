@@ -30,9 +30,15 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.sass"
+              "src/styles.sass",
+              "node_modules/@fortawesome/fontawesome-svg-core/styles.css"
             ],
-            "scripts": [],
+            "scripts": [
+              "node_modules/apexcharts/dist/apexcharts.min.js"
+            ],
+            "allowedCommonJsDependencies": [
+              "chart.js"
+            ],
             "server": "src/main.server.ts",
             "prerender": true,
             "ssr": {
@@ -95,6 +101,7 @@
               "src/assets"
             ],
             "styles": [
+              
               "src/styles.sass"
             ],
             "scripts": []

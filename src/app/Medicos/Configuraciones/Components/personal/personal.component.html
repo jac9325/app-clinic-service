@@ -1,0 +1,27 @@
+<div class="main-container">
+    <div class="sub-container">
+        <div class="table-container">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Número de Documento</th>
+                  <th>Personal</th>
+                  <th>Usuario</th>
+                  <th>Perfil</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let person of people">
+                  <td>{{ person.numero_documento}}</td>
+                  <td>{{ person.personal }}</td>
+                  <td>{{ person.usuario}}</td>
+                  <td>{{ person.perfil }}</td>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+        <div class="button-container">
+          <td><button type="submit" class="btn btn-danger">Nuevo Personal</button></td>
+        </div>
+    </div>
+</div>

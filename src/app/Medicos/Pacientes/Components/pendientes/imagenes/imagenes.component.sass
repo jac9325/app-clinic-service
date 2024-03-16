@@ -1,0 +1,76 @@
+
+.main-container
+    display: flex
+    width: 100%
+    padding: 10px
+
+    .container1
+        display: flex
+        border-radius: 10px
+        height: 20%
+        background-color: var(--color-primario)
+        width: 100%
+        align-items: center
+        justify-content: center
+        gap: 10px
+        padding: 20px
+
+        .contend2
+            display: flex
+            justify-content: center
+            gap: 10%
+            width: 70%
+            @media (max-width: 768px) // ajusta este valor según tus necesidades
+                flex-direction: column
+                gap: 5px
+
+        .text-container
+            color: white
+            @media (max-width: 768px) // ajusta este valor según tus necesidades
+                padding: 10px
+
+            p
+                font-weight: 500
+                margin-bottom: 0px
+            
+            h2
+                font-weight: 500
+                margin-bottom: 0px
+
+            .icon-box
+                width: 100%
+                height: auto
+                display: flex
+                align-items: center
+                justify-content: left
+
+                i 
+                    color: white
+                    font-size: var(--size-xg)
+                    margin-right: 10px 
+    
+    .container2
+        display: flex
+        flex-direction: column
+        align-items: center
+        justify-content: center
+        gap: 10px
+
+        button
+            background-color: white
+            color: var(--color-secundario)
+            border: 0px
+            padding: 5px
+
+            &:hover
+                color: white
+                background-color: var(--color-secundario)
+            
+            i
+                font-size: var(--size-xs)
+
+
+
+
+
+
