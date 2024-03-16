@@ -1,0 +1,57 @@
+
+
+.main-container
+    display: flex
+    justify-content: center
+    align-items: center
+    width: 100%
+
+    .sub-container 
+        width: 70%
+        height: 650px
+        display: flex
+        flex-direction: column
+        padding: 25px
+        background-color: var(--selected-color)
+        border-radius: 10px
+        justify-content: center
+        @media (max-width: 768px) 
+            width: 100%
+
+.table
+  thead 
+    th 
+      background-color: var(--color-primario)
+      color: white
+      font-size: 15px
+      font-weight: 500
+      text-align: center
+      justify-content: center
+      align-items: center
+
+  tbody 
+    justify-content: center
+    
+    td
+      font-size: 12px
+      text-align: center
+
+
+.button-container
+  width: 100%
+  display: flex
+  align-items: center
+  justify-content: center
+  button
+    background-color: var(--color-secundario)
+    border: 0px
+    display: block
+    font-size: 14px
+    color: white
+    font-weight: 400
+    &:hover
+      color: var(--color-secundario)
+      background-color: white
+      font-size: 16px
+  
+

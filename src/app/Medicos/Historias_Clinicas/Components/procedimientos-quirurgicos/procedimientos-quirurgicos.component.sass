@@ -1,0 +1,112 @@
+
+.modal-body
+    background-color: #292b2c
+    position: relative
+    text-align: center
+    color: white
+
+    .btn-close
+        color: white
+        position: absolute
+        top: 5px
+        right: 5px
+        background-color: white
+
+.main-container
+    width: 100%
+    height: 100%
+    display: flex
+    gap: 20px
+    align-items: center
+    justify-content: center
+
+    .fechas-container
+        width: 15%
+    
+    .contenido
+        width: 85%
+
+    .title-container
+        background-color: var(--selected-color)
+        border-radius: 10px
+        width: 100%
+        text-align: center
+
+    
+    .text-container
+        background-color: var(--selected-color)
+        border-radius: 10px
+        width: 100%
+        height: 523px
+        padding: 10px
+        overflow-y: auto
+        display: block
+        text-align: center
+        gap: 10px
+
+        .btn-outline-primary
+            margin-top: 10px
+            color: white
+            background-color: var(--color-secundario)
+            border: 0px
+            &:hover
+                color: var(--color-secundario)
+                background-color: white
+
+
+        .fechas
+            background-color: white
+            padding: 10px
+            text-align: center
+            border-radius: 10px
+            cursor: pointer
+            &:hover
+                background-color: gray
+            &.selected
+                background-color: lightblue
+
+            h4
+                margin-bottom: 0px
+
+        .btn-danger 
+            padding: 0px
+            background-color: transparent
+            border: 0px
+            color: var(--color-secundario)
+
+            i
+                font-size: var(--size-m)
+        
+        .container
+            width: 100%
+            display: flex
+            align-items: center
+            gap: 20px
+
+            .button-container
+                display: flex
+                flex-direction: column
+                gap: 5px
+            
+            .descripcion
+                width: 100%
+                font-size: 12px
+                padding: 10px
+                display: flex
+                flex-direction: column
+                gap: 10px
+                justify-content: left
+                text-align: left
+
+                textarea
+                    width: 100%
+                    height: 50px
+                    padding: 10px
+                    border-radius: 10px
+            
+
+
+
+
+
+
