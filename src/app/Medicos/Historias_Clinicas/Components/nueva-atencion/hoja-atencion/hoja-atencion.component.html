@@ -10,26 +10,26 @@
         <div class="division">
             <div class="dato">
                 <label>Tiempo de Enfermedad:</label>
-                <textarea placeholder="Ingrese el motivo de la consulta"></textarea>
+                <textarea placeholder="Ingrese el tiempo de la enfermedad"></textarea>
             </div>
         </div>
         <div class="division">
             <div class="dato">
                 <label>Forma de Inicio:</label>
-                <textarea placeholder="Ingrese el motivo de la consulta"></textarea>
+                <textarea placeholder="Ingrese la forma de inicio"></textarea>
             </div>
         </div>
         <div class="division">
             <div class="dato">
                 <label>Curso de la Enfermedad:</label>
-                <textarea placeholder="Ingrese el motivo de la consulta"></textarea>
+                <textarea placeholder="Ingrese el curso de la enfermedad"></textarea>
             </div>
         </div>
     </div>
     <div class="line">
         <div class="dato">
-            <label>Motivo de la Consulta:</label>
-            <textarea placeholder="Ingrese el motivo de la consulta"></textarea>
+            <label>Relato Cronológico de la Enfermedad:</label>
+            <textarea placeholder="Ingrese el relato cronológico de la enfermedad"></textarea>
         </div>
     </div>
     <hr>
@@ -79,15 +79,43 @@
             <label class="label2">%</label>
         </div>
     </div>
-    <div class="line">
+    <div *ngFor="let linea of lineas; let i = index" class="line">
         <textarea placeholder="Ingrese observación" style="width: 95%;"></textarea>
-        <button type="text" class="btn btn-primary"><i class="fas fa-plus"></i></button>
+        <button *ngIf="i === lineas.length - 1" (click)="agregarLinea()" type="text" class="btn btn-primary">
+            <i class="fas fa-plus"></i>
+        </button>
     </div>
     <hr>
     <div class="line">
         <h4>Impresión Diagnóstica</h4>
     </div>
     <div class="line">
-
+        <div class="diagnostico-container">
+            <div *ngFor="let diagnostico of diagnosticos; let i = index" class="diagnostico">
+                <div class="text">
+                    <label>{{i + 1}}. </label>
+                    <textarea class="textarea2"></textarea>
+                </div>
+                <button type="button" class="btn btn-secondary">
+                    Cie 10<i class="fas fa-search"></i>
+                </button>
+                </div>
+                <div class="button-container">
+                <button (click)="agregarDiagnostico()" type="button" class="btn btn-danger">
+                    <i class="fas fa-plus"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="line">
+        <div class="division2">
+            <h4>Exámenes Complementarios:</h4>
+            <examen-complementario></examen-complementario>
+        </div>
+        <div class="division2">
+            <h4>Receta Médica:</h4>
+            <receta></receta>
+        </div>
     </div>
 </div>

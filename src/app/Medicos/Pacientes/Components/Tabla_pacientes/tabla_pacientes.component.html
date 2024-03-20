@@ -32,9 +32,9 @@
             <td>{{ person.numero_histaoria }}</td>
             <td>{{ person.numero_documento }}</td>
             <td>
-              <div ngbDropdown>
+              <div ngbDropdown container="body">
                 <button  class="menu" type="button" id="dropdownConfig" style="color: var(--color-primario)" ngbDropdownToggle><i class="fas fa-ellipsis-v"></i></button>
-                <div ngbDropdownMenu aria-labelledby="dropdownConfig">
+                <div ngbDropdownMenu>
                   <button ngbDropdownItem class="icons"><i class="fas fa-eye"></i></button>
                   <button ngbDropdownItem class="icons"><i class="fas fa-edit"></i></button>
                   <button ngbDropdownItem class="icons"><i class="fas fa-user-slash"></i></button>

@@ -1,0 +1,106 @@
+<div class="modal-container">
+    <div class="line" style="margin-bottom: 10px; color: white;">
+        <h3>Agendar Nueva Cita</h3>
+        <div class="dato">
+            <label>Nº de Cita:</label>
+            <input type="text" class="input2">
+        </div>
+    </div>
+    <div class="contenedor" style="flex-direction: column;">
+        <div class="line">
+            <div class="div">
+                <div class="dato">
+                    <label>Paciente: </label>
+                    <input type="text">
+                </div>
+            </div>
+            <div class="div2">
+                <div class="dato">
+                    <label>DNI: </label>
+                    <input type="text">
+                </div>
+            </div>
+        </div>
+        <div class="line">
+            <div class="div">
+                <div class="dato">
+                    <label>Dirección: </label>
+                    <input type="text">
+                </div>
+            </div>
+            <div class="div2">
+                <div class="dato">
+                    <label>Nº de Celular: </label>
+                    <input type="text" class="input2">
+                </div>
+            </div>
+        </div>
+        <div class="line">
+            <div class="div"></div>
+            <div class="div2">
+                <div class="dato">
+                    <label>Fecha: </label>
+                    <input type="text">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="contenedor">
+        <div class="column">
+            <div class="dato">
+                <label>Fecha: </label>
+                <select class="custom-select rounded-left">
+                    <option selected>Seleccionar</option>
+                    <option value="1">Sede1</option>
+                    <option value="2">Sede2</option>
+                </select>
+            </div>
+            <div class="dato">
+                <label>Personal Médico:</label>
+                <select (change)="addOption($event)">
+                    <option *ngFor="let option of availableOptions" [value]="option">{{option}}</option>
+                </select>
+            </div>
+            <div class="selecction-list">
+                <div *ngFor="let option of selectedOptions; let i = index" class="seleccion">
+                    <p>{{option}}</p> <button (click)="removeOption(i)">x</button>
+                </div>
+            </div>
+            <div class="dato">
+                <label>Fecha y Hora: </label>
+                <input type="date" style="width: 30%;">
+                <input type="time" style="width: 30%;">
+            </div>
+            <div class="dato">
+                <label>Tiempo de Consulta: </label>
+                <input type="time" style="width: 50%;">
+            </div>
+        </div>
+        <div class="column">
+            <div class="dato">
+                <label>Tiempo de Consulta: </label>
+                <textarea></textarea>
+            </div>
+            <div class="dato">
+                <label>Servicios:</label>
+                <select (change)="addOption($event)">
+                    <option *ngFor="let option of availableOptions" [value]="option">{{option}}</option>
+                </select>
+            </div>
+            <div class="selecction-list">
+                <div *ngFor="let option of selectedOptions; let i = index" class="seleccion">
+                    <p>{{option}}</p> <button (click)="removeOption(i)">x</button>
+                </div>
+            </div>
+            <div class="dato">
+                <label>Observación:</label>
+                <textarea></textarea>
+            </div>
+        </div>
+    </div>
+
+    <div class="button-container">
+        <button type="button" class="btn btn-secondary" (click)="cerrarModal()">Cancelar</button>
+        <button type="button" class="btn btn-danger" (click)="cerrarModal()">Cerrar Caja</button>
+    </div>
+</div>
