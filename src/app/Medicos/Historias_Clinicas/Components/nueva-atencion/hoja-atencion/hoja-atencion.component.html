@@ -80,7 +80,7 @@
         </div>
     </div>
     <div *ngFor="let linea of lineas; let i = index" class="line">
-        <textarea placeholder="Ingrese observación" style="width: 95%;"></textarea>
+        <textarea placeholder="Ingrese observación" style="width: 95%;" #textareobservacion></textarea>
         <button *ngIf="i === lineas.length - 1" (click)="agregarLinea()" type="text" class="btn btn-primary">
             <i class="fas fa-plus"></i>
         </button>
@@ -94,11 +94,18 @@
             <div *ngFor="let diagnostico of diagnosticos; let i = index" class="diagnostico">
                 <div class="text">
                     <label>{{i + 1}}. </label>
-                    <textarea class="textarea2"></textarea>
+                    <textarea class="textarea2" #textareadiagnostic></textarea>
                 </div>
-                <button type="button" class="btn btn-secondary">
-                    Cie 10<i class="fas fa-search"></i>
-                </button>
+                <ngx-select [items]="cities"
+                    class="cie10"
+                    optionValueField="id"
+                    optionTextField="name"
+                    placeholder="Cie 10"
+                    size="small"
+                    autocomplete="on"
+                    noResultsFound="No se encontró"
+                    [(ngModel)]="diagnostico.selectedCity">
+                </ngx-select>
                 </div>
                 <div class="button-container">
                 <button (click)="agregarDiagnostico()" type="button" class="btn btn-danger">

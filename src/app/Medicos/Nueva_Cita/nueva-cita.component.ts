@@ -11,6 +11,7 @@ import { NgbModal} from '@ng-bootstrap/ng-bootstrap';
   templateUrl: './nueva-cita.component.html',
   styleUrl: './nueva-cita.component.sass'
 })
+
 export class NuevaCitaComponent {
   public modalService = inject(NgbModal);
 
@@ -21,15 +22,23 @@ export class NuevaCitaComponent {
   availableOptions = ['Opción 1', 'Opción 2', 'Opción 3', 'Opción 4', 'Opción 5'];
   selectedOptions = [];
 
-  addOption(event: Event) {
+  availableOptions2 = ['Opción 1', 'Opción 2', 'Opción 3', 'Opción 4', 'Opción 5'];
+  selectedOptions2 = [];
+
+  addOption(event: Event, availableOptions: string[], selectedOptions: string[]) {
     const value = (event.target as HTMLSelectElement).value;
-    this.selectedOptions.push(value);
-    this.availableOptions = this.availableOptions.filter(option => option !== value);
+    const index = availableOptions.indexOf(value);
+    if (index > -1) {
+      selectedOptions.push(value);
+      availableOptions.splice(index, 1);
+    }
   }
 
-  removeOption(index) {
-    this.availableOptions.push(this.selectedOptions[index]);
-    this.selectedOptions = this.selectedOptions.filter((_, i) => i !== index);
+  removeOption(index: number, availableOptions: string[], selectedOptions: string[]) {
+    if (index > -1) {
+      availableOptions.push(selectedOptions[index]);
+      selectedOptions.splice(index, 1);
+    }
   }
 
 }

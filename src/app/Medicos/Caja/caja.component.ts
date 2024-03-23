@@ -16,11 +16,6 @@ import { CajaCerradaComponent } from './Components/Alerta/caja-cerrada/caja-cerr
   styleUrl: './caja.component.sass'
 })
 export class CajaComponent  {
-  condicion: boolean;
-
-  constructor() {
-    // Aquí es donde estableces tu condición
-    this.condicion = false;
-  }
-
+  estado_caja = false;
+  ingreso_egreso = false;
 }

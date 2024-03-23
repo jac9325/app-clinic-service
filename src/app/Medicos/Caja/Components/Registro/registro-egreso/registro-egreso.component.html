@@ -1,18 +1,18 @@
 <div class="main-container">
     <div class="main-title">
-        <h1>Egreso Caja</h1>
+        <h2>Egreso de Caja</h2>
     </div>
     <div class="encabezado">
         <div class="formulario">
             <div class="campo">
                 <div class="title">
-                    <label>Nro Caja:</label>
+                    <label>Nro. Caja:</label>
                 </div>
                 <div class="dato">
                     <input class="form-control" type="text" id="nro_caja" name="nro_caja" placeholder="Ingresa el numero de caja" value="Dato existente" readonly>
                 </div>
             </div>
-            <div class="campo">
+            <div class="campo" style="margin-bottom: 0px;">
                 <div class="title">
                     <label>Caja:</label>
                 </div>
@@ -22,6 +22,7 @@
             </div>
         </div>
     </div>
+    <hr>
     <div class="content">
         <div class="formulario">
             <div class="campo">
@@ -29,7 +30,7 @@
                     <label>Fecha:</label>
                 </div>
                 <div class="dato">
-                    <input class="form-control" type="text" id="fecha" name="fecha" placeholder="Ingresa la fecha" value="Dato existente" readonly>
+                    <input class="form-control" type="date" id="fecha" name="fecha" placeholder="Ingresa la fecha" value="Dato existente" readonly>
                 </div>
             </div>
 
@@ -39,15 +40,6 @@
                 </div>
                 <div class="dato">
                     <input class="form-control" type="text" id="nro_operacion" name="nro_operacion" placeholder="Ingresa el numero de operacion" value="Dato existente" readonly>
-                </div>
-            </div>
-
-            <div class="campo">
-                <div class="title">
-                    <label>Cuenta del Paciente:</label>
-                </div>
-                <div class="dato">
-                    <input class="form-control" type="text" id="cuenta_paciente" name="cuenta_paciente" placeholder="Ingresa la cuenta del paciente" value="Dato existente" readonly>
                 </div>
             </div>
 
@@ -68,12 +60,13 @@
                     <input class="form-control" type="text" id="monto_total" name="monto_total" placeholder="Ingresa el monto total">
                 </div>
             </div>
+
             <div class="campo2">
                 <div class="title">
-                    <label>Motivo Egreso:</label>
+                    <label>Motivo del Egreso:</label>
                 </div>
                 <div class="dato">
-                    <textarea id="motivo_egreso" name="motivo_egreso" placeholder="Ingresa motivo del egreso"></textarea>
+                    <textarea id="servicio" name="servicio" placeholder="Ingresa el servicio"></textarea>
                 </div>
             </div>
         </div>

@@ -18,9 +18,9 @@
           <tr>
             <th>Número</th>
             <th>Nombre</th>
-            <th>Última Atención</th>
-            <th>Número de Historia</th>
-            <th>Número de Documento</th>
+            <th>Atención Prev.</th>
+            <th>Nº Historia</th>
+            <th>Nº de Documento</th>
             <th>  </th>
           </tr>
         </thead>
@@ -32,7 +32,7 @@
             <td>{{ person.numero_histaoria }}</td>
             <td>{{ person.numero_documento }}</td>
             <td>
-              <div ngbDropdown container="body">
+              <div ngbDropdown>
                 <button  class="menu" type="button" id="dropdownConfig" style="color: var(--color-primario)" ngbDropdownToggle><i class="fas fa-ellipsis-v"></i></button>
                 <div ngbDropdownMenu>
                   <button ngbDropdownItem class="icons"><i class="fas fa-eye"></i></button>
@@ -52,14 +52,14 @@
   <div class="sub-container2">
     <div class="titulo-container">
       <div class="text">
-        <h2>{{ selectedPerson?.name }}</h2>
-        <h3>Edad: </h3> <p>{{ selectedPerson?.edad }}</p>
+        <h3>{{ selectedPerson?.name }}</h3>
+        <h4>Edad: </h4> <p>{{ selectedPerson?.edad }}</p>
         <div class="text2">
           <div class="col1">
-            <h3>Peso: </h3> <p>{{ selectedPerson?.peso }}</p>
+            <h4>Peso: </h4> <p>{{ selectedPerson?.peso }}</p>
           </div>
           <div class="col2">
-            <h3>Talla: </h3> <p>{{ selectedPerson?.talla }}</p>
+            <h4>Talla: </h4> <p>{{ selectedPerson?.talla }}</p>
           </div>
         </div>
       </div>
@@ -73,18 +73,18 @@
     <div class="alertas-container">
       <h3>Alertas:</h3>
       <div class="alergias">
-        <h3>Alergias:</h3>
+        <h4>Alergias:</h4>
         <div class="alergias-list">
           <div *ngFor="let alergias of selectedPerson?.alergias" class="alergias-item">
-            <span>{{ alergias }}</span>
+            <span><p style="margin-bottom: 0px;">{{ alergias }}</p></span>
           </div>
         </div>
       </div>
       <div class="cronicos">
-        <h3>Enfermedades Cronicas:</h3>
+        <h4>Enfermedades Cronicas:</h4>
         <div class="cronicos-list">
           <div *ngFor="let cronicos of selectedPerson?.enfermedades_cronicas" class="cronicos-item">
-            <span>{{ cronicos  }}</span>
+            <span><p style="margin-bottom: 0px;">{{ cronicos}}</p></span>
           </div>
         </div>
       </div>

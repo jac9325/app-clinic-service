@@ -57,13 +57,13 @@
             </div>
             <div class="dato">
                 <label>Personal Médico:</label>
-                <select (change)="addOption($event)">
+                <select (change)="addOption($event, availableOptions, selectedOptions)">
                     <option *ngFor="let option of availableOptions" [value]="option">{{option}}</option>
                 </select>
             </div>
             <div class="selecction-list">
                 <div *ngFor="let option of selectedOptions; let i = index" class="seleccion">
-                    <p>{{option}}</p> <button (click)="removeOption(i)">x</button>
+                    <p>{{option}}</p> <button (click)="removeOption(i, availableOptions, selectedOptions)">x</button>
                 </div>
             </div>
             <div class="dato">
@@ -83,13 +83,13 @@
             </div>
             <div class="dato">
                 <label>Servicios:</label>
-                <select (change)="addOption($event)">
-                    <option *ngFor="let option of availableOptions" [value]="option">{{option}}</option>
+                <select (change)="addOption($event, availableOptions2, selectedOptions2)">
+                    <option *ngFor="let option of availableOptions2" [value]="option">{{option}}</option>
                 </select>
             </div>
             <div class="selecction-list">
-                <div *ngFor="let option of selectedOptions; let i = index" class="seleccion">
-                    <p>{{option}}</p> <button (click)="removeOption(i)">x</button>
+                <div *ngFor="let option of selectedOptions2; let i = index" class="seleccion">
+                    <p>{{option}}</p> <button (click)="removeOption(i, availableOptions2, selectedOptions2)">x</button>
                 </div>
             </div>
             <div class="dato">
@@ -101,6 +101,6 @@
 
     <div class="button-container">
         <button type="button" class="btn btn-secondary" (click)="cerrarModal()">Cancelar</button>
-        <button type="button" class="btn btn-danger" (click)="cerrarModal()">Cerrar Caja</button>
+        <button type="button" class="btn btn-danger" (click)="cerrarModal()">Agendar</button>
     </div>
 </div>

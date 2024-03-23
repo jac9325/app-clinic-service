@@ -12,12 +12,14 @@
     margin-top: 5px
     position: sticky
     top: 0
+  
+h4
+  margin-bottom: 3px
 
 .person-list 
   max-height: 200px // Ajusta este valor a la altura que desees
   overflow-y: auto
 
-    
 .search-container
     width: 100%
     margin-bottom: 10px
@@ -41,7 +43,6 @@
   @media (max-width: 768px) 
     width: 100%
 
-
 .details-container 
   width: 50%
   height: 100%
@@ -55,13 +56,12 @@
   .content-section 
     height: 200px // Ajusta este valor al tamaño que desees
     overflow-y: auto
-  
 
 .person-card 
   display: flex
   align-items: center
   cursor: pointer
-  padding: 3px
+  padding: 8px
   &:hover 
     background-color: lightgray
 
@@ -74,8 +74,6 @@
 .person-card.selected 
   background-color: var(--selected-color)
   font-size: 16px
-
-
 
 .person-image 
   width: 40px
@@ -95,18 +93,14 @@
     height: 100%
     border: 2px solid black
     border-radius: 50%
-  
-
 
 .person-info 
   margin-left: 10px
 
-  
   .appointment-type 
     font-size: 8px
     color: blue
-  
-
+    margin-bottom: 0px
 
 .appointment-time 
   margin-left: auto
@@ -138,7 +132,6 @@
         align-items: center
         margin-right: 10px
 
-      
   .detail-item 
     display: flex
     flex-wrap: wrap
@@ -148,9 +141,3 @@
     p 
       flex-basis: 70% // Ajusta este valor según el espacio que desees para el detalle
       flex-grow: 1
-
-
-
-
-
-
