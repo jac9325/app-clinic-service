@@ -1,0 +1,121 @@
+<ng-template #content let-modal>
+	<div class="modal-container">
+        <div class="title-container">
+            <h4>Datos de Identificaion del paciente</h4>
+        </div>
+        <div class="datos-container">
+            <div class="line">
+                <label>Nombre:</label>
+                <input type="text" id="saldo" name="saldo" placeholder="Saldo" value="Dato existente" readonly>
+            </div>
+            <div class="line">
+                <div class="dato">
+                    <label>Edad:</label>
+                    <input type="text" id="saldo" name="saldo" placeholder="Saldo" value="Dato existente" readonly>
+                </div>
+                <div class="dato">
+                    <label>Sexo:</label>
+                    <input type="text" id="saldo" name="saldo" placeholder="Saldo" value="Dato existente" readonly>
+                </div>
+            </div>
+        </div>
+        <div class="examenes-container">
+            <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs" style="font-size: 14px;">
+                <li [ngbNavItem]="1">
+                    <button ngbNavLink>Laboratorio</button>
+                    <ng-template ngbNavContent>
+                        <div class="checkbox-container">
+                            <div class="line-check">
+                                <div class="dato-check">
+                                    <input type="checkbox" class="check" (change)="onCheckboxChange($event, 'Dato1', 'selectedLaboratorio')"> <label>Dato1</label>
+                                </div>
+                                <div class="dato-check">
+                                    <input type="checkbox" class="check" (change)="onCheckboxChange($event, 'Dato2', 'selectedLaboratorio')"> <label>Dato2</label>
+                                </div>                         
+                            </div>
+                            <h4>Otro:</h4>
+                            <div class="line-check" style="justify-content: center;">
+                                <div class="dato-check">
+                                    <input type="checkbox" class="check"> <input type="text" class="ingreso-checkbox">
+                                </div>
+                            </div>
+                        </div>
+                    </ng-template>
+                </li>
+                <li [ngbNavItem]="2">
+                    <button ngbNavLink>Imagen</button>
+                    <ng-template ngbNavContent>
+                        <div class="checkbox-container">
+                            <div class="line-check">
+                                <div class="dato-check">
+                                    <input type="checkbox" class="check" (change)="onCheckboxChange($event, 'Dato1', 'selectedImagen')"> <label>Dato1</label>
+                                </div>
+                                <div class="dato-check">
+                                    <input type="checkbox" class="check" (change)="onCheckboxChange($event, 'Dato2', 'selectedImagen')"> <label>Dato2</label>
+                                </div>                         
+                            </div>
+                            <h4>Otro:</h4>
+                            <div class="line-check" style="justify-content: center;">
+                                <div class="dato-check">
+                                    <input type="checkbox" class="check"> <input type="text" class="ingreso-checkbox">
+                                </div>
+                            </div>
+                        </div>
+                    </ng-template>
+                </li>
+                <li [ngbNavItem]="3">
+                    <button ngbNavLink>Patología</button>
+                    <ng-template ngbNavContent>
+                        <div class="checkbox-container">
+                            <div class="line-check">
+                                <div class="dato-check">
+                                    <input type="checkbox" class="check" (change)="onCheckboxChange($event, 'Dato1', 'selectedPatologia')"> <label>Dato1</label>
+                                </div>
+                                <div class="dato-check">
+                                    <input type="checkbox" class="check" (change)="onCheckboxChange($event, 'Dato2', 'selectedPatologia')"> <label>Dato2</label>
+                                </div>                         
+                            </div>
+                            <h4>Otro:</h4>
+                            <div class="line-check" style="justify-content: center;">
+                                <div class="dato-check">
+                                    <input type="checkbox" class="check"> <input type="text" class="ingreso-checkbox">
+                                </div>
+                            </div>
+                        </div>
+                    </ng-template>
+                </li>
+            </ul>
+            <div class="contend">
+                <div [ngbNavOutlet]="nav" class="mt-2"></div>
+            </div>
+        </div>
+        <div class="button-container">
+            <button type="button" class="btn btn-secondary" (click)="modal.close('Close click')">Cancelar</button>
+            <button type="button" class="btn btn-danger" (click)="accept(content);">Aceptar</button>
+        </div>
+    </div>
+</ng-template>
+
+<div class="main-container">
+    <div class="table-container">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Laboratorio</th>
+                    <th>Imagen</th>
+                    <th>Patología</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let row of tableData">
+                    <td>{{row.Laboratorio}}</td>
+                    <td>{{row.Imagen}}</td>
+                    <td>{{row.Patologia}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="button-container">
+        <td><button type="submit" class="btn btn-danger" (click)="openModal(content)" ><i class="fas fa-plus"></i></button></td>
+    </div>
+</div>

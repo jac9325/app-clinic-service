@@ -1,0 +1,44 @@
+<!-- <div class="list-container">
+    <div class="search-container">
+        <input id="table-filtering-search" class="form-control" type="text" [formControl]="filter" placeholder="Buscar Paciente" (input)="toggleDropdown($event)" />
+    </div>
+    <div class="person-list" *ngIf="showDropdown">
+        <div *ngFor="let person of (filteredPeople | async)" class="person-card" [class.selected]="person === selectedPerson" (click)="selectPerson(person)">
+            <div class="person-image">
+                <img *ngIf="person.image; else noImage" [src]="person.image" alt="Person image" />
+                <ng-template #noImage>
+                    <div class="placeholder-image">PD</div>
+                </ng-template>
+            </div>
+            <div class="person-info">
+                <h4>{{ person.name }}</h4>
+                <p class="appointment-type" [style.color]="person.tipoCita === 'Nuevo' ? 'blue' : 'red'">{{ person.tipoCita }}</p>
+            </div>
+            <div class="appointment-time" [style.backgroundColor]="getColor(person.appointmentTime)">{{ person.appointmentTime }}</div>
+        </div>
+        <div *ngIf="(filteredPeople | async)?.length === 0" class="no-results">
+            No existen coincidencias
+        </div>
+    </div>
+</div> -->
+<div ngbDropdown [open]="filter.value.length > 0 && (filteredPeople | async)?.length > 0">
+    <input type="search" class="form-control" id="dropdownForm1" ngbDropdownToggle [formControl]="filter" placeholder="Buscar Paciente" />
+    <div ngbDropdownMenu aria-labelledby="dropdownForm1" class="person-list">
+        <div *ngFor="let person of (filteredPeople | async)" class="person-card" [class.selected]="person === selectedPerson" (click)="selectPerson(person)">
+            <div class="person-image">
+                <img *ngIf="person.image; else noImage" [src]="person.image" alt="Person image" />
+                <ng-template #noImage>
+                    <div class="placeholder-image">PD</div>
+                </ng-template>
+            </div>
+            <div class="person-info">
+                <h4>{{ person.name }}</h4>
+                <p class="appointment-type" [style.color]="person.tipoCita === 'Nuevo' ? 'blue' : 'red'">{{ person.tipoCita }}</p>
+            </div>
+            <div class="appointment-time" [style.backgroundColor]="getColor(person.appointmentTime)">{{ person.appointmentTime }}</div>
+        </div>
+        <div *ngIf="(filteredPeople | async)?.length === 0" class="no-results">
+            No existen coincidencias
+        </div>
+    </div>
+</div>

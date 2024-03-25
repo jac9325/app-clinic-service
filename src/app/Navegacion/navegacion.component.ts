@@ -1,4 +1,5 @@
-import { Component, HostListener, OnInit} from '@angular/core';
+import { Component, HostListener, OnInit, inject, TemplateRef} from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
@@ -11,17 +12,24 @@ import { PacientesComponent } from '../Medicos/Pacientes/pacientes.component';
 import { CuentaPacienteComponent } from '../Medicos/Cuenta_Paciente/cuenta_paciente.component';
 import { NuevoPacienteComponent } from '../Medicos/Nuevo-Paciente/nuevo-paciente.component';
 import { HistoriasClinicasComponent } from '../Medicos/Historias_Clinicas/historias-clinicas.component';
+import { NuevaCitaComponent } from '../Medicos/Nueva_Cita/nueva-cita.component';
 
 
 @Component({
   selector: 'navegacion',
   standalone: true,
-  imports: [ RouterModule, CommonModule, NgbDropdownModule, NgbNavModule, HomeComponent, PacientesComponent, CuentaPacienteComponent,
+  imports: [ RouterModule, CommonModule, NuevaCitaComponent, NgbDropdownModule, NgbNavModule, HomeComponent, PacientesComponent, CuentaPacienteComponent,
             NgbCollapseModule, HistoriasClinicasComponent, CajaComponent, ConfiguracionesComponent, NuevoPacienteComponent],
   templateUrl: './navegacion.component.html',
   styleUrl: './navegacion.component.sass'
 })
 export class NavegacionComponent {
+  private modalService = inject(NgbModal);
+
+	openModal(content: TemplateRef<any>) {
+		this.modalService.open(content, { size: 'lg', centered: true });
+	}
+
   active = '1';
   isSmallScreen = false;
   isCollapsed = true;

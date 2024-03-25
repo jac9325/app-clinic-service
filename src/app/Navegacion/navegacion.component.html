@@ -1,3 +1,7 @@
+<ng-template #content let-modal>
+	<nueva-cita></nueva-cita>
+</ng-template>
+
 <div class="main-container">
     <div class="header-container">
         <div class="title-container">
@@ -10,21 +14,21 @@
                         <i class="fas fa-bars"></i>
                     </button>
                     <div class="menu" ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                        <button ngbDropdownItem><i class="fas fa-box"></i>Caja</button>
-                        <button ngbDropdownItem><i class="fas fa-hand-holding"></i>Egreso</button>
-                        <button ngbDropdownItem><i class="fas fa-hand-holding-usd"></i>Ingreso</button>
-                        <button ngbDropdownItem><i class="far fa-calendar-plus"></i>Nuevo Cita</button>
-                        <button ngbDropdownItem><i class="fas fa-users"></i>Pacientes</button>
-                        <button ngbDropdownItem><i class="fas fa-cogs"></i>Configuración</button>
-                        <button ngbDropdownItem><i class="fas fa-chart-pie"></i>Reportes</button>
+                        <button ngbDropdownItem (click)="active = '6'"><i class="fas fa-box"></i><h4>Caja</h4></button>
+                        <button ngbDropdownItem (click)="active = '6'"><i class="fas fa-hand-holding"></i><h4>Egreso</h4></button>
+                        <button ngbDropdownItem (click)="active = '6'"><i class="fas fa-hand-holding-usd"></i><h4>Ingreso</h4></button>
+                        <button ngbDropdownItem (click)="openModal(content)"><i class="far fa-calendar-plus"></i><h4>Nueva Cita</h4></button>
+                        <button ngbDropdownItem (click)="active = '2'"><i class="fas fa-users"></i><h4>Pacientes</h4></button>
+                        <button ngbDropdownItem (click)="active = '7'"><i class="fas fa-cogs"></i><h4>Configuración</h4></button>
+                        <button ngbDropdownItem><i class="fas fa-chart-pie"></i><h4>Reportes</h4></button>
                     </div>
                 </div>
-                <button type="button" class="navegacion" *ngIf="!isSmallScreen"><i class="fas fa-box"></i>Caja</button>
-                <button type="button" class="navegacion" *ngIf="!isSmallScreen"><i class="fas fa-hand-holding"></i>Egreso</button>
-                <button type="button" class="navegacion" *ngIf="!isSmallScreen"><i class="fas fa-hand-holding-usd"></i>Ingreso</button>
-                <button type="button" class="navegacion" *ngIf="!isSmallScreen"><i class="far fa-calendar-plus"></i>Nuevo Cita</button>
-                <button type="button" class="navegacion" *ngIf="!isSmallScreen"><i class="fas fa-users"></i>Pacientes</button>
-                <button type="button" class="navegacion" *ngIf="!isSmallScreen"><i class="fas fa-cogs"></i>Configuración</button>
+                <button type="button" class="navegacion" *ngIf="!isSmallScreen" (click)="active = '6'"><i class="fas fa-box"></i>Caja</button>
+                <button type="button" class="navegacion" *ngIf="!isSmallScreen" (click)="active = '6'"><i class="fas fa-hand-holding"></i>Egreso</button>
+                <button type="button" class="navegacion" *ngIf="!isSmallScreen" (click)="active = '6'"><i class="fas fa-hand-holding-usd"></i>Ingreso</button>
+                <button type="button" class="navegacion" *ngIf="!isSmallScreen" (click)="openModal(content)"><i class="far fa-calendar-plus"></i>Nuevo Cita</button>
+                <button type="button" class="navegacion" *ngIf="!isSmallScreen" (click)="active = '2'"><i class="fas fa-users"></i>Pacientes</button>
+                <button type="button" class="navegacion" *ngIf="!isSmallScreen" (click)="active = '7'"><i class="fas fa-cogs"></i>Configuración</button>
                 <button type="button" class="navegacion" *ngIf="!isSmallScreen"><i class="fas fa-chart-pie"></i>Reportes</button>
             </div>
             <div class="exit-container">

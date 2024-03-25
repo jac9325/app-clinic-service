@@ -5,17 +5,16 @@ import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { AsyncPipe, DecimalPipe } from '@angular/common';
 import { NgbHighlight } from '@ng-bootstrap/ng-bootstrap';
-
+import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
-  selector: 'buscar_pacientes',
+  selector: 'barra-busqueda',
   standalone: true,
-  imports: [ RouterModule, CommonModule, ReactiveFormsModule, DecimalPipe, AsyncPipe, ReactiveFormsModule, NgbHighlight],
-  templateUrl: './buscar_pacientes.component.html',
-  styleUrl: './buscar_pacientes.component.sass',
+  imports: [ RouterModule, NgbDropdownModule, CommonModule, ReactiveFormsModule, DecimalPipe, AsyncPipe, ReactiveFormsModule, NgbHighlight ],
+  templateUrl: './barra-busqueda.component.html',
+  styleUrl: './barra-busqueda.component.sass'
 })
-
-export class BuscarPacientesComponent implements OnInit {
+export class BarraBusquedaComponent {
 
   people: any[] = [];
   filteredPeople: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
@@ -84,4 +83,11 @@ export class BuscarPacientesComponent implements OnInit {
       .toUpperCase();
     return "#" + "00000".substring(0, 6 - color.length) + color;
   }
+
+  showDropdown = false;
+
+  toggleDropdown(event: Event) {
+    this.showDropdown = (event.target as HTMLInputElement).value !== '';
+  }
+
 }
