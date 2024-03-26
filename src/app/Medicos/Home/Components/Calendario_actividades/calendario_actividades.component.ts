@@ -15,7 +15,7 @@ interface Actividad {
 @Component({
   selector: 'calendario',
   standalone: true,
-  imports: [ RouterModule, CommonModule, NgbDatepickerModule, FormsModule, JsonPipe],
+  imports: [ RouterModule, CommonModule, NgbDatepickerModule, FormsModule, JsonPipe ],
   templateUrl: './calendario_actividades.component.html',
   styleUrl: './calendario_actividades.component.sass'
 })
