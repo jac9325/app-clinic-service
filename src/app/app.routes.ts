@@ -19,90 +19,96 @@ import { ConfiguracionesComponent } from './Medicos/Configuraciones/configuracio
 import { ImagenesComponent } from './Medicos/Pacientes/Components/pendientes/imagenes/imagenes.component';
 import { PacientesComponent } from './Medicos/Pacientes/pacientes.component';
 import { NavegacionComponent } from './Navegacion/navegacion.component';
-
-
+import { NuevaCitaComponent } from './Medicos/Nueva_Cita/nueva-cita.component';
+import { BuscadorComponent } from './Medicos/Historias_Clinicas/Components/buscador/buscador.component';
 
 export const routes: Routes = [
-
-    {
-        path: 'login',
-        component: LoginComponent
-    },
-    {
-        path: 'recuperar_cuenta',
-        component: RecuperarCuentaComponent
-    },
-    {
-        path: 'verificar_codigo_correo',
-        component: VerificarCodigoCorreoComponent
-    },
-    {
-        path: 'reestablecer_contraseña',
-        component: ReestablecerContraseñaComponent
-    },
-    {
-        path: 'registro',
-        component: RegistroComponent
-    },
-    {
-        path: 'validar_por_correo',
-        component: ValidarPorCorreoComponent
-    },
-    {
-        path: 'validar_por_celular',
-        component: ValidarPorCelularComponent
-    },
-    {
-        path: 'completar_registro',
-        component: CompletarRegistroComponent
-    },
-    {
-        path: 'completar_datos',
-        component: CompletarDatosComponent
-    },
-    {
-        path: 'home',
-        component: HomeComponent
-    },
-    {
-        path: 'tabla_pacientes',
-        component: TablaPacientesComponent
-    },
-    {
-        path: 'graficos',
-        component: GraficosComponent
-    },
-    {
-        path: 'cuenta_paciente',
-        component: CuentaPacienteComponent
-    },
-    {
-        path: 'caja',
-        component: CajaComponent
-    },
-    {
-        path: 'caja_cerrada',
-        component: CajaCerradaComponent
-    },
-    {
-        path: 'caja_abierta',
-        component: CajaAbiertaComponent
-    },
-    {
-        path: 'configuraciones',
-        component: ConfiguracionesComponent
-    },
-    {
-        path: 'imagenes',
-        component: ImagenesComponent
-    },
-    {
-        path: 'pacientes',
-        component: PacientesComponent
-    },
-    {
-        path: '',
-        component: NavegacionComponent
-    }
+  {
+    path: 'login',
+    component: LoginComponent,
+  },
+  {
+    path: 'recuperar_cuenta',
+    component: RecuperarCuentaComponent,
+  },
+  {
+    path: 'verificar_codigo_correo',
+    component: VerificarCodigoCorreoComponent,
+  },
+  {
+    path: 'reestablecer_contraseña',
+    component: ReestablecerContraseñaComponent,
+  },
+  {
+    path: 'registro',
+    component: RegistroComponent,
+  },
+  {
+    path: 'validar_por_correo',
+    component: ValidarPorCorreoComponent,
+  },
+  {
+    path: 'validar_por_celular',
+    component: ValidarPorCelularComponent,
+  },
+  {
+    path: 'completar_registro',
+    component: CompletarRegistroComponent,
+  },
+  {
+    path: 'completar_datos',
+    component: CompletarDatosComponent,
+  },
+  {
+    path: 'home',
+    component: HomeComponent,
+  },
+  {
+    path: 'tabla_pacientes',
+    component: TablaPacientesComponent,
+  },
+  {
+    path: 'graficos',
+    component: GraficosComponent,
+  },
+  {
+    path: 'cuenta_paciente',
+    component: CuentaPacienteComponent,
+  },
+  {
+    path: 'caja',
+    component: CajaComponent,
+  },
+  {
+    path: 'caja_cerrada',
+    component: CajaCerradaComponent,
+  },
+  {
+    path: 'caja_abierta',
+    component: CajaAbiertaComponent,
+  },
+  {
+    path: 'configuraciones',
+    component: ConfiguracionesComponent,
+  },
+  {
+    path: 'imagenes',
+    component: ImagenesComponent,
+  },
+  {
+    path: 'pacientes',
+    component: PacientesComponent,
+  },
+  {
+    path: '',
+    component: NavegacionComponent,
+  },
+  {
+    path: 'nueva_cita',
+    component: NuevaCitaComponent,
+  },
+  {
+    path: 'buscador',
+    component: BuscadorComponent,
+  }
 ];
-
