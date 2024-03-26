@@ -12,6 +12,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './imagenes.component.html',
   styleUrl: './imagenes.component.sass'
 })
+
 export class ImagenesComponent {
   fileToUpload: File = null;
   uploadDate: Date = null;

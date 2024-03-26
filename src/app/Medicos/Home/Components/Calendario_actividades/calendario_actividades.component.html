@@ -1,11 +1,10 @@
 <div class="contenedor">
   <div class="calendario">
-    <ngb-datepicker #dp [(ngModel)]="model" (navigate)="date = $event.next" (dateSelect)="filtrarActividadesPorFecha()"></ngb-datepicker>
+    <ngb-datepicker class="ngb-datepicker ngb-primary" #dp [(ngModel)]="model" (navigate)="date = $event.next" (dateSelect)="filtrarActividadesPorFecha()"></ngb-datepicker>
   </div>
   <div class="pendientes">
     <div class="titulo-container">
       <h2 class="titulo">Pendientes</h2>
-      
     </div>
     <div class="actividades-container">
       <ng-container *ngFor="let actividad of actividadesFiltradas">
