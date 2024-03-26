@@ -5,7 +5,6 @@ import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { AsyncPipe, DecimalPipe } from '@angular/common';
 import { NgbHighlight } from '@ng-bootstrap/ng-bootstrap';
-import { trigger, transition, style, animate } from '@angular/animations';
 
 
 @Component({

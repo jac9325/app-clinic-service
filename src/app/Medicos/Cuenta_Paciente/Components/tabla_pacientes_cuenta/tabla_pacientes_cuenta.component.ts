@@ -117,4 +117,5 @@ export class TablaPacientesCuentaComponent implements OnInit {
   compararFechas(fecha1: NgbDateStruct, fecha2: NgbDateStruct) {
     return fecha1.year === fecha2.year && fecha1.month === fecha2.month && fecha1.day === fecha2.day;
   }
+  
 }
