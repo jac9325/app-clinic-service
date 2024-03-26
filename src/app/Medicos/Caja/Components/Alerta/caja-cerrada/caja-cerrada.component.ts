@@ -1,4 +1,4 @@
-import { Component, inject, TemplateRef, ViewEncapsulation  } from '@angular/core';
+import { Component, inject, TemplateRef } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
@@ -7,7 +7,6 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
   standalone: true,
   imports: [ RouterModule ],
   templateUrl: './caja-cerrada.component.html',
-  encapsulation: ViewEncapsulation.None,
   styleUrl: './caja-cerrada.component.sass'
 })
 export class CajaCerradaComponent {

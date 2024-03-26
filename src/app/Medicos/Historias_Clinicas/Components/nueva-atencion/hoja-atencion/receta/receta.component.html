@@ -1,0 +1,27 @@
+<div class="main-container">
+    <div class="table-container">
+        <table class="table">
+            <thead>
+                <tr>
+                <th>Fármaco</th>
+                <th>Concentración</th>
+                <th>Frecuencia</th>
+                </tr>
+            </thead>
+            <tbody *ngFor="let row of formRows; let i = index">
+                <tr [formGroup]="row">
+                    <td><input formControlName="farmaco" type="text"></td>
+                    <td><input formControlName="concentracion" type="text"></td>
+                    <td><input formControlName="frecuencia" type="text"></td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="button-container">
+            <button type="button" class="btn btn-danger" (click)="addRow()"><i class="fas fa-plus"></i></button>
+        </div>
+    </div>
+    <div class="button-container" style="flex-direction: column;">
+        <button type="button" style="background-color: white;"><i class="fas fa-envelope"></i></button>
+        <button type="button" style="background-color: white;"><i class="fas fa-print"></i></button>
+    </div>
+</div>

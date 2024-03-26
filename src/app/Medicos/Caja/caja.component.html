@@ -1,21 +1,25 @@
 <div class="main-container">
     <div class="sub-container1">
-        <div class="alerta-container" *ngIf="false; else elseBlock">
+        <div class="alerta-container" *ngIf="estado_caja; else caja">
             <caja-abierta></caja-abierta>
         </div>
-        <ng-template #elseBlock>
-            <caja-cerrada></caja-cerrada>
+        <ng-template #caja>
+            <div class="alerta-container">
+                <caja-cerrada></caja-cerrada>
+            </div>
         </ng-template>
         <div class="tablas-container">
             <tablas></tablas>
         </div>
     </div>
     <div class="sub-container2">
-        <ng-container class="registro-container" *ngIf="false; else elseBlock2">
+        <div class="registro-container" *ngIf="ingreso_egreso; else egreso">
             <ingreso></ingreso>
-        </ng-container>
-        <ng-template class="registro-container" #elseBlock2>
-            <egreso></egreso>
+        </div>
+        <ng-template #egreso>
+            <div class="registro-container">
+                <egreso></egreso>
+            </div>
         </ng-template>
     </div>
 </div>

@@ -1,6 +1,4 @@
-$color-secundario: #F8546C
-$color-primario: #3D82DB    
-    
+
 .main-container
     width: 100%
     display: flex
@@ -11,8 +9,25 @@ $color-primario: #3D82DB
     @media (max-width: 768px) 
         width: 100%
 
+    .button-container
+        width: 100%
+        margin-top: 10px
+        display: flex
+        align-items: center
+        justify-content: center
+        
+        button
+            background-color: var(--color-secundario)
+            border: 0px
+            display: block
+            font-size: 14px
+            color: white
+            font-weight: 400
+            &:hover
+                color: var(--color-secundario)
+
     .main-title
-        background-color: #b5d4ff
+        background-color: var(--selected-color)
         align-items: center
         justify-content: center
         width: 50%
@@ -20,12 +35,10 @@ $color-primario: #3D82DB
         @media (max-width: 768px) 
             width: 100%
 
-        h1
-            font-size: 24px
+        h2
             font-weight: 500
+            margin-bottom: 0px
     
-    .encabezado
-        margin-bottom: 25px
     
     .formulario 
         display: flex
@@ -44,32 +57,17 @@ $color-primario: #3D82DB
                 width: 65%
             
                 .form-control
-                    background-color: #c1c1c1
-                    font-size: 14px
+                    background-color: #dbdbdb
+                    font-size: 12px
                 
         
         .campo2
             textarea
                 width: 100%
-                background-color: #c1c1c1
+                background-color: #dbdbdb
                 border-radius: 10px
-                font-size: 14px
+                font-size: 12px
+                padding: 5px
         
-        .button-container
-            width: 100%
-            margin-top: 10px
-            display: flex
-            align-items: center
-            justify-content: center
-            button
-                background-color: $color-secundario
-                border: 0px
-                display: block
-                font-size: 14px
-                color: white
-                font-weight: 400
-                &:hover
-                    color: $color-secundario
-                    background-color: white
-                    font-size: 16px
+        
             

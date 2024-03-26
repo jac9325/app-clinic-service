@@ -1,8 +1,118 @@
-<div class="main-container">
-    <div class="hoja-atencion">
+<ng-template #content let-modal>
+	<nueva-cita></nueva-cita>
+</ng-template>
 
+<div class="main-container">
+    <div class="contenedor">
+        <div class="encabezado">
+            <div class="text-container">
+                <h4>Datos del Paciente</h4>
+                <h3>Nombre</h3>
+                <div class="text-dat">
+                    <div>
+                        <label>Edad: </label> 
+                        <p>edad</p>
+                    </div>
+                    <div>
+                        <label>Peso: </label> 
+                        <p>peso</p>
+                    </div>
+                </div>
+            </div>
+            <div class="image-box">
+                <img src="../../../../../../assets/User-img.png">
+            </div>
+        </div>
+        <div class="alertas-container">
+            <h4>Alertas:</h4>
+            <div class="alergias">
+                <label>Alergias:</label>
+                
+            </div>
+            <div class="cronicos">
+                <label>Enfermedades Crónicas:</label>
+            </div>
+        </div>
     </div>
-    <div class="hoja-informacion">
-        
+
+    <div class="division">
+        <div class="div1">
+            <div class="contenedor">
+                <div class="line">
+                    <i class="fas fa-tablets"></i>
+                    <h4>Medicación Actual:</h4>
+                </div>
+                <div class="contenido">
+                    <p>Enapril 10 mg / día</p>
+                    <p>Hidroclorotiazida 25 mg/ día</p>
+                </div>
+            </div>
+        </div>
+        <div class="div2">
+            <div class="contenedor">
+                <h4>Citas Anteriores:</h4>
+                <div class="contenido">
+                    <div class="line">
+                        <i class="fas fa-calendar"></i>
+                        <p>Mar. 01/01/2024</p>
+                    </div>
+                    <div class="line">
+                        <i class="fas fa-calendar"></i>
+                        <p>Mar. 01/01/2024</p>
+                    </div>
+                    <div class="line">
+                        <i class="fas fa-calendar"></i>
+                        <p>Mar. 01/01/2024</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="contenedor">
+        <h4>Accione Rápidas:</h4>
+        <button type="button" (click)="openModal(content)" >
+            <div class="line">
+                <i class="fas fa-calendar-plus"></i>
+                <p>Agendar una Nueva Cita</p>
+            </div>
+        </button>
+        <button type="button">
+            <div class="line">
+                <i class="fas fa-clipboard"></i>
+                <p>Generar Receta Médica</p>
+            </div>
+        </button>
+        <button type="button">
+            <div class="line">
+                <i class="fas fa-file"></i>
+                <p>Solicitar Exámen Complementario</p>
+            </div>
+        </button>
+    </div>
+
+    <div class="division">
+        <div class="div1">
+            <div class="contenedor" style="height: 90px;">
+                <h4>Próxima Cita</h4>
+                <div class="line">
+                    <i class="fas fa-calendar"></i>
+                    <p>Mar. 01/01/2024</p>
+                    <p> 18:00 pm.</p>
+                </div>
+            </div>
+        </div>
+        <div class="div2">
+            <div class="contenedor" style="height: 90px;">
+                <h4>Tipo Cita</h4>
+                <input type="text">
+            </div>
+        </div>
+    </div>
+
+    <div class="contenedor">
+        <div class="button-container">
+            <button type="button" class="btn btn-danger">Guardar</button>
+        </div>
     </div>
 </div>

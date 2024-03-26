@@ -10,20 +10,21 @@
         </div>
         <div class="contend2">
             <div class="text-container">
-                <p>Fecha:</p>
-                <p class="fecha">02/02/2024 18:30</p>
+                <label>Fecha:</label>
+                <p class="fecha">{{ uploadDate ? (uploadDate | date:'dd/MM/yyyy HH:mm') : '--' }}</p>
             </div>
             <div class="text-container">
-                <p>Estado:</p>
+                <label>Estado:</label>
                 <div class="icon-box">
                     <i class="fas fa-file-pdf" style="font-size: var(--size-s); margin-right: 5px;"></i>
-                    <p>  Document.pdf</p>
+                    <p (click)="fileToUpload ? openPdf() : null" [style.cursor]="fileToUpload ? 'pointer' : 'default'"> {{ truncateFileName(fileName) }}</p>
                 </div>
             </div>
         </div>
     </div>
     <div class="container2">
-        <button type="button" class="btn btn-danger"><i class="fas fa-upload" style="font-size: var(--size-xs);"></i></button>
-        <button type="button" class="btn btn-danger"><i class="fas fa-ban" style="font-size: var(--size-xs);"></i></button>
+        <input type="file" #fileInput (change)="handleFileInput(fileInput.files)" style="display: none;">
+        <button type="button" class="btn btn-danger" (click)="fileInput.click()"><i class="fas fa-upload" style="font-size: var(--size-xs);"></i></button>
+        <button type="button" class="btn btn-danger" (click)="removeFile()"><i class="fas fa-ban" style="font-size: var(--size-xs);"></i></button>
     </div>
 </div>

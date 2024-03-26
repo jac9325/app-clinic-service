@@ -10,5 +10,12 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './app.component.sass'
 })
 export class AppComponent {
-  title = 'app-clinic-service';
+  isCollapsed = true;
+  title:string = 'app-clinic-service';
+  private roles: string[] = [];
+  isLoggedIn = false;
+  showAdminBoard = false;
+  showColaboratorBoard = false;
+  showMecicalBoard = false;
+  username?:string;
 }
