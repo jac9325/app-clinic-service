@@ -1,12 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
-import { RecetaComponent } from './receta/receta.component';
-import { ExamenComplementarioComponent } from './examen-complementario/examen-complementario.component';
-import { NgxSelectModule } from 'ngx-select-ex';
+import { Component, ElementRef, QueryList, ViewChildren } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { ViewChildren } from '@angular/core';
-import { QueryList } from '@angular/core';
-import { ElementRef } from '@angular/core';
+import { NgxSelectModule } from 'ngx-select-ex';
+import { ExamenComplementarioComponent } from './examen-complementario/examen-complementario.component';
+import { RecetaComponent } from './receta/receta.component';
 
 interface Diagnostico {
   selectedCity: any;
