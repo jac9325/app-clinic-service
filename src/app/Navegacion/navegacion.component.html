@@ -38,138 +38,156 @@
         </div>
     </div>
     <div class="navbar-container">
-        <div class="sidebar" [ngStyle]="{'width': isExpanded ? '190px' : '61px'}" >
-            <div class="primer-contenido">
-                <div class="button-expand" [ngStyle]="{'width': isExpanded ? '184px' : '55px'}" >
-                    <button type="button" class="navegacion" (click)="toggleSidebar()">
-                        <span *ngIf="!isExpanded"><i class="fas fa-angle-double-right"></i></span>
-                        <span *ngIf="isExpanded"><i class="fas fa-angle-double-left"></i></span>
-                    </button>
-                </div>
-                <div class="informacion-container" [ngStyle]="{'opacity': isExpanded ? '1' : '0'}" >
-                    <span *ngIf="isExpanded">
-                        <div class="imagen-perfil">
-                            <img src="../../assets/Medico5.png" alt="Imagen Medico" class="imagen">
-                        </div>
-                        <div class="nombre">
-                            <h3>Nombre del Médico</h3>
-                        </div>
-                        <div class="rol">
-                            <h4>Médico</h4>
-                        </div>
-                    </span>
-                </div>
-                <div class="d-flex">
-                    <div ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-pills flex-column" orientation="vertical">
-                        <ng-container ngbNavItem="1">
-                            <button ngbNavLink (click)="isCollapsed = true" [ngClass]="{'button-expanded': isExpanded}">
-                                <div class="icon-container">
-                                    <i class="fas fa-medkit"></i>
-                                </div>
-                                <div class="description-container">
-                                    <span class="button-description" *ngIf="isExpanded" ><h3>Home</h3></span>   
-                                </div>
-                            </button>
-                            <ng-template ngbNavContent>
-                                <home-medicos></home-medicos>
-                            </ng-template>
-                        </ng-container>
-                        <ng-container ngbNavItem="3">
-                            <ng-template ngbNavContent>
-                                <nuevo-paciente></nuevo-paciente>
-                            </ng-template>
-                        </ng-container>
-                        <ng-container ngbNavItem="4">
-                            <ng-template ngbNavContent>
-                                <cuenta-paciente></cuenta-paciente>
-                            </ng-template>
-                        </ng-container>
-                        <ng-container ngbNavItem="2">
-                            <button ngbNavLink (click)="isCollapsed = !isCollapsed" 
-                                    [attr.aria-expanded]="!isCollapsed" 
-                                    aria-controls="submenu2" 
-                                    [ngClass]="{'button-expanded': isExpanded}">
-                                <div class="icon-container">
-                                    <i class="fas fa-users"></i>
-                                </div>
-                                <div class="description-container">
-                                    <span class="button-description" *ngIf="isExpanded"><h3>Pacientes</h3></span>
-                                </div>
-                            </button>
-                            <ng-template ngbNavContent>
-                                <pacientes></pacientes>
-                            </ng-template>
-                            <div id="submenu2" [ngbCollapse]="isCollapsed">
-                                <div class="d-flex">
+        <div class="sidebar-container">
+            <div class="sidebar" [ngStyle]="{'width': isHidden ? '0px' : isExpanded ? '190px' : '61px'}">
+                <div class="primer-contenido">
+                    <div class="button-expand" [ngStyle]="{'width': isExpanded ? '184px' : '55px'}">
+                        <button type="button" class="navegacion" (click)="toggleSidebar()" 
+                        [ngStyle]="{'visibility': !isHidden ? 'visible' : 'hidden', 'opacity': !isHidden ? '1' : '0', 'transition': !isHidden ? 'opacity 0.5s 0.5s' : ''}">
+                            <span *ngIf="!isExpanded"><i class="fas fa-angle-double-right"></i></span>
+                            <span *ngIf="isExpanded"><i class="fas fa-angle-double-left"></i></span>
+                        </button>
+                    </div>
+                    <div class="informacion-container" [ngStyle]="{'opacity': isExpanded ? '1' : '0'}" >
+                        <span *ngIf="isExpanded">
+                            <div class="imagen-perfil">
+                                <img src="../../assets/Medico5.png" alt="Imagen Medico" class="imagen">
+                            </div>
+                            <div class="nombre">
+                                <h3>Nombre del Médico</h3>
+                            </div>
+                            <div class="rol">
+                                <h4>Médico</h4>
+                            </div>
+                        </span>
+                    </div>
+                    <div class="d-flex">
+                        <div ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-pills flex-column" orientation="vertical">
+                            <ng-container ngbNavItem="1">
+                                <button ngbNavLink (click)="isCollapsed = true"  class="button-expanded"
+                                [ngStyle]="{'width': isExpanded ? '184px' : '55px'}"
+                                [ngStyle]="{'visibility': !isHidden ? 'visible' : 'hidden', 'opacity': !isHidden ? '1' : '0', 'transition': !isHidden ? 'opacity 0.5s 0.5s' : ''}">
+                                    <div class="icon-container">
+                                        <i class="fas fa-medkit"></i>
+                                    </div>
+                                    <div class="description-container" [ngStyle]="{'opacity': isExpanded ? '1' : '0', 'transition': isExpanded ? 'opacity 0.5s 0.5s' : ''}">
+                                        <span class="button-description" *ngIf="isExpanded" ><h3>Home</h3></span>   
+                                    </div>
+                                </button>
+                                <ng-template ngbNavContent>
+                                    <home-medicos></home-medicos>
+                                </ng-template>
+                            </ng-container>
+                            <ng-container ngbNavItem="3">
+                                <ng-template ngbNavContent>
+                                    <nuevo-paciente></nuevo-paciente>
+                                </ng-template>
+                            </ng-container>
+                            <ng-container ngbNavItem="4">
+                                <ng-template ngbNavContent>
+                                    <cuenta-paciente></cuenta-paciente>
+                                </ng-template>
+                            </ng-container>
+                            <ng-container ngbNavItem="2">
+                                <button ngbNavLink (click)="isCollapsed = !isCollapsed" 
+                                        [attr.aria-expanded]="!isCollapsed" 
+                                        aria-controls="submenu2" 
+                                        class="button-expanded"
+                                        [ngStyle]="{'width': isExpanded ? '184px' : '55px'}"
+                                        [ngStyle]="{'visibility': !isHidden ? 'visible' : 'hidden', 'opacity': !isHidden ? '1' : '0', 'transition': !isHidden ? 'opacity 0.5s 0.5s' : ''}">
+                                    <div class="icon-container">
+                                        <i class="fas fa-users"></i>
+                                    </div>
+                                    <div class="description-container" [ngStyle]="{'opacity': isExpanded ? '1' : '0', 'transition': isExpanded ? 'opacity 0.5s 0.5s' : ''}">
+                                        <span class="button-description" *ngIf="isExpanded"><h3>Pacientes</h3></span>
+                                    </div>
+                                </button>
+                                <ng-template ngbNavContent>
+                                    <pacientes></pacientes>
+                                </ng-template>
+                                <div id="submenu2" [ngbCollapse]="isCollapsed">
                                     <ng-container ngbNavItem="3">
-                                        <button ngbNavLink [ngClass]="{'button-expanded': isExpanded}">
+                                        <button ngbNavLink  class="button-expanded"
+                                        [ngStyle]="{'width': isExpanded ? '184px' : '55px'}"
+                                        [ngStyle]="{'visibility': !isHidden ? 'visible' : 'hidden', 'opacity': !isHidden ? '1' : '0', 'transition': !isHidden ? 'opacity 0.5s 0.5s' : ''}">
                                             <div class="icon-container">
                                                 <i class="fas fa-user-plus" style="font-size: var(--size-m);"></i>
                                             </div>
-                                            <div class="description-container">
+                                            <div class="description-container" [ngStyle]="{'opacity': isExpanded ? '1' : '0', 'transition': isExpanded ? 'opacity 0.5s 0.5s' : ''}">
                                                 <span class="button-description" *ngIf="isExpanded"><h4>Nuevo Paciente</h4></span>
                                             </div>
                                         </button>
                                     </ng-container>
                                     <ng-container ngbNavItem="4">
-                                        <button ngbNavLink [ngClass]="{'button-expanded': isExpanded}">
+                                        <button ngbNavLink  class="button-expanded"
+                                        [ngStyle]="{'width': isExpanded ? '184px' : '55px'}"
+                                        [ngStyle]="{'visibility': !isHidden ? 'visible' : 'hidden', 'opacity': !isHidden ? '1' : '0', 'transition': !isHidden ? 'opacity 0.5s 0.5s' : ''}">
                                             <div class="icon-container">
-                                                <i class="fas fa-credit-card" style="font-size: var(--size-m);"></i>
+                                                <i class="fas fa-box" style="font-size: var(--size-m);"></i>
                                             </div>
-                                            <div class="description-container">
+                                            <div class="description-container" [ngStyle]="{'opacity': isExpanded ? '1' : '0', 'transition': isExpanded ? 'opacity 0.5s 0.5s' : ''}">
                                                 <span class="button-description" *ngIf="isExpanded"><h4>Cuenta Paciente</h4></span>
                                             </div>
                                         </button>
                                     </ng-container>
                                 </div>
-                            </div>
-                        </ng-container>
-                        <ng-container ngbNavItem="5">
-                            <button ngbNavLink (click)="isCollapsed = true" [ngClass]="{'button-expanded': isExpanded}">
-                                <div class="icon-container">
-                                    <i class="fas fa-file"></i>
-                                </div>
-                                <div class="description-container">
-                                    <span class="button-description" *ngIf="isExpanded"><h3>Historias</h3></span>
-                                </div>
-                            </button>
-                            <ng-template ngbNavContent>
-                                <historias-clinicas></historias-clinicas>
-                            </ng-template>
-                        </ng-container>
-                        <ng-container ngbNavItem="6">
-                            <button ngbNavLink (click)="isCollapsed = true" [ngClass]="{'button-expanded': isExpanded}">
-                                <div class="icon-container">
-                                    <i class="fas fa-box"></i>
-                                </div>
-                                <div class="description-container">
-                                    <span class="button-description" *ngIf="isExpanded"><h3>Caja</h3></span>
-                                </div>
-                            </button>
-                            <ng-template ngbNavContent>
-                                <caja></caja>
-                            </ng-template>
-                        </ng-container>
-                        <ng-container ngbNavItem="7">
-                            <ng-template ngbNavContent>
-                                <configuraciones></configuraciones>
-                            </ng-template>
-                        </ng-container>
+                            </ng-container>
+                            <ng-container ngbNavItem="5">
+                                <button ngbNavLink (click)="isCollapsed = true"  class="button-expanded"
+                                [ngStyle]="{'width': isExpanded ? '184px' : '55px'}"
+                                [ngStyle]="{'visibility': !isHidden ? 'visible' : 'hidden', 'opacity': !isHidden ? '1' : '0', 'transition': !isHidden ? 'opacity 0.5s 0.5s' : ''}">
+                                    <div class="icon-container">
+                                        <i class="fas fa-file"></i>
+                                    </div>
+                                    <div class="description-container" [ngStyle]="{'opacity': isExpanded ? '1' : '0', 'transition': isExpanded ? 'opacity 0.5s 0.5s' : ''}">
+                                        <span class="button-description" *ngIf="isExpanded"><h3>Historias</h3></span>
+                                    </div>
+                                </button>
+                                <ng-template ngbNavContent>
+                                    <historias-clinicas></historias-clinicas>
+                                </ng-template>
+                            </ng-container>
+                            <ng-container ngbNavItem="6">
+                                <button ngbNavLink (click)="isCollapsed = true"  class="button-expanded"
+                                [ngStyle]="{'width': isExpanded ? '184px' : '55px'}"
+                                [ngStyle]="{'visibility': !isHidden ? 'visible' : 'hidden', 'opacity': !isHidden ? '1' : '0', 'transition': !isHidden ? 'opacity 0.5s 0.5s' : ''}">
+                                    <div class="icon-container">
+                                        <i class="fas fa-box"></i>
+                                    </div>
+                                    <div class="description-container" [ngStyle]="{'opacity': isExpanded ? '1' : '0', 'transition': isExpanded ? 'opacity 0.5s 0.5s' : ''}">
+                                        <span class="button-description" *ngIf="isExpanded"><h3>Caja</h3></span>
+                                    </div>
+                                </button>
+                                <ng-template ngbNavContent>
+                                    <caja></caja>
+                                </ng-template>
+                            </ng-container>
+                            <ng-container ngbNavItem="7">
+                                <ng-template ngbNavContent>
+                                    <configuraciones></configuraciones>
+                                </ng-template>
+                            </ng-container>
+                        </div>
                     </div>
                 </div>
+                <button (click)="isCollapsed = true; active = '7'"  class="button-expanded"
+                [ngStyle]="{'width': isExpanded ? '184px' : '55px'}"
+                [ngStyle]="{'visibility': !isHidden ? 'visible' : 'hidden', 'opacity': !isHidden ? '1' : '0', 'transition': !isHidden ? 'opacity 0.5s 0.5s' : ''}">
+                    <div class="icon-container">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <div class="description-container" [ngStyle]="{'opacity': isExpanded ? '1' : '0', 'transition': isExpanded ? 'opacity 0.5s 0.5s' : ''}">
+                        <span class="button-description" *ngIf="isExpanded"><h3>Configuración</h3></span>
+                    </div>
+                </button>
             </div>
-            <button (click)="isCollapsed = true; active = '7'" [ngClass]="{'button-expanded': isExpanded}">
-                <div class="icon-container">
-                    <i class="fas fa-cogs"></i>
-                </div>
-                <div class="description-container">
-                    <span class="button-description" *ngIf="isExpanded"><h3>Configuración</h3></span>
-                </div>
+            <button class="pestaña" (click)="toggleHidden()" >
+                <span *ngIf="isHidden"><i class="fas fa-chevron-right" style="font-size: 8px;"></i></span>
+                <span *ngIf="!isHidden"><i class="fas fa-chevron-left" style="font-size: 8px;"></i></span>
             </button>
         </div>
         <div class="content">
             <div [ngbNavOutlet]="nav" class="ms-4"></div>
         </div>
     </div>
-    
 </div>

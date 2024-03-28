@@ -11,7 +11,7 @@
         <div class="title-container">
             <h2>Fecha</h2>
         </div>
-        <div class="text-container">
+        <div class="text-container-fechas">
             <button type="button" class="btn btn-danger" (click)="addDate()"><i class="fas fa-plus-circle"></i></button>
             <div class="fechas" *ngFor="let date of dates" (click)="selectDate(date)" [class.selected]="date === selectedDate">
                 <h4>{{ date.date }}</h4>
@@ -37,15 +37,17 @@
                                 <!-- Contenido para los datos nuevos -->
                                 <div *ngIf="content.isNew">
                                     <div class="container">
-                                        <div class="button-container">
-                                            <button type="button" class="btn btn-secondary"><i class="fas fa-check"></i></button>
-                                            <button type="button" class="btn btn-secondary" (click)="removeContent(i)"><i class="fas fa-times"></i></button>
-                                        </div>
-                                        <div class="image-box" [ngStyle]="{'background-color': isImageLoaded(content) ? 'white' : '#c8c8c8'}">
-                                            <input type="file" #fileInput style="display: none" (change)="uploadImage($event, content)">
-                                            <button type="button" class="btn btn-primary" *ngIf="!content.isImageSelected" (click)="fileInput.click()"><i class="fas fa-upload"></i>Subir</button>
-                                            <img [src]="content.image">
-                                            <button type="button" class="btn btn-primary" (click)="content.image = ''; content.isImageSelected = false;"><i class="fas fa-times"></i>Borrar</button>                                 
+                                        <div class="inner-container">
+                                            <div class="button-container">
+                                                <button type="button" class="btn btn-secondary"><i class="fas fa-check"></i></button>
+                                                <button type="button" class="btn btn-secondary" (click)="removeContent(i)"><i class="fas fa-times"></i></button>
+                                            </div>
+                                            <div class="image-box" [ngStyle]="{'background-color': isImageLoaded(content) ? 'white' : '#c8c8c8'}">
+                                                <input type="file" #fileInput style="display: none" (change)="uploadImage($event, content)">
+                                                <button type="button" class="btn btn-primary" *ngIf="!content.isImageSelected" (click)="fileInput.click()"><i class="fas fa-upload"></i>Subir</button>
+                                                <img [src]="content.image">
+                                                <button type="button" class="btn btn-primary" (click)="content.image = ''; content.isImageSelected = false;"><i class="fas fa-times"></i>Borrar</button>                                 
+                                            </div>
                                         </div>
                                         <div class="descripcion">
                                             <textarea [(ngModel)]="content.description" placeholder="Ingrese la descripción"></textarea>
@@ -55,13 +57,15 @@
                                 <!-- Contenido para los datos ya existentes -->
                                 <div *ngIf="!content.isNew">
                                     <div class="container">
-                                        <button type="button" class="btn btn-secondary" (click)="openFullscreen(content2, content.image)"><i class="fas fa-eye"></i></button>
-                                    <div class="image-box">
-                                        <img [src]="content.image">
-                                    </div>
-                                    <div class="descripcion">
-                                        <p>{{ content.description }}</p>
-                                    </div>
+                                        <div class="inner-container">
+                                            <button type="button" class="btn btn-secondary" (click)="openFullscreen(content2, content.image)"><i class="fas fa-eye"></i></button>
+                                            <div class="image-box">
+                                                <img [src]="content.image">
+                                            </div>
+                                        </div>
+                                        <div class="descripcion">
+                                            <p>{{ content.description }}</p>
+                                        </div>
                                     </div>
                                 </div>
                             </ng-template>
