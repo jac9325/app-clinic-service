@@ -5,6 +5,10 @@
         width: 100%
         height: 570px
         display: flex
+        @media (max-width: 768px)
+            flex-direction: column
+            height: 100%
+            gap: 10px
         
         .sidebar 
             width: 61px
@@ -15,18 +19,25 @@
             flex-direction: column
             justify-content: center
             padding: 2px
+            @media (max-width: 768px)
+                flex-direction: row
+                align-items: flex-start
+                padding: 10px
         
         .d-flex 
             display: flex
-            flex-wrap: wrap
             background-color: var(--color-primario)
             border-radius: 0px 10px 10px 0px
             padding-bottom: 20px
             padding-top: 20px
             align-items: center
             justify-content: center
+            @media (max-width: 768px)
+                border-radius: 0px 0px 10px 10px
+                flex-direction: row
+                align-items: flex-start
+                padding: 10px
         
-
 
         button
             width: 100%

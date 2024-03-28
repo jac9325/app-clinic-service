@@ -34,19 +34,31 @@ export class NavegacionComponent {
   isSmallScreen = false;
   isCollapsed = true;
   isExpanded = false;
+  isHidden = false;
 
   toggleSidebar() {
     this.isExpanded = !this.isExpanded;
   }
 
-  @HostListener('window:resize', ['$event'])
-  onResize(event: Event) {
-    this.isSmallScreen = (event.target as Window).innerWidth < 1000;
+  toggleHidden() {
+    this.isHidden = !this.isHidden;
+    if (this.isHidden) {
+      this.isExpanded = false;
+    }
   }
 
   ngOnInit() {
     if (typeof window !== 'undefined') {
       this.isSmallScreen = window.innerWidth < 1000;
     }
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: Event) {
+      this.isSmallScreen = (event.target as Window).innerWidth < 1000;
+      if (this.isSmallScreen) {
+          this.isExpanded = false;
+          this.isHidden = true;
+      }
   }
 }

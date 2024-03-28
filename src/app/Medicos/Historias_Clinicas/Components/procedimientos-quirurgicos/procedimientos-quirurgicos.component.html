@@ -4,7 +4,7 @@
         <div class="title-container">
             <h2>Fecha</h2>
         </div>
-        <div class="text-container">
+        <div class="text-container-fechas">
             <button type="button" class="btn btn-danger" (click)="addDate()"><i class="fas fa-plus-circle"></i></button>
             <div class="fechas" *ngFor="let date of dates" (click)="selectDate(date)" [class.selected]="date === selectedDate">
                 <h4>{{ date.date }}</h4>
@@ -27,7 +27,6 @@
                     <div ngbAccordionCollapse>
                         <div ngbAccordionBody>
                             <ng-template>
-                                <!-- Contenido para los datos nuevos -->
                                 <div *ngIf="content.isNew">
                                     <div class="container">
                                         <div class="button-container">
@@ -38,15 +37,14 @@
                                             <h4>Diagnóstico Prequirúrgico:</h4>
                                             <textarea [(ngModel)]="content.prequirurgico" placeholder="Ingrese el diagnóstico prequirúrgico"></textarea>
                                             <h4>Diagnóstico Posquirúrgico:</h4>
-                                            <textarea [(ngModel)]="content.prequirurgico" placeholder="Ingrese el diagnóstico prequirúrgico"></textarea>
+                                            <textarea [(ngModel)]="content.prequirurgico" placeholder="Ingrese el diagnóstico postquirúrgico"></textarea>
                                             <h4>Procedimientos:</h4>
-                                            <textarea [(ngModel)]="content.prequirurgico" placeholder="Ingrese el diagnóstico prequirúrgico"></textarea>
+                                            <textarea [(ngModel)]="content.prequirurgico" placeholder="Ingrese los procedimientos"></textarea>
                                             <h4>Hallazgos:</h4>
-                                            <textarea [(ngModel)]="content.prequirurgico" placeholder="Ingrese el diagnóstico prequirúrgico"></textarea>
+                                            <textarea [(ngModel)]="content.prequirurgico" placeholder="Ingrese hallazgos"></textarea>
                                         </div>
                                     </div>
                                 </div>
-                                <!-- Contenido para los datos ya existentes -->
                                 <div *ngIf="!content.isNew">
                                     <div class="container">
                                         <div class="descripcion">

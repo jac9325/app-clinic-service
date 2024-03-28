@@ -31,8 +31,12 @@ input
   align-items: center
   cursor: pointer
   padding: 10px
+  @media (max-width: 600px) 
+    width: 300px
   &:hover 
     background-color: lightgray
+  
+
   
 .person-card.selected 
   background-color: var(--selected-color)
