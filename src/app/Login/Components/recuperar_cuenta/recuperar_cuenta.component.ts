@@ -11,5 +11,5 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
   styleUrl: './recuperar_cuenta.component.sass'
 })
 export class RecuperarCuentaComponent {
-
+  
 }
