@@ -1,7 +1,8 @@
 import { Component, OnInit} from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { ImagenMedicoService } from './Services/imagen_medico.service';
-
+import { EspecialistaService } from '../../../Services/Presentacion_Medico/especialista.service';
+//import { ImagenMedicoDTO } from '../../../Models/Dto/Presentacion_Medico/imagen_medico';
+import { error } from 'console';
 
 @Component({
   selector: 'imagen-medico',
@@ -13,25 +14,35 @@ import { ImagenMedicoService } from './Services/imagen_medico.service';
 export class ImagenMedicoComponent {
   imagenUrl: string = '../../../../../assets/Medico_home_default.png'; // Valor por defecto src\assets\Medico_home_default.png
 
-    constructor(private imagenMedicoService: ImagenMedicoService) { }
+    constructor(private especialistaService: EspecialistaService) { }
 
   ngOnInit(): void {
-    this.obtenerImagen();
+    this.obtenerEspecialista();
   }
 
-  obtenerImagen(): void {
+  obtenerEspecialista(): void{
     //id : id_usuario_institucion_especialista
-    const id = 2;
+    const id = 1; 
 
-    this.imagenMedicoService.getImagePath(id).subscribe({
-        next: (response) => {
-          const filename = response.substring(response.lastIndexOf('\\') + 1);
-          this.imagenUrl = `../../../../../assets/${filename}` || '../../../../../assets/Medico_home_default.png';
-        },
-        error: (error) => {
-            console.error('Error fetching image path:', error);
-            // Handle error
+    this.especialistaService.getEspecialista(id).subscribe({
+      next: (especialista) => {
+        // Extract the image path from the especialista
+        let filename = especialista.rutaimagen.substring(especialista.rutaimagen.lastIndexOf('\\') + 1);
+        if (!filename) {
+          // If filename is empty or undefined, use default image path
+          this.imagenUrl = '../../../../../assets/Medico_home_default.png';
+        } else {
+          // Use the extracted filename as the image path
+          this.imagenUrl = `../../../../../assets/${filename}`;
         }
-    } );
+      },
+
+      error: (error) => {
+        console.error('Error fetching especialista: ', error);
+        // Error handler
+      }
+
+    });
+
   }
 }

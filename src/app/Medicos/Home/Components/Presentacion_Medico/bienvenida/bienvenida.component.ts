@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
-
+import { EspecialistaService } from '../../../Services/Presentacion_Medico/especialista.service';
+import { error } from 'console';
 
 @Component({
   selector: 'bienvenida',
@@ -9,12 +10,17 @@ import { RouterModule } from '@angular/router';
   templateUrl: './bienvenida.component.html',
   styleUrl: './bienvenida.component.sass'
 })
-export class BienvenidaComponent {
+export class BienvenidaComponent implements OnInit {
   nombre: string = 'Doctor!'; // Valor por defecto
   saludo: string = 'Buenos días'; // Valor por defecto
 
-  constructor() {
-    this.actualizarSaludo();
+  constructor(private especialistaService: EspecialistaService) {
+    //this.actualizarSaludo();
+  }
+
+  ngOnInit(): void {
+      this.actualizarSaludo();
+      this.obtenerNombre(); 
   }
 
   // Método para actualizar el saludo en función de la hora del día
@@ -29,10 +35,16 @@ export class BienvenidaComponent {
     }
   }
 
-  // Suponiendo que tienes un método para obtener el nombre desde el backend
-  obtenerNombre() {
-    // Aquí iría la lógica para obtener el nombre del backend
-    // Y asignarlo a la variable 'nombre'
-    this.nombre = 'Carlos'; // Esto es solo un ejemplo, deberías reemplazarlo con el valor obtenido del backend
+  obtenerNombre(){
+    const id = 1; //id : id_usuario_institucion_especialista
+    this.especialistaService.getEspecialista(id).subscribe({
+      next: (especialista) => {
+        this.nombre = especialista.primer_apellido || 'Doctor';
+      },
+      error: (error) => {
+        console.error('Error fetching doctor name:', error);
+      }
+
+    });
   }
 }
