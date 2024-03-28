@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-const USER_KEY = 'auth-user';
+const USER_KEY = 'token-clinic-services-jpa';
 
 @Injectable({
   providedIn: 'root'
@@ -10,12 +10,9 @@ export class StorageService {
 
   clean(): void {
     window.sessionStorage.clear();
-  }
+}
 
-  // public saveUser(user: any): void {
-  //   window.sessionStorage.removeItem(USER_KEY);
-  //   window.sessionStorage.setItem(USER_KEY, JSON.stringify(user));
-  // }
+
   public saveUser(user: any): void {
     window.sessionStorage.removeItem(USER_KEY);
     window.sessionStorage.setItem(USER_KEY, JSON.stringify(user));
@@ -27,7 +24,6 @@ export class StorageService {
     if (user) {
       return JSON.parse(user);
     }
-
     return null;
   }
 
