@@ -12,7 +12,7 @@ import { RouterOutlet } from '@angular/router';
 export class AppComponent {
   isCollapsed = true;
   title:string = 'app-clinic-service';
-  private roles: string[] = [];
+  roles: string[] = [];
   isLoggedIn = false;
   showAdminBoard = false;
   showColaboratorBoard = false;
