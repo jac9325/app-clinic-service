@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { RouterModule } from '@angular/router';
-
+import { ImagenMedicoService } from './Services/imagen_medico.service';
 
 
 @Component({
@@ -11,18 +11,27 @@ import { RouterModule } from '@angular/router';
   styleUrl: './imagen_medico.component.sass'
 })
 export class ImagenMedicoComponent {
-  imagenUrl: string = '../../../../../assets\Medico_home_default.png'; // Valor por defecto src\assets\Medico_home_default.png
+  imagenUrl: string = '../../../../../assets/Medico_home_default.png'; // Valor por defecto src\assets\Medico_home_default.png
 
-  constructor() { }
+    constructor(private imagenMedicoService: ImagenMedicoService) { }
 
   ngOnInit(): void {
     this.obtenerImagen();
   }
 
-  // Suponiendo que tienes un método para obtener la URL de la imagen desde el backend
-  obtenerImagen() {
-    // Aquí iría la lógica para obtener la URL de la imagen del backend
-    // Y asignarla a la variable 'imagenUrl'
-    this.imagenUrl = 'url_de_la_imagen'; // Esto es solo un ejemplo, deberías reemplazarlo con el valor obtenido del backend
+  obtenerImagen(): void {
+    //id : id_usuario_institucion_especialista
+    const id = 2;
+
+    this.imagenMedicoService.getImagePath(id).subscribe({
+        next: (response) => {
+          const filename = response.substring(response.lastIndexOf('\\') + 1);
+          this.imagenUrl = `../../../../../assets/${filename}` || '../../../../../assets/Medico_home_default.png';
+        },
+        error: (error) => {
+            console.error('Error fetching image path:', error);
+            // Handle error
+        }
+    } );
   }
 }
