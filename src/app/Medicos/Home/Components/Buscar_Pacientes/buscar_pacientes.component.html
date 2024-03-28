@@ -1,68 +1,104 @@
 <div class="main-container">
-    <div class="list-container">
-        <h2>Lista de Pacientes</h2>
-        <form>
-          <div class="search-container">
-            <input id="table-filtering-search" class="form-control" type="text" [formControl]="filter" placeholder="Buscar Paciente" />
-          </div>
-        </form>
-        <div class="person-list">
-          <div *ngFor="let person of (filteredPeople | async)" class="person-card" [class.selected]="person === selectedPerson" (click)="selectPerson(person)">
-                <div class="person-image">
-                    <img *ngIf="person.image; else noImage" [src]="person.image" alt="Person image" />
-                    <ng-template #noImage>
-                        <div class="placeholder-image">PD</div>
-                    </ng-template>
-                </div>
-                <div class="person-info">
-                    <h4>{{ person.name }}</h4>
-                    <p class="appointment-type" [style.color]="person.tipoCita === 'Nuevo' ? 'blue' : 'red'">{{ person.tipoCita }}</p>
-                </div>
-                <div class="appointment-time" [style.backgroundColor]="getColor(person.appointmentTime)">{{ person.appointmentTime }}</div>
-            </div>
-            <div *ngIf="(filteredPeople | async)?.length === 0" class="no-results">
-              No existen coincidencias
-            </div>
+  <div class="list-container">
+    <h2>Lista de Pacientes</h2>
+    <form>
+      <div class="search-container">
+        <input
+          id="table-filtering-search"
+          class="form-control"
+          type="text"
+          [formControl]="filter"
+          placeholder="Buscar Paciente"
+        />
+      </div>
+    </form>
+    <div class="person-list">
+      <div
+        *ngFor="let person of filteredPeople | async"
+        class="person-card"
+        [class.selected]="person === selectedPerson"
+        (click)="selectPerson(person)"
+      >
+        <div class="person-image">
+          <img
+            *ngIf="person.image; else noImage"
+            [src]="person.image"
+            alt="Person image"
+          />
+          <ng-template #noImage>
+            <div class="placeholder-image">PD</div>
+          </ng-template>
         </div>
-    </div>
-    <div class="details-container" *ngIf="selectedPerson">
-      <div class="title-section">
-        <h2>Consultas</h2>
-        <div class="person-card2">
-          <div class="person-image">
-            <img *ngIf="selectedPerson.image; else noImage" [src]="selectedPerson.image" alt="Person image" />
-            <ng-template #noImage>
-              <div class="placeholder-image">PD</div>
-            </ng-template>
-          </div>
-          <div class="person-info">
-            <h3>{{ selectedPerson.name }}</h3>
-            <p class="appointment-type">{{ selectedPerson.sexo }} {{ selectedPerson.edad }} de edad</p>
-          </div>
+        <div class="person-info">
+          <h4>{{ person.name }}</h4>
+          <p
+            class="appointment-type"
+            [style.color]="person.tipoCita === 'Nuevo' ? 'blue' : 'red'"
+          >
+            {{ person.tipoCita }}
+          </p>
+        </div>
+        <div
+          class="appointment-time"
+          [style.backgroundColor]="getColor(person.appointmentTime)"
+        >
+          {{ person.appointmentTime }}
         </div>
       </div>
-      <div class="content-section">
-        <div class="additional-info">
-          <div class="symptoms">
-            <h4>Síntomas</h4>
-            <div class="symptom-list">
-              <div *ngFor="let symptom of selectedPerson.symptoms" class="symptom-item">
-                <i class="fas fa-heartbeat" style="font-size: var(--size-s);"></i>
-                <span style="margin-bottom: 13px;">{{ symptom }}</span>
-              </div>
-            </div>
-          </div>
-          <div class="last-review detail-item">
-            <h4>Última revisión:</h4> <p>{{ selectedPerson.lastReview }}</p>
-          </div>
-          <div class="observation detail-item">
-            <h4>Observación:</h4> <p>{{ selectedPerson.observation }}</p>
-          </div>
-          <div class="prescription detail-item">
-            <h4>Prescripción:</h4> <p>{{ selectedPerson.prescription }}</p>
-          </div>
-        </div>
-      </div>              
+      <div *ngIf="(filteredPeople | async)?.length === 0" class="no-results">
+        No existen coincidencias
+      </div>
     </div>
   </div>
-  
+  <div class="details-container" *ngIf="selectedPerson">
+    <div class="title-section">
+      <h2>Consultas</h2>
+      <div class="person-card2">
+        <div class="person-image">
+          <img
+            *ngIf="selectedPerson.image; else noImage"
+            [src]="selectedPerson.image"
+            alt="Person image"
+          />
+          <ng-template #noImage>
+            <div class="placeholder-image">PD</div>
+          </ng-template>
+        </div>
+        <div class="person-info">
+          <h3>{{ selectedPerson.name }}</h3>
+          <p class="appointment-type">
+            {{ selectedPerson.sexo }} {{ selectedPerson.edad }} de edad
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="content-section">
+      <div class="additional-info">
+        <div class="symptoms">
+          <h4>Síntomas</h4>
+          <div class="symptom-list">
+            <div
+              *ngFor="let symptom of selectedPerson.symptoms"
+              class="symptom-item"
+            >
+              <i class="fas fa-heart" style="font-size: var(--size-s)"></i>
+              <span>{{ symptom }}</span>
+            </div>
+          </div>
+        </div>
+        <div class="last-review detail-item">
+          <h4>Última revisión:</h4>
+          <p>{{ selectedPerson.lastReview }}</p>
+        </div>
+        <div class="observation detail-item">
+          <h4>Observación:</h4>
+          <p>{{ selectedPerson.observation }}</p>
+        </div>
+        <div class="prescription detail-item">
+          <h4>Prescripción:</h4>
+          <p>{{ selectedPerson.prescription }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

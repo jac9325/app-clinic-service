@@ -2,7 +2,6 @@
     width: 100%
     height: 100%
     display: flex
-    padding: 20px
     @media (max-width: 768px) // ajusta este valor según tus necesidades
         flex-direction: column-reverse
 
@@ -10,16 +9,16 @@
         width: 100%
         height: 100%
 
-        textarea
-            width: 100%
-            height: 200px
-            background-color: var(--selected-color)
-            border-radius: 10px
-            border: 0px
-            font-size: 12px
-            padding: 10px
-            @media (max-width: 768px) // ajusta este valor según tus necesidades
-                height: 100%
+    textarea
+        width: 100%
+        height: 200px
+        background-color: var(--selected-color)
+        border-radius: 10px
+        border: 0px
+        font-size: 12px
+        padding: 10px
+        @media (max-width: 768px) // ajusta este valor según tus necesidades
+            height: 100%
 
 
     .sub-container
@@ -35,6 +34,9 @@
             gap: 10px
             @media (max-width: 768px) // ajusta este valor según tus necesidades
                 flex-direction: column
+                padding: 10px
+                align-items: center
+                justify-content: center
 
 
         .descripcion-container
@@ -96,20 +98,16 @@
             height: 100%
 
         h2
-            font-size: 24px
             color: blue
             font-weight: 500
         
         h3
-            font-size: 18px
             font-weight: 450
         
         h4
-            font-size: 16px
             font-weight: 450
             
         p
-            font-size: 12px
             margin-bottom: 0px
         
         .alergias

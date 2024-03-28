@@ -20,11 +20,18 @@
     align-items: center
     justify-content: center
 
+    @media (max-width: 768px)
+        flex-direction: column
+
     .fechas-container
         width: 15%
+        @media (max-width: 768px)
+            width: 100%
     
     .contenido
         width: 85%
+        @media (max-width: 768px)
+            width: 100%
 
     .title-container
         background-color: var(--selected-color)
@@ -43,66 +50,83 @@
         display: block
         text-align: center
         gap: 10px
-
-        .btn-outline-primary
-            margin-top: 10px
-            color: white
-            background-color: var(--color-secundario)
-            border: 0px
-            &:hover
-                color: var(--color-secundario)
-                background-color: white
-
-
-        .fechas
-            background-color: white
-            padding: 10px
-            text-align: center
-            border-radius: 10px
-            cursor: pointer
-            &:hover
-                background-color: gray
-            &.selected
-                background-color: lightblue
-
-            h4
-                margin-bottom: 0px
-
-        .btn-danger 
-            padding: 0px
-            background-color: transparent
-            border: 0px
-            color: var(--color-secundario)
-
-            i
-                font-size: var(--size-m)
-        
-        .container
-            width: 100%
+        @media (max-width: 768px)
+            height: 100%
+    
+    .text-container-fechas
+        background-color: var(--selected-color)
+        border-radius: 10px
+        width: 100%
+        height: 523px
+        padding: 10px
+        overflow-y: auto
+        display: block
+        text-align: center
+        gap: 10px
+        @media (max-width: 768px)
+            height: 100%
+            overflow-x: auto
             display: flex
-            align-items: center
-            gap: 20px
 
-            .button-container
-                display: flex
-                flex-direction: column
-                gap: 5px
+    .btn-outline-primary
+        margin-top: 10px
+        color: white
+        background-color: var(--color-secundario)
+        border: 0px
+        &:hover
+            color: var(--color-secundario)
+            background-color: white
+
+
+    .fechas
+        background-color: white
+        padding: 10px
+        text-align: center
+        border-radius: 10px
+        cursor: pointer
+        &:hover
+            background-color: gray
+        &.selected
+            background-color: lightblue
+
+        h4
+            margin-bottom: 0px
+
+    .btn-danger 
+        padding: 0px
+        background-color: transparent
+        border: 0px
+        color: var(--color-secundario)
+
+        i
+            font-size: var(--size-m)
+        
+    .container
+        width: 100%
+        display: flex
+        align-items: center
+        gap: 20px
+
+    .button-container
+        display: flex
+        flex-direction: column
+        gap: 5px
             
-            .descripcion
-                width: 100%
-                font-size: 12px
-                padding: 10px
-                display: flex
-                flex-direction: column
-                gap: 10px
-                justify-content: left
-                text-align: left
+    .descripcion
+        width: 100%
+        font-size: 12px
+        padding: 10px
+        display: flex
+        flex-direction: column
+        gap: 10px
+        justify-content: left
+        text-align: left
 
-                textarea
-                    width: 100%
-                    height: 50px
-                    padding: 10px
-                    border-radius: 10px
+        textarea
+            width: 100%
+            height: 50px
+            padding: 10px
+            border-radius: 10px
             
 
 
