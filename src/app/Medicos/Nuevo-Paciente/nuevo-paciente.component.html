@@ -1,6 +1,6 @@
 <div class="title-container">
     <div class="formulario">
-        <h2>Agregar Nuevo Paciente</h2>
+        <h2>Registrar Nuevo Paciente</h2>
     </div>
 </div>
 <div class="main-container">
@@ -9,16 +9,11 @@
             <div class="line">
                 <div class="dato">
                     <h3>Tipo de Documento</h3>
-                    <div ngbDropdown class="d-inline-block">
-                        <button type="button" class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>
-                            Seleccione
-                        </button>
-                        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                            <button ngbDropdownItem>DNI</button>
-                            <button ngbDropdownItem>Carnet de Extrangería</button>
-                            <button ngbDropdownItem>Pasaporte</button>
-                        </div>
-                    </div>
+                    <select class="custom-select rounded-left">
+                        <option selected>Seleccionar</option>
+                        <option value="1">DNI</option>
+                        <option value="2">Carnet de Extrangería</option>
+                    </select>
                 </div>
                 <div class="dato">
                     <h3>Número de Documento</h3>
@@ -120,16 +115,6 @@
             <div class="line">
                 <div class="dato">
                     <h3>Foto</h3>
-                    <div class="image-box">
-                        <img src="../../../../assets/User-img.png">
-                    </div>
-                    <div class="button-container" style="justify-content: left;">
-                        <button type="submit" class="btn btn-danger" routerLink="/completar_datos"><b>Subir</b></button>
-                        <button type="submit" class="btn btn-danger" routerLink="/completar_datos"><b>Borrar</b></button>
-                    </div>
-                </div>
-                <div class="dato">
-                    <h3>Firma</h3>
                     <div class="image-box">
                         <img src="../../../../assets/User-img.png">
                     </div>

@@ -176,7 +176,7 @@
             &:hover
                 color: var(--color-secundario)
                 background-color: white
-            &:active, &:focus
+            &:active:not(.pestaña), &:focus:not(.pestaña)
                 background-color: white 
                 color: var(--color-secundario)
 
@@ -221,6 +221,3 @@
             padding: 0px
             height: 100px
             border-radius: 0px 5px 5px 0px
-            &:active, &:focus
-                background-color: var(--color-primario)
-                color: white

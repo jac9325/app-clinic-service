@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
-import { ChangeDetectorRef } from '@angular/core';
 
 
 @Component({
@@ -15,25 +14,48 @@ import { ChangeDetectorRef } from '@angular/core';
 })
 export class ExamenComplementarioComponent {
 
-  constructor(private cdr: ChangeDetectorRef) { }
+  
 
   private modalService = inject(NgbModal);
   active = 1;
+  modalReference: any;
+  opcionesDelBackend = { Laboratorio: [], Imagen: [], Patologia: [] };
 
   openModal(content: TemplateRef<any>) {
-    this.originalData = JSON.parse(JSON.stringify(this.tableData));
-    this.selectedLaboratorio = this.originalData.map(data => data.Laboratorio).filter(Boolean);
-    this.selectedImagen = this.originalData.map(data => data.Imagen).filter(Boolean);
-    this.selectedPatologia = this.originalData.map(data => data.Patologia).filter(Boolean);
-    this.modalService.open(content, { size: 'm', centered: true });
+    this.modalReference = this.modalService.open(content, { size: 'm', centered: true });
+    this.modalReference.shown.subscribe(() => {
+      this.updateCheckboxesState();
+    });
+  }
+
+  updateCheckboxesState() {
+    // Asegúrate de que las opcionesDelBackend estén actualizadas con los datos del backend
+    this.opcionesDelBackend = this.getOpcionesDelBackend();
+
+    // Actualiza el estado de los checkboxes basándose en los datos de la tabla
+    Object.keys(this.opcionesDelBackend).forEach(categoria => {
+      this.opcionesDelBackend[categoria].forEach(opcion => {
+        const isChecked = this.tableData.some(row => row[categoria] === opcion);
+        const checkbox = document.querySelector(`input.check[value='${opcion}']`) as HTMLInputElement;
+        if(checkbox) checkbox.checked = isChecked;
+      });
+    });
+  }
+
+  getOpcionesDelBackend() {
+    // Aquí iría la lógica para recuperar los datos del backend
+    // Por ahora, es solo un ejemplo
+    return {
+      Laboratorio: ['Dato1', 'Dato2', 'Dato3'],
+      Imagen: ['Imagen1', 'Imagen2', 'Imagen3'],
+      Patologia: ['Patologia1', 'Patologia2']
+    };
   }
 
   selectedLaboratorio: string[] = [];
   selectedImagen: string[] = [];
   selectedPatologia: string[] = [];
 
-
-  originalData: {Laboratorio: string, Imagen: string, Patologia: string}[] = [];
   tableData: {Laboratorio: string, Imagen: string, Patologia: string}[] = [];
 
   onCheckboxChange(e: Event, value: string, category: string) {
@@ -48,13 +70,10 @@ export class ExamenComplementarioComponent {
     }
   }
 
-  accept(modal: any) {
-    // Vacía el array existente
-    while (this.tableData.length > 0) {
-      this.tableData.pop();
-    }
+  accept() {
+
+    this.tableData = [];
   
-    // Llena el array con los nuevos datos
     const maxLen = Math.max(this.selectedLaboratorio.length, this.selectedImagen.length, this.selectedPatologia.length);
     for (let i = 0; i < maxLen; i++) {
       this.tableData.push({
@@ -65,7 +84,12 @@ export class ExamenComplementarioComponent {
     }
   
     // Cierra el modal
-    modal.close('Close click');
+    this.modalReference.close();
+  }
+  
+  getTableData(): any[] {
+    // Transforma los datos a la estructura esperada por autoTable
+    return this.tableData.map(row => [row.Laboratorio, row.Imagen, row.Patologia]);
   }
 
 }

@@ -10,7 +10,7 @@ import { NgbHighlight } from '@ng-bootstrap/ng-bootstrap';
 @Component({
   selector: 'buscar_pacientes',
   standalone: true,
-  imports: [ RouterModule, CommonModule, ReactiveFormsModule, DecimalPipe, AsyncPipe, ReactiveFormsModule, NgbHighlight],
+  imports: [ RouterModule, CommonModule, ReactiveFormsModule, DecimalPipe, AsyncPipe, ReactiveFormsModule, NgbHighlight ],
   templateUrl: './buscar_pacientes.component.html',
   styleUrl: './buscar_pacientes.component.sass',
 })
@@ -84,4 +84,6 @@ export class BuscarPacientesComponent implements OnInit {
       .toUpperCase();
     return "#" + "00000".substring(0, 6 - color.length) + color;
   }
+
+  
 }

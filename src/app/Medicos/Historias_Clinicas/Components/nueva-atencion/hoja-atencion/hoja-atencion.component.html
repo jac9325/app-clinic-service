@@ -96,18 +96,18 @@
                     <label>{{i + 1}}. </label>
                     <textarea class="textarea2" #textareadiagnostic></textarea>
                 </div>
-                <ngx-select [items]="cities"
-                    class="cie10"
-                    optionValueField="id"
-                    optionTextField="name"
-                    placeholder="Cie 10"
-                    size="small"
-                    autocomplete="on"
-                    noResultsFound="No se encontró"
-                    [(ngModel)]="diagnostico.selectedCity">
-                </ngx-select>
-                </div>
-                <div class="button-container">
+                    <ngx-select [items]="cities"
+                        class="cie10"
+                        optionValueField="id"
+                        optionTextField="name"
+                        placeholder="Cie 10"
+                        size="small"
+                        autocomplete="on"
+                        noResultsFound="No se encontró"
+                        [(ngModel)]="diagnostico.selectedCity">
+                    </ngx-select>
+            </div>
+            <div class="button-container">
                 <button (click)="agregarDiagnostico()" type="button" class="btn btn-danger">
                     <i class="fas fa-plus"></i>
                 </button>
@@ -115,7 +115,7 @@
         </div>
     </div>
     <hr>
-    <div class="line">
+    <div class="line" style="gap: 3px;">
         <div class="division2">
             <h4>Exámenes Complementarios:</h4>
             <examen-complementario></examen-complementario>
@@ -123,6 +123,17 @@
         <div class="division2">
             <h4>Receta Médica:</h4>
             <receta></receta>
+        </div>
+        <div class="button-container-print">
+            <button type="button"><i class="fas fa-envelope"></i></button>
+            <div ngbDropdown class="d-inline-block">
+                <button type="button" ngbDropdownToggle ><i class="fas fa-print"></i></button>
+                <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                    <button ngbDropdownItem (click)="exportarExamenComplementario()">Exámenes Complementarios</button>
+                    <button ngbDropdownItem (click)="exportarRecetaMedica()">Receta Médica</button>
+                    <button ngbDropdownItem (click)="exportarAmbasTablas()">Ambos Documentos</button>
+                </div>
+            </div>
         </div>
     </div>
 </div>

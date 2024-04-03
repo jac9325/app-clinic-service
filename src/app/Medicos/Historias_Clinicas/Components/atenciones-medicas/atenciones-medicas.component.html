@@ -1,3 +1,23 @@
+<ng-template #ver let-modal>
+	<div class="modal-header">
+		<h2>Ver Hoja de Atención</h2>
+		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+	</div>
+	<div class="modal-body">
+		<ver-hoja-atencion></ver-hoja-atencion>
+	</div>
+</ng-template>
+
+<ng-template #editar let-modal class="modal">
+	<div class="modal-header">
+		<h2>Editar Hoja de Atención</h2>
+		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+	</div>
+	<div class="modal-body">
+		<editar-hoja-atencion></editar-hoja-atencion>
+	</div>
+</ng-template>
+
 <div class="main-container">
     <div class="sub-container">
         <div class="table-container">
@@ -22,8 +42,8 @@
                   <td>{{ atenciones.doctor }}</td>
                   <td>{{ atenciones.diagnostico }}</td>
                   <td>{{ atenciones.tratamiento }}</td>
-                  <td><button type="submit" class="btn btn-danger"><i class="fas fa-eye"></i></button></td>
-                  <td><button type="submit" class="btn btn-danger"><i class="fas fa-edit"></i></button></td>
+                  <td><button type="submit" class="btn btn-danger" (click)="openModal(ver)"><i class="fas fa-eye"></i></button></td>
+                  <td><button type="submit" class="btn btn-danger" (click)="openModal(editar)"><i class="fas fa-edit"></i></button></td>
                 </tr>
               </tbody>
             </table>

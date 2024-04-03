@@ -1,3 +1,23 @@
+<ng-template #ver_paciente let-modal>
+	<div class="modal-header">
+		<h2>Ver Datos del Paciente</h2>
+		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+	</div>
+	<div class="modal-body">
+		<ver-paciente></ver-paciente>
+	</div>
+</ng-template>
+
+<ng-template #editar_paciente let-modal>
+	<div class="modal-header">
+		<h2>Editar Datos del Paciente</h2>
+		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+	</div>
+	<div class="modal-body">
+		<editar-paciente></editar-paciente>
+	</div>
+</ng-template>
+
 <div class="main-container">
   <div class="sub-container">
     <div class="search-container">
@@ -29,15 +49,21 @@
             <td>{{ person.numero }}</td>
             <td>{{ person.name }}</td>
             <td>{{ person.ultima_atencion }}</td>
-            <td>{{ person.numero_histaoria }}</td>
+            <td>{{ person.numero_historia }}</td>
             <td>{{ person.numero_documento }}</td>
             <td>
-              <div ngbDropdown>
-                <button  class="menu" type="button" id="dropdownConfig" style="color: var(--color-primario)" ngbDropdownToggle><i class="fas fa-ellipsis-v"></i></button>
-                <div ngbDropdownMenu>
-                  <button ngbDropdownItem class="icons"><i class="fas fa-eye"></i></button>
-                  <button ngbDropdownItem class="icons"><i class="fas fa-edit"></i></button>
-                  <button ngbDropdownItem class="icons"><i class="fas fa-user-slash"></i></button>
+              <div class="custom-dropdown" (mouseenter)="toggleDropdown(person.numero_documento)" (mouseleave)="toggleDropdown(person.numero_documento)">
+                <i class="fas fa-ellipsis-v"></i>
+                <div class="dropdown-content" [class.show]="dropdownStates[person.numero_documento]">
+                  <button class="icons" (click)="openModal(ver_paciente)">
+                    <i class="fas fa-eye"></i>
+                  </button>
+                  <button class="icons" (click)="openModal(editar_paciente)">
+                    <i class="fas fa-edit"></i>
+                  </button>
+                  <button class="icons">
+                    <i class="fas fa-user-slash"></i>
+                  </button>
                 </div>
               </div>
             </td>

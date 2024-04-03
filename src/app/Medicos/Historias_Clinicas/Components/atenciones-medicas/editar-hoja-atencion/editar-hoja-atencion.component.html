@@ -1,0 +1,139 @@
+<div class="main-container">
+    <h2>HOJA DE ATENCION MÉDICA</h2>
+    <div class="line">
+        <div class="dato">
+            <label>Motivo de la Consulta:</label>
+            <textarea placeholder="Ingrese el motivo de la consulta"></textarea>
+        </div>
+    </div>
+    <div class="line">
+        <div class="division">
+            <div class="dato">
+                <label>Tiempo de Enfermedad:</label>
+                <textarea placeholder="Ingrese el tiempo de la enfermedad"></textarea>
+            </div>
+        </div>
+        <div class="division">
+            <div class="dato">
+                <label>Forma de Inicio:</label>
+                <textarea placeholder="Ingrese la forma de inicio"></textarea>
+            </div>
+        </div>
+        <div class="division">
+            <div class="dato">
+                <label>Curso de la Enfermedad:</label>
+                <textarea placeholder="Ingrese el curso de la enfermedad"></textarea>
+            </div>
+        </div>
+    </div>
+    <div class="line">
+        <div class="dato">
+            <label>Relato Cronológico de la Enfermedad:</label>
+            <textarea placeholder="Ingrese el relato cronológico de la enfermedad"></textarea>
+        </div>
+    </div>
+    <hr>
+    <div class="line">
+        <h4>Exámen Físico</h4>
+    </div>
+    <div class="line2">
+        <div class="dato2">
+            <label>Frec. Cardiaca</label>
+            <input type="text">
+            <select class="custom-select rounded-left" >
+                <option selected>L.p.m.</option>
+                <!-- Aquí puedes agregar más opciones de códigos de país -->
+                <option value="1">L.p.s.</option>
+            </select>
+        </div>
+        <div class="dato2">
+            <label>P. Arterial</label>
+            <input type="text">
+            <label class="label2">/</label>
+            <input type="text">
+            <label class="label2">mmHg.</label>
+        </div>
+        <div class="dato2">
+            <label>Frec. Respiratoria</label>
+            <input type="text">
+            <select class="custom-select rounded-left" >
+                <option selected>R.p.m.</option>
+                <!-- Aquí puedes agregar más opciones de códigos de país -->
+                <option value="1">R.p.s.</option>
+            </select>
+        </div>
+        <div class="dato2">
+            <label>Temperatura</label>
+            <input type="text">
+            <select class="custom-select rounded-left" >
+                <option selected>Cº</option>
+                <!-- Aquí puedes agregar más opciones de códigos de país -->
+                <option value="1">Fº</option>
+                <option value="2">Kº</option>
+                <option value="3">Rº</option>
+            </select>
+        </div>
+        <div class="dato2">
+            <label>SO2</label>
+            <input type="text">
+            <label class="label2">%</label>
+        </div>
+    </div>
+    <div *ngFor="let linea of lineas; let i = index" class="line">
+        <textarea placeholder="Ingrese observación" style="width: 95%;" #textareobservacion></textarea>
+        <button *ngIf="i === lineas.length - 1" (click)="agregarLinea()" type="text" class="btn btn-primary">
+            <i class="fas fa-plus"></i>
+        </button>
+    </div>
+    <hr>
+    <div class="line">
+        <h4>Impresión Diagnóstica</h4>
+    </div>
+    <div class="line">
+        <div class="diagnostico-container">
+            <div *ngFor="let diagnostico of diagnosticos; let i = index" class="diagnostico">
+                <div class="text">
+                    <label>{{i + 1}}. </label>
+                    <textarea class="textarea2" #textareadiagnostic></textarea>
+                </div>
+                    <ngx-select [items]="cities"
+                        class="cie10"
+                        optionValueField="id"
+                        optionTextField="name"
+                        placeholder="Cie 10"
+                        size="small"
+                        autocomplete="on"
+                        noResultsFound="No se encontró"
+                        [(ngModel)]="diagnostico.selectedCity">
+                    </ngx-select>
+            </div>
+            <div class="button-container">
+                <button (click)="agregarDiagnostico()" type="button" class="btn btn-danger">
+                    <i class="fas fa-plus"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="line" style="gap: 3px;">
+        <div class="division2">
+            <h4>Exámenes Complementarios:</h4>
+            <editar-examen-complementario></editar-examen-complementario>
+        </div>
+        <div class="division2">
+            <h4>Receta Médica:</h4>
+            <editar-receta></editar-receta>
+        </div>
+        <div class="button-container-print">
+            <button type="button"><i class="fas fa-envelope"></i></button>
+            <div ngbDropdown class="d-inline-block">
+                <button type="button" ngbDropdownToggle ><i class="fas fa-print"></i></button>
+                <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                    <button ngbDropdownItem (click)="exportarExamenComplementario()">Exámenes Complementarios</button>
+                    <button ngbDropdownItem (click)="exportarRecetaMedica()">Receta Médica</button>
+                    <button ngbDropdownItem (click)="exportarAmbasTablas()">Ambos Documentos</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
