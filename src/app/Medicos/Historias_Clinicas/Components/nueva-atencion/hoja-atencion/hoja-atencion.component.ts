@@ -1,15 +1,15 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { RecetaComponent } from './receta/receta.component';
-import { ExamenComplementarioComponent } from './examen-complementario/examen-complementario.component';
-import { NgxSelectModule } from 'ngx-select-ex';
 import { FormsModule } from '@angular/forms';
+import { NgxSelectModule } from 'ngx-select-ex';
+import { ExamenComplementarioComponent } from './examen-complementario/examen-complementario.component';
 import { ViewChildren } from '@angular/core';
 import { ViewChild } from '@angular/core';
 import { QueryList } from '@angular/core';
 import { ElementRef } from '@angular/core';
 import { ExportPdfService } from '../../../Services/export-pdf/export-pdf.service';
 import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
+import { RecetaComponent } from './receta/receta.component';
 
 interface Diagnostico {
   selectedCity: any;
