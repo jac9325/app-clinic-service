@@ -22,7 +22,6 @@ export class AuthInterceptor implements HttpInterceptor {
       catchError((error)=>{
         if (error.status === 401) {
           this.handleTokenError();
-          sessionStorage.removeItem('token-clinic-services-jpa');
           this.router.navigate(['/login']);
         }
         return throwError(() => error);

@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { ImagenMedicoService } from './Services/imagen_medico.service';
 
@@ -15,23 +15,23 @@ export class ImagenMedicoComponent {
 
     constructor(private imagenMedicoService: ImagenMedicoService) { }
 
-  ngOnInit(): void {
-    this.obtenerImagen();
-  }
+  // ngOnInit(): void {
+  //   //this.obtenerImagen();
+  // }
 
-  obtenerImagen(): void {
-    //id : id_usuario_institucion_especialista
-    const id = 2;
+  // obtenerImagen(): void {
+  //   //id : id_usuario_institucion_especialista
+  //   const id = 2;
 
-    this.imagenMedicoService.getImagePath(id).subscribe({
-        next: (response) => {
-          const filename = response.substring(response.lastIndexOf('\\') + 1);
-          this.imagenUrl = `../../../../../assets/${filename}` || '../../../../../assets/Medico_home_default.png';
-        },
-        error: (error) => {
-            console.error('Error fetching image path:', error);
-            // Handle error
-        }
-    } );
-  }
+  //   this.imagenMedicoService.getImagePath(id).subscribe({
+  //       next: (response) => {
+  //         const filename = response.substring(response.lastIndexOf('\\') + 1);
+  //         this.imagenUrl = `../../../../../assets/${filename}` || '../../../../../assets/Medico_home_default.png';
+  //       },
+  //       error: (error) => {
+  //           console.error('Error fetching image path:', error);
+  //           // Handle error
+  //       }
+  //   } );
+  // }
 }

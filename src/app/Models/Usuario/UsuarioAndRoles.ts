@@ -10,10 +10,19 @@ export class UsuarioAndRoles{
     codigo_pais:string;
     es_interno:number;
     rols: Rol[];
+    rolesSend: RolesSend;
 }
 
 export class Rol{
     id_rol:number;
     nombre:string;
     estado:number;
+}
+
+export class RolesSend{
+    role_COLABORADOR: number;
+    role_USER: number;
+    role_CAJERO: number;
+    role_ADMIN: number;
+    role_USUARIO_INSTITUCION_ESPECIAL: number
 }
