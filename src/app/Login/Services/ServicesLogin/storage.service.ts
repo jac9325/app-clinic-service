@@ -1,4 +1,5 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
+import { WINDOW } from '../../Helpers/window.token';
 
 const USER_KEY = 'token-clinic-services-jpa';
 
@@ -6,21 +7,20 @@ const USER_KEY = 'token-clinic-services-jpa';
   providedIn: 'root'
 })
 export class StorageService {
-  constructor() {}
+  constructor(@Inject(WINDOW) private window: Window) {}
 
   clean(): void {
-    window.sessionStorage.clear();
+    this.window.sessionStorage.clear();
 }
 
-
   public saveUser(user: any): void {
-    window.sessionStorage.removeItem(USER_KEY);
-    window.sessionStorage.setItem(USER_KEY, JSON.stringify(user));
+    this.window.sessionStorage.removeItem(USER_KEY);
+    this.window.sessionStorage.setItem(USER_KEY, JSON.stringify(user));
   }
   
 
   public getUser(): any {
-    const user = window.sessionStorage.getItem(USER_KEY);
+    const user = this.window.sessionStorage.getItem(USER_KEY);
     if (user) {
       return JSON.parse(user);
     }
@@ -28,11 +28,7 @@ export class StorageService {
   }
 
   public isLoggedIn(): boolean {
-    const user = window.sessionStorage.getItem(USER_KEY);
-    if (user) {
-      return true;
-    }
-
-    return false;
+    const user =this.window.sessionStorage.getItem(USER_KEY);
+    return !!user;
   }
 }
