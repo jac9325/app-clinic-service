@@ -78,7 +78,7 @@ export class EditarHojaAtencionComponent {
   exportarExamenComplementario() {
     const datosExamenComplementario = this.obtenerDatosExamenComplementario();
     if (datosExamenComplementario.length > 0) {
-      this.exportPdfService.exportarExamenComplementarioAPDF(datosExamenComplementario, 'ExamenesComplementarios.pdf');
+      this.exportPdfService.exportarExamenComplementarioAPDF(datosExamenComplementario);
     } else {
       console.error('No hay datos para exportar');
     }
@@ -87,7 +87,7 @@ export class EditarHojaAtencionComponent {
   exportarRecetaMedica() {
     const datosRecetaMedica = this.obtenerDatosRecetaMedica();
     if (datosRecetaMedica.length > 0) {
-      this.exportPdfService.exportarRecetaMedicaAPDF(datosRecetaMedica, 'RecetaMedica.pdf');
+      this.exportPdfService.exportarRecetaMedicaAPDF(datosRecetaMedica);
     } else {
       console.error('No hay datos para exportar');
     }
@@ -97,7 +97,7 @@ export class EditarHojaAtencionComponent {
     const datosRecetaMedica = this.obtenerDatosRecetaMedica();
     const datosExamenComplementario = this.obtenerDatosExamenComplementario();
     if (datosRecetaMedica.length > 0 && datosExamenComplementario.length > 0) {
-      this.exportPdfService.exportarAmbasTablasAPDF(datosRecetaMedica, datosExamenComplementario, 'AmbasTablas.pdf');
+      this.exportPdfService.exportarAmbasTablasAPDF(datosRecetaMedica, datosExamenComplementario);
     } else {
       console.error('No hay datos para exportar en una o ambas tablas.');
     }
