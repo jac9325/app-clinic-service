@@ -7,6 +7,7 @@ import { provideClientHydration } from '@angular/platform-browser';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideStore } from '@ngrx/store';
 import { UsuarioAndRoles } from './Models/Usuario/UsuarioAndRoles';
+import { loginReducer } from './States/Login/login.reducer';
 import { routes } from './app.routes';
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -24,6 +25,7 @@ export const appConfig: ApplicationConfig = {
     UsuarioAndRoles
     //{ provide: HTTP_INTERCEPTORS, useValue: authInterceptor, multi: true },
     ,
-    provideStore()
+    provideStore({'loginMedico': loginReducer}),
+    //provideState({name: 'loginMedico', reducer: loginReducer})
 ]
 };

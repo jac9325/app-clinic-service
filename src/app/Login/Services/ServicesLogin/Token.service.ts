@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { TokenDecode } from '../../Models/Dto/TokenDecode';
+import { TokenDecode } from '../../../Models/Dto/TokenDecode';
 
 @Injectable({
   providedIn: 'root'
