@@ -1,5 +1,6 @@
 import { Component, HostListener, OnInit, inject, TemplateRef} from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ViewChild } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
@@ -67,6 +68,15 @@ export class NavegacionComponent {
       this.isHidden = true;
     } else {
       this.isHidden = false;
+    }
+  }
+  
+  @ViewChild(CajaComponent) cajaComponent: CajaComponent;
+
+  setActiveForCajaAndTablas(cajaActive: string, tablasActive: number) {
+    this.active = cajaActive;
+    if (this.cajaComponent) {
+      this.cajaComponent.tablasActive = tablasActive;
     }
   }
 }

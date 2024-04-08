@@ -1,15 +1,19 @@
 
 .main-container 
   width: 100%
-  height: 50%
+  height: 375px
   display: flex
   flex-direction: column
+  justify-content: space-between
   padding: 25px
   background-color: var(--selected-color)
   border-radius: 10px
   @media (max-width: 768px) 
     width: 100%
     
+.table-container
+  max-height: 280px
+  overflow-y: auto
 
 .table
   thead 

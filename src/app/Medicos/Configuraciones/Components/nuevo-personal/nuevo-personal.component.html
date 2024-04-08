@@ -103,13 +103,15 @@
 
             <div class="line">
                 <div class="dato">
-                    <h3>Imagen</h3>
+                    <h3>Foto</h3>
                     <div class="image-box">
-                        <img src="../../../../assets/User-img.png">
+                        <img *ngIf="selectedImage" [src]="getObjectUrl(selectedImage)">
+                        <img *ngIf="!selectedImage" src="../../../../assets/User-img.png">
                     </div>
                     <div class="button-container">
-                        <button type="submit" class="btn btn-danger" routerLink="/completar_datos"><b>Subir</b></button>
-                        <button type="submit" class="btn btn-danger" routerLink="/completar_datos"><b>Borrar</b></button>
+                        <input type="file" #fileInput style="display: none" (change)="onFileSelected($event)">
+                        <button type="button" class="btn btn-danger" (click)="fileInput.click()"><b>Subir</b></button>
+                        <button type="button" class="btn btn-danger" (click)="borrarImagen()"><b>Borrar</b></button>
                     </div>
                 </div>
             </div>
@@ -205,5 +207,11 @@
             </div>
         </div>
 
+        <div class="button-container-submit">
+            <button type="submit" class="btn btn-danger" style="width: 200px; font-size: 16px;"><b>Guardar</b></button>
+        </div>
+
     </div>
+
+    
 </div>

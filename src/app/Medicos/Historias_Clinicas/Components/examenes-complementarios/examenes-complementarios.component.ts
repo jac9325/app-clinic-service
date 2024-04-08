@@ -14,15 +14,4 @@ import { PatologiasComponent } from './patologias/patologias.component';
 })
 export class ExamenesComplementariosComponent {
   active = '1';
-  isMobileScreen = false;
-  orientation = 'vertical';
-
-  constructor() {
-    this.checkScreenSize();
-  }
-
-  checkScreenSize() {
-    this.orientation = window.innerWidth < 768 ? '' : 'vertical';
-  }
-
 }

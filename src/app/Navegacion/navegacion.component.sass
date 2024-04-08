@@ -62,18 +62,27 @@
 
         h1
             font-weight: 500
+            @media (max-width: 768px) 
+                font-size: 28px
         
         h4
             margin-bottom: 0px
         
         .exit-container
+            display: flex
+            height: 100%
+            @media (max-width: 768px) 
+                flex-direction: column
 
             button
+                display: block
                 background-color: var(--color-primario)
                 padding: 5px    
                 color: white
                 border-radius: 5px
                 border: 0px
+                @media (max-width: 768px) 
+                    padding: 3px
 
                 &:hover
                     color: var(--color-secundario)

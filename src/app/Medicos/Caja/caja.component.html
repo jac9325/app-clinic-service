@@ -9,7 +9,7 @@
             </div>
         </ng-template>
         <div class="tablas-container">
-            <tablas></tablas>
+            <tablas (activeChange)="onActiveChange($event)"></tablas>
         </div>
     </div>
     <div class="sub-container2">

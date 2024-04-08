@@ -56,6 +56,43 @@ export class TablaEgresosComponent  implements OnInit {
         monto: 500,
         motivo: '25361425'
       }
+      ,
+      { 
+        numero_operacion: '0004',
+        fecha: 'Persona 1', 
+        monto: 500,
+        motivo: '25361425'
+      },
+      { 
+        numero_operacion: '0004',
+        fecha: 'Persona 1', 
+        monto: 500,
+        motivo: '25361425'
+      },
+      { 
+        numero_operacion: '0004',
+        fecha: 'Persona 1', 
+        monto: 500,
+        motivo: '25361425'
+      },
+      { 
+        numero_operacion: '0004',
+        fecha: 'Persona 1', 
+        monto: 500,
+        motivo: '25361425'
+      },
+      { 
+        numero_operacion: '0004',
+        fecha: 'Persona 1', 
+        monto: 500,
+        motivo: '25361425'
+      },
+      { 
+        numero_operacion: '0004',
+        fecha: 'Persona 1', 
+        monto: 500,
+        motivo: '25361425'
+      }
     ]);
   }
 }

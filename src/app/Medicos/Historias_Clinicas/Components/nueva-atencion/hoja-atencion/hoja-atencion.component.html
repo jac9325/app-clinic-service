@@ -96,16 +96,16 @@
                     <label>{{i + 1}}. </label>
                     <textarea class="textarea2" #textareadiagnostic></textarea>
                 </div>
-                    <ngx-select [items]="cities"
-                        class="cie10"
-                        optionValueField="id"
-                        optionTextField="name"
-                        placeholder="Cie 10"
-                        size="small"
-                        autocomplete="on"
-                        noResultsFound="No se encontró"
-                        [(ngModel)]="diagnostico.selectedCity">
-                    </ngx-select>
+                <ngx-select [items]="cities"
+                    class="cie10"
+                    optionValueField="id"
+                    optionTextField="name"
+                    placeholder="Cie 10"
+                    size="small"
+                    autocomplete="on"
+                    noResultsFound="No se encontró"
+                    [(ngModel)]="diagnostico.selectedCity">
+                </ngx-select>
             </div>
             <div class="button-container">
                 <button (click)="agregarDiagnostico()" type="button" class="btn btn-danger">

@@ -20,7 +20,6 @@ import { ImagenesComponent } from './Medicos/Pacientes/Components/pendientes/ima
 import { PacientesComponent } from './Medicos/Pacientes/pacientes.component';
 import { NavegacionComponent } from './Navegacion/navegacion.component';
 import { NuevaCitaComponent } from './Medicos/Nueva_Cita/nueva-cita.component';
-import { BuscadorComponent } from './Medicos/Historias_Clinicas/Components/buscador/buscador.component';
 
 export const routes: Routes = [
   {
@@ -106,9 +105,5 @@ export const routes: Routes = [
   {
     path: 'nueva_cita',
     component: NuevaCitaComponent,
-  },
-  {
-    path: 'buscador',
-    component: BuscadorComponent,
   }
 ];
