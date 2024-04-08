@@ -1,8 +1,14 @@
 import { CommonModule } from '@angular/common';
-import { Component, ElementRef, QueryList, ViewChildren } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NgxSelectModule } from 'ngx-select-ex';
 import { ExamenComplementarioComponent } from './examen-complementario/examen-complementario.component';
+import { ViewChildren } from '@angular/core';
+import { ViewChild } from '@angular/core';
+import { QueryList } from '@angular/core';
+import { ElementRef } from '@angular/core';
+import { ExportPdfService } from '../../../Services/export-pdf/export-pdf.service';
+import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 import { RecetaComponent } from './receta/receta.component';
 
 interface Diagnostico {
@@ -12,7 +18,7 @@ interface Diagnostico {
 @Component({
   selector: 'hoja-atencion',
   standalone: true,
-  imports: [ CommonModule, RecetaComponent, ExamenComplementarioComponent, NgxSelectModule, FormsModule ],
+  imports: [ CommonModule, RecetaComponent, ExamenComplementarioComponent, NgxSelectModule, FormsModule, NgbDropdownModule ],
   templateUrl: './hoja-atencion.component.html',
   styleUrl: './hoja-atencion.component.sass'
 })
@@ -63,5 +69,54 @@ export class HojaAtencionComponent {
   ];
 
   selectedCity = null;
+
+  constructor(private exportPdfService: ExportPdfService) {}
+
+  @ViewChild(ExamenComplementarioComponent) examenComplementarioComponent!: ExamenComplementarioComponent;
+  @ViewChild(RecetaComponent) recetaComponent!: RecetaComponent;
+
+  exportarExamenComplementario() {
+    const datosExamenComplementario = this.obtenerDatosExamenComplementario();
+    if (datosExamenComplementario.length > 0) {
+      this.exportPdfService.exportarExamenComplementarioAPDF(datosExamenComplementario);
+    } else {
+      console.error('No hay datos para exportar');
+    }
+  }
+
+  exportarRecetaMedica() {
+    const datosRecetaMedica = this.obtenerDatosRecetaMedica();
+    if (datosRecetaMedica.length > 0) {
+      this.exportPdfService.exportarRecetaMedicaAPDF(datosRecetaMedica);
+    } else {
+      console.error('No hay datos para exportar');
+    }
+  }
+
+  exportarAmbasTablas() {
+    const datosRecetaMedica = this.obtenerDatosRecetaMedica();
+    const datosExamenComplementario = this.obtenerDatosExamenComplementario();
+    if (datosRecetaMedica.length > 0 && datosExamenComplementario.length > 0) {
+      this.exportPdfService.exportarAmbasTablasAPDF(datosRecetaMedica, datosExamenComplementario);
+    } else {
+      console.error('No hay datos para exportar en una o ambas tablas.');
+    }
+  }
+
+  obtenerDatosExamenComplementario(): any[] {
+    // Asegúrate de que el componente hijo ha sido cargado
+    if (this.examenComplementarioComponent) {
+      return this.examenComplementarioComponent.getTableData();
+    }
+    return [];
+  }
+
+  obtenerDatosRecetaMedica(): any[] {
+    // Asegúrate de que el componente hijo ha sido cargado
+    if (this.recetaComponent) {
+      return this.recetaComponent.getTableData();
+    }
+    return [];
+  }
 
 }

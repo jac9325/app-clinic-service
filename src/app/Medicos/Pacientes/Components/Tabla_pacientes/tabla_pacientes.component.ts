@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject, TemplateRef } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Observable, of, BehaviorSubject } from 'rxjs';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
@@ -10,13 +11,15 @@ import { FormsModule } from '@angular/forms';
 import { JsonPipe } from '@angular/common';
 import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { VerPacienteComponent } from './ver-paciente/ver-paciente.component';
+import { EditarPacienteComponent } from './editar-paciente/editar-paciente.component';
 
 
 interface Paciente {
   numero: string;
   name: string;
   ultima_atencion: string;
-  numero_histaoria: string;
+  numero_historia: string;
   numero_documento: string;
   sexo: string;
   edad: string;
@@ -32,7 +35,7 @@ interface Paciente {
 @Component({
   selector: 'tabla-pacientes',
   standalone: true,
-  imports: [ RouterModule, CommonModule, ReactiveFormsModule, ReactiveFormsModule, AsyncPipe, DecimalPipe, 
+  imports: [ RouterModule, CommonModule, ReactiveFormsModule, ReactiveFormsModule, AsyncPipe, DecimalPipe, VerPacienteComponent, EditarPacienteComponent,
               NgbDatepickerModule, FormsModule, JsonPipe, NgbHighlight, NgbModule, NgbDropdownModule, FontAwesomeModule],
   templateUrl: './tabla_pacientes.component.html',
   styleUrl: './tabla_pacientes.component.sass'
@@ -48,6 +51,11 @@ export class TablaPacientesComponent implements OnInit {
   selectedPerson: Paciente | null = null;
   filter = new FormControl('');
   filteredText: string = '';
+  private modalService = inject(NgbModal);
+
+	openModal(content: TemplateRef<any>) {
+		this.modalService.open(content, { fullscreen: true });
+	}
 
   constructor(private calendar: NgbCalendar) {
     this.today = this.calendar.getToday();
@@ -90,7 +98,7 @@ export class TablaPacientesComponent implements OnInit {
         numero: '0001',
         name: 'Persona 1', 
         ultima_atencion: '02/02/2024',
-        numero_histaoria: 'HC25684526142',
+        numero_historia: 'HC25684526142',
         numero_documento: '25361425',
         sexo: 'Masculino', 
         edad: '20 años',
@@ -99,13 +107,13 @@ export class TablaPacientesComponent implements OnInit {
         ruta_imagen: 'img.jpg',
         alergias: ['Penicilina', 'Dexametasona', 'Sulfa'],
         enfermedades_cronicas: ['Penicilina', 'Dexametasona', 'Sulfa'],
-        fecha_cita: { year: 2024, month: 2, day: 26 }
+        fecha_cita: { year: 2024, month: 4, day: 1 }
       },
       { 
         numero: '0002',
         name: 'Persona 2', 
         ultima_atencion: '03/02/2024',
-        numero_histaoria: 'HC25684526143',
+        numero_historia: 'HC25684526143',
         numero_documento: '25361426',
         sexo: 'Femenino', 
         edad: '21 años',
@@ -114,13 +122,13 @@ export class TablaPacientesComponent implements OnInit {
         ruta_imagen: 'img2.jpg',
         alergias: ['Ibuprofeno', 'Amoxicilina', 'Sulfa'],
         enfermedades_cronicas: ['Ibuprofeno', 'Amoxicilina', 'Sulfa'],
-        fecha_cita: { year: 2024, month: 2, day: 26 }
+        fecha_cita: { year: 2024, month: 4, day: 1 }
       },
       { 
         numero: '0003',
         name: 'Persona 3', 
         ultima_atencion: '04/02/2024',
-        numero_histaoria: 'HC25684526144',
+        numero_historia: 'HC25684526144',
         numero_documento: '25361427',
         sexo: 'Masculino', 
         edad: '22 años',
@@ -129,13 +137,13 @@ export class TablaPacientesComponent implements OnInit {
         ruta_imagen: 'img3.jpg',
         alergias: ['Aspirina', 'Paracetamol', 'Sulfa'],
         enfermedades_cronicas: ['Aspirina', 'Paracetamol', 'Sulfa'],
-        fecha_cita: { year: 2024, month: 2, day: 26 }
+        fecha_cita: { year: 2024, month: 4, day: 1 }
       },
       { 
         numero: '0004',
         name: 'Persona 4', 
         ultima_atencion: '05/02/2024',
-        numero_histaoria: 'HC25684526145',
+        numero_historia: 'HC25684526145',
         numero_documento: '25361428',
         sexo: 'Femenino', 
         edad: '23 años',
@@ -144,7 +152,7 @@ export class TablaPacientesComponent implements OnInit {
         ruta_imagen: 'img4.jpg',
         alergias: ['Metamizol', 'Dexametasona', 'Sulfa'],
         enfermedades_cronicas: ['Metamizol', 'Dexametasona', 'Sulfa'],
-        fecha_cita: { year: 2024, month: 2, day: 27 }
+        fecha_cita: { year: 2024, month: 4, day: 1 }
       }
     ]);
   }
@@ -152,4 +160,11 @@ export class TablaPacientesComponent implements OnInit {
   compararFechas(fecha1: NgbDateStruct, fecha2: NgbDateStruct) {
     return fecha1.year === fecha2.year && fecha1.month === fecha2.month && fecha1.day === fecha2.day;
   }
+
+  dropdownStates: { [key: string]: boolean } = {}; // Un objeto para almacenar el estado de cada dropdown
+
+  toggleDropdown(personId: string) {
+    this.dropdownStates[personId] = !this.dropdownStates[personId];
+  }
+
 }

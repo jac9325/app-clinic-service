@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { TablasComponent } from './Components/Tablas/tablas.component';
@@ -17,5 +17,17 @@ import { CajaCerradaComponent } from './Components/Alerta/caja-cerrada/caja-cerr
 })
 export class CajaComponent  {
   estado_caja = false;
-  ingreso_egreso = false;
+  ingreso_egreso = true;
+
+  onActiveChange(active: number) {
+    this.ingreso_egreso = active === 1 ? true : false;
+  }
+
+  @Input() tablasActive: number;
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['tablasActive']) {
+      // Aquí puedes manejar los cambios adicionales si es necesario
+    }
+  }
 }

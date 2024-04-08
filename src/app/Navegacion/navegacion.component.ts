@@ -1,5 +1,6 @@
 import { Component, HostListener, OnInit, inject, TemplateRef} from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ViewChild } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
@@ -51,14 +52,31 @@ export class NavegacionComponent {
     if (typeof window !== 'undefined') {
       this.isSmallScreen = window.innerWidth < 1000;
     }
+    if (this.isSmallScreen) {
+      this.isExpanded = false;
+      this.isHidden = true;
+    } else {
+      this.isHidden = false;
+    }
   }
 
   @HostListener('window:resize', ['$event'])
   onResize(event: Event) {
-      this.isSmallScreen = (event.target as Window).innerWidth < 1000;
-      if (this.isSmallScreen) {
-          this.isExpanded = false;
-          this.isHidden = true;
-      }
+    this.isSmallScreen = (event.target as Window).innerWidth < 1000;
+    if (this.isSmallScreen) {
+      this.isExpanded = false;
+      this.isHidden = true;
+    } else {
+      this.isHidden = false;
+    }
+  }
+  
+  @ViewChild(CajaComponent) cajaComponent: CajaComponent;
+
+  setActiveForCajaAndTablas(cajaActive: string, tablasActive: number) {
+    this.active = cajaActive;
+    if (this.cajaComponent) {
+      this.cajaComponent.tablasActive = tablasActive;
+    }
   }
 }

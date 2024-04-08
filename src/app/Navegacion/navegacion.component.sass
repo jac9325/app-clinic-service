@@ -62,18 +62,27 @@
 
         h1
             font-weight: 500
+            @media (max-width: 768px) 
+                font-size: 28px
         
         h4
             margin-bottom: 0px
         
         .exit-container
+            display: flex
+            height: 100%
+            @media (max-width: 768px) 
+                flex-direction: column
 
             button
+                display: block
                 background-color: var(--color-primario)
                 padding: 5px    
                 color: white
                 border-radius: 5px
                 border: 0px
+                @media (max-width: 768px) 
+                    padding: 3px
 
                 &:hover
                     color: var(--color-secundario)
@@ -173,7 +182,7 @@
             &:hover
                 color: var(--color-secundario)
                 background-color: white
-            &:active, &:focus
+            &:active:not(.pestaña), &:focus:not(.pestaña)
                 background-color: white 
                 color: var(--color-secundario)
 
@@ -206,3 +215,15 @@
             .description-container
                 display: inline-block
                 opacity: 1
+        
+        .content 
+            width: 100%
+            max-height: 100%
+            overflow-y: auto
+        
+        .pestaña
+            width: 15px
+            font-size: 5px
+            padding: 0px
+            height: 100px
+            border-radius: 0px 5px 5px 0px
