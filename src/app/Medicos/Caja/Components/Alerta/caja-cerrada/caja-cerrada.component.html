@@ -1,7 +1,7 @@
 <ng-template #responce_positive let-modal>
     <div class="pop-responce-positive">
         <div class="cont1">
-            <i class="fa-solid fa-circle-check"></i>
+            <i class="fas fa-check-circle"></i>
         </div>
         <div class="cont2">
             <p>La caja se ha iniciado correctamente.</p>
@@ -15,7 +15,7 @@
 <ng-template #responce_negative let-modal>
     <div class="pop-responce-negative">
         <div class="cont1">
-            <i class="fa-solid fa-circle-xmark"></i>
+            <i class="fas fa-times-circle"></i>
         </div>
         <div class="cont2">
             <p>Hubo un error al iniciar la caja, por favor vuelva a intentarlo.</p>
@@ -67,7 +67,7 @@
         </div>
         <div class="button-container">
             <button type="button" class="btn btn-secondary" (click)="modal.close('Close click')">Cancelar</button>
-            <button type="button" class="btn btn-danger" (click)="openVerticallyCentered2(responce_positive)">Iniciar Caja</button>
+            <button type="button" class="btn btn-danger" (click)="openVerticallyCentered2(responce_negative)">Iniciar Caja</button>
         </div>
     </div>
 </ng-template>

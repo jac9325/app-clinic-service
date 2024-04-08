@@ -1,12 +1,12 @@
-<ul ngbNav #nav="ngbNav" class="nav-tabs">
-	<li ngbNavItem>
-		<a ngbNavLink>Ingresos</a>
+<ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+	<li [ngbNavItem]="1">
+		<a ngbNavLink (click)="setActive(1)">Ingresos</a>
 		<ng-template ngbNavContent>
 			<tabla-ingresos></tabla-ingresos>
 		</ng-template>
 	</li>
-	<li ngbNavItem>
-		<a ngbNavLink>Egresos</a>
+	<li [ngbNavItem]="2">
+		<a ngbNavLink (click)="setActive(2)">Egresos</a>
 		<ng-template ngbNavContent>
 			<tabla-egresos></tabla-egresos>
 		</ng-template>

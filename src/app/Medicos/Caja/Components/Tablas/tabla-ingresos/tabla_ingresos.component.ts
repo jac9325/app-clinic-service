@@ -55,6 +55,64 @@ export class TablaIngresosComponent  implements OnInit {
         fecha: 'Persona 1', 
         monto: 500,
         motivo: '25361425'
+      },
+      { 
+        numero_operacion: '0001',
+        fecha: 'Persona 1', 
+        monto: 500,
+        motivo: '25361425'
+      }
+      ,
+      { 
+        numero_operacion: '0001',
+        fecha: 'Persona 1', 
+        monto: 500,
+        motivo: '25361425'
+      }
+      ,
+      { 
+        numero_operacion: '0001',
+        fecha: 'Persona 1', 
+        monto: 500,
+        motivo: '25361425'
+      }
+      ,
+      { 
+        numero_operacion: '0001',
+        fecha: 'Persona 1', 
+        monto: 500,
+        motivo: '25361425'
+      }
+      ,
+      { 
+        numero_operacion: '0001',
+        fecha: 'Persona 1', 
+        monto: 500,
+        motivo: '25361425'
+      },
+      { 
+        numero_operacion: '0001',
+        fecha: 'Persona 1', 
+        monto: 500,
+        motivo: '25361425'
+      },
+      { 
+        numero_operacion: '0001',
+        fecha: 'Persona 1', 
+        monto: 500,
+        motivo: '25361425'
+      },
+      { 
+        numero_operacion: '0001',
+        fecha: 'Persona 1', 
+        monto: 500,
+        motivo: '25361425'
+      },
+      { 
+        numero_operacion: '0001',
+        fecha: 'Persona 1', 
+        monto: 500,
+        motivo: '25361425'
       }
     ]);
   }

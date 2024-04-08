@@ -4,16 +4,11 @@
             <div class="line">
                 <div class="dato">
                     <h3>Tipo de Documento</h3>
-                    <div ngbDropdown class="d-inline-block">
-                        <button type="button" class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>
-                            Seleccione
-                        </button>
-                        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                            <button ngbDropdownItem>DNI</button>
-                            <button ngbDropdownItem>Carnet de Extrangería</button>
-                            <button ngbDropdownItem>Pasaporte</button>
-                        </div>
-                    </div>
+                    <select class="custom-select rounded-left">
+                        <option selected>Seleccionar</option>
+                        <option value="1">Sede1</option>
+                        <option value="2">Sede2</option>
+                    </select>
                 </div>
                 <div class="dato">
                     <h3>Número de Documento</h3>
@@ -108,13 +103,15 @@
 
             <div class="line">
                 <div class="dato">
-                    <h3>Imagen</h3>
+                    <h3>Foto</h3>
                     <div class="image-box">
-                        <img src="../../../../assets/User-img.png">
+                        <img *ngIf="selectedImage" [src]="getObjectUrl(selectedImage)">
+                        <img *ngIf="!selectedImage" src="../../../../assets/User-img.png">
                     </div>
                     <div class="button-container">
-                        <button type="submit" class="btn btn-danger" routerLink="/completar_datos"><b>Subir</b></button>
-                        <button type="submit" class="btn btn-danger" routerLink="/completar_datos"><b>Borrar</b></button>
+                        <input type="file" #fileInput style="display: none" (change)="onFileSelected($event)">
+                        <button type="button" class="btn btn-danger" (click)="fileInput.click()"><b>Subir</b></button>
+                        <button type="button" class="btn btn-danger" (click)="borrarImagen()"><b>Borrar</b></button>
                     </div>
                 </div>
             </div>
@@ -125,16 +122,11 @@
             <div class="line">
                 <div class="dato">
                     <h3>Perfil Personal</h3>
-                    <div ngbDropdown class="d-inline-block">
-                        <button type="button" class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>
-                            Seleccione
-                        </button>
-                        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                            <button class="item" ngbDropdownItem>Perfil 1</button>
-                            <button class="item" ngbDropdownItem>Perfil 2</button>
-                            <button class="item" ngbDropdownItem>Perfil 3</button>
-                        </div>
-                    </div>
+                    <select class="custom-select rounded-left">
+                        <option selected>Seleccionar</option>
+                        <option value="1">Sede1</option>
+                        <option value="2">Sede2</option>
+                    </select>
                 </div>
                 <div class="dato">
                     <h3>Permisos del Personal</h3>
@@ -179,16 +171,11 @@
                 </div>
                 <div class="dato">
                     <h3>Perfil Usuario</h3>
-                    <div ngbDropdown class="d-inline-block">
-                        <button type="button" class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>
-                            Seleccione
-                        </button>
-                        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                            <button class="item" ngbDropdownItem>Usuario 1</button>
-                            <button class="item" ngbDropdownItem>Usuario 2</button>
-                            <button class="item" ngbDropdownItem>Usuario 3</button>
-                        </div>
-                    </div>
+                    <select class="custom-select rounded-left">
+                        <option selected>Seleccionar</option>
+                        <option value="1">Sede1</option>
+                        <option value="2">Sede2</option>
+                    </select>
                 </div>
             </div>
 
@@ -220,5 +207,11 @@
             </div>
         </div>
 
+        <div class="button-container-submit">
+            <button type="submit" class="btn btn-danger" style="width: 200px; font-size: 16px;"><b>Guardar</b></button>
+        </div>
+
     </div>
+
+    
 </div>

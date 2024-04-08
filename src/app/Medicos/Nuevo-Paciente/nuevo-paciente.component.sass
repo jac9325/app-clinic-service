@@ -92,20 +92,28 @@
         width: 100%
         justify-content: space-between
                 
-            
     .dato
         width: 50%
         display: flex
         flex-direction: column
         justify-content: center
                 
-                
-
     h3
         font-size: 14px
         font-weight: 450
             
     input 
+        width: 100%
+        padding: 5px
+        border: 1px solid #dddddd
+        border-bottom: 3px solid #9a9a9a
+        border-radius: 5px
+        text-align: left
+        display: block
+        margin: auto
+        font-size: 12px
+    
+    select
         width: 100%
         padding: 5px
         border: 1px solid #dddddd
@@ -135,7 +143,17 @@
     button
         background-color: var(--color-secundario)
         border: 0px
-        font-size: 12px
+        font-size: 14px
+        color: white    
+        font-weight: 400
+        &:hover
+            color: var(--color-secundario)
+            background-color: white
+    
+    .input-img
+        background-color: var(--color-secundario)
+        border: 0px
+        font-size: 14px
         color: white    
         font-weight: 400
         &:hover
@@ -173,6 +191,7 @@
         gap: 5px
         align-items: center
         justify-content: center
+        padding: 5px
 
     input[type="checkbox"] 
         width: 15px

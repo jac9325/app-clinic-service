@@ -9,6 +9,23 @@
     @media (max-width: 768px) // ajusta este valor según tus necesidades
         flex-direction: column
 
+    .button-container-submit
+        display: flex
+        width: 100%
+        gap: 5px
+        align-items: center
+        justify-content: center
+
+        button
+            background-color: var(--color-secundario)
+            border: 0px
+            font-size: 16px
+            color: white    
+            font-weight: 400
+            &:hover
+                color: var(--color-secundario)
+                background-color: white
+
     .sub-container
         gap: 10px
         display: flex
@@ -59,6 +76,16 @@
                 margin: auto
                 font-size: 12px
             
+            select
+                width: 100%
+                padding: 5px
+                border: 1px solid #dddddd
+                border-bottom: 3px solid #9a9a9a
+                border-radius: 5px
+                text-align: left
+                display: block
+                margin: auto
+                font-size: 12px
             .btn-outline-primary
                 width: 100%
                 padding: 5px

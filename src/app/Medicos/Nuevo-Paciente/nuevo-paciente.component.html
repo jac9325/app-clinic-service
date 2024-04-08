@@ -1,6 +1,6 @@
 <div class="title-container">
     <div class="formulario">
-        <h2>Agregar Nuevo Paciente</h2>
+        <h2>Registrar Nuevo Paciente</h2>
     </div>
 </div>
 <div class="main-container">
@@ -9,22 +9,17 @@
             <div class="line">
                 <div class="dato">
                     <h3>Tipo de Documento</h3>
-                    <div ngbDropdown class="d-inline-block">
-                        <button type="button" class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>
-                            Seleccione
-                        </button>
-                        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                            <button ngbDropdownItem>DNI</button>
-                            <button ngbDropdownItem>Carnet de Extrangería</button>
-                            <button ngbDropdownItem>Pasaporte</button>
-                        </div>
-                    </div>
+                    <select class="custom-select rounded-left">
+                        <option selected>Seleccionar</option>
+                        <option value="1">DNI</option>
+                        <option value="2">Carnet de Extrangería</option>
+                    </select>
                 </div>
                 <div class="dato">
                     <h3>Número de Documento</h3>
                     <div class="icon-box">
                         <i class="fas fa-id-card"></i>
-                        <input type="text" id="numero_documento" name="numero_documento" placeholder="Ingrese el numero de Documento">
+                        <input type="text" placeholder="Ingrese el numero de Documento">
                     </div>
                 </div>
             </div>
@@ -34,14 +29,14 @@
                     <h3>Primer Nombre</h3>
                     <div class="icon-box">
                         <i class="fas fa-user"></i>
-                        <input type="text" id="primer_nombre" name="primer_nombre" placeholder="Ingrese el primer nombre">
+                        <input type="text" placeholder="Ingrese el primer nombre">
                     </div>
                 </div>
                 <div class="dato">
                     <h3>Segundo Nombre</h3>
                     <div class="icon-box">
                         <i class="fas fa-user"></i>
-                        <input type="text" id="segundo_nombre" name="segundo_nombre" placeholder="Ingrese el segundo nombre">
+                        <input type="text" placeholder="Ingrese el segundo nombre">
                     </div>
                 </div>
             </div>
@@ -51,14 +46,14 @@
                     <h3>Primer Apellido</h3>
                     <div class="icon-box">
                         
-                        <input type="text" id="primer_apellido" name="primer_apellido" placeholder="Ingrese el primer apellido">
+                        <input type="text" placeholder="Ingrese el primer apellido">
                     </div>
                 </div>
                 <div class="dato">
                     <h3>Segundo Apellido</h3>
                     <div class="icon-box">
                         
-                        <input type="text" id="segundo_apellido" name="segundo_apellido" placeholder="Ingrese el segundo apellido">
+                        <input type="text" placeholder="Ingrese el segundo apellido">
                     </div>
                 </div>
             </div>
@@ -67,14 +62,14 @@
                 <div class="dato">
                     <h3>Fecha de Nacimiento</h3>
                     <div class="icon-box">
-                        <input type="date" id="fecha" name="fecha" placeholder="Ingrese su fecha de naciemiento">
+                        <input type="date" placeholder="Ingrese su fecha de naciemiento">
                     </div>
                 </div>
                 <div class="dato">
                     <h3>Correo Electrónico</h3>
                     <div class="icon-box">
                         <i class="fas fa-envelope"></i>
-                        <input type="text" id="correo_electronico" name="correo_electronico" placeholder="Ingrese su correo electrónico">
+                        <input type="text" placeholder="Ingrese su correo electrónico">
                     </div>
                 </div>
             </div>
@@ -84,14 +79,14 @@
                     <h3>Número de Celular</h3>
                     <div class="icon-box">
                         <i class="fas fa-tablet" style="transform: scale(0.8, 1);"></i>
-                        <input type="text" id="numero_celular" name="numero_celular" placeholder="Ingrese su número de celular">
+                        <input type="text" placeholder="Ingrese su número de celular">
                     </div>
                 </div>
                 <div class="dato">
                     <h3>Teléfono</h3>
                     <div class="icon-box">
                         <i class="fas fa-phone"></i>
-                        <input type="text" id="telefono" name="telefono" placeholder="Ingrese su teléfono">
+                        <input type="text" placeholder="Ingrese su teléfono">
                     </div>
                 </div>
             </div>
@@ -100,19 +95,19 @@
                 <div class="dato">
                     <h3>País</h3>
                     <div class="icon-box">
-                        <input type="text" id="pais" name="pais" placeholder="Ingrese el país">
+                        <input type="text" placeholder="Ingrese el país">
                     </div>
                 </div>
                 <div class="dato">
                     <h3>Departamento</h3>
                     <div class="icon-box">
-                        <input type="text" id="departamento" name="departamento" placeholder="Ingrese el departamento">
+                        <input type="text" placeholder="Ingrese el departamento">
                     </div>
                 </div>
                 <div class="dato">
                     <h3>Provincia</h3>
                     <div class="icon-box">
-                        <input type="text" id="provincia" name="provincia" placeholder="Ingrese la provincia">
+                        <input type="text" placeholder="Ingrese la provincia">
                     </div>
                 </div>
             </div>
@@ -121,21 +116,13 @@
                 <div class="dato">
                     <h3>Foto</h3>
                     <div class="image-box">
-                        <img src="../../../../assets/User-img.png">
+                        <img *ngIf="selectedImage" [src]="getObjectUrl(selectedImage)">
+                        <img *ngIf="!selectedImage" src="../../../../assets/User-img.png">
                     </div>
                     <div class="button-container" style="justify-content: left;">
-                        <button type="submit" class="btn btn-danger" routerLink="/completar_datos"><b>Subir</b></button>
-                        <button type="submit" class="btn btn-danger" routerLink="/completar_datos"><b>Borrar</b></button>
-                    </div>
-                </div>
-                <div class="dato">
-                    <h3>Firma</h3>
-                    <div class="image-box">
-                        <img src="../../../../assets/User-img.png">
-                    </div>
-                    <div class="button-container" style="justify-content: left;">
-                        <button type="submit" class="btn btn-danger" routerLink="/completar_datos"><b>Subir</b></button>
-                        <button type="submit" class="btn btn-danger" routerLink="/completar_datos"><b>Borrar</b></button>
+                        <input type="file" #fileInput style="display: none" (change)="onFileSelected($event)">
+                        <button type="button" class="btn btn-danger" (click)="fileInput.click()"><b>Subir</b></button>
+                        <button type="button" class="btn btn-danger" (click)="borrarImagen()"><b>Borrar</b></button>
                     </div>
                 </div>
             </div>
@@ -148,11 +135,11 @@
                 <div class="line">
                     <div class="icon-box">
                         <label>Masculino</label>
-                        <input type="checkbox" id="masculino" name="masculino">
+                        <input type="checkbox">
                     </div>
                     <div class="icon-box">
                         <label>Femenino</label>
-                        <input type="checkbox" id="femenino" name="femenino">
+                        <input type="checkbox">
                     </div>
                 </div>
             </div>
@@ -161,11 +148,11 @@
                 <div class="line">
                     <div class="icon-box">
                         <label>Si</label>
-                        <input type="checkbox" id="donador-s" name="donador-s">
+                        <input type="checkbox">
                     </div>
                     <div class="icon-box">
                         <label>No</label>
-                        <input type="checkbox" id="donador-n" name="donador-n">
+                        <input type="checkbox">
                     </div>
                 </div>
             </div>
@@ -174,11 +161,11 @@
                 <div class="line">
                     <div class="icon-box">
                         <label>Si</label>
-                        <input type="checkbox" id="casado-s" name="casado-s">
+                        <input type="checkbox">
                     </div>
                     <div class="icon-box">
                         <label>No</label>
-                        <input type="checkbox" id="casado-n" name="casado-n">
+                        <input type="checkbox">
                     </div>
                 </div>
             </div>
@@ -187,11 +174,11 @@
                 <div class="line">
                     <div class="icon-box">
                         <label>Si</label>
-                        <input type="checkbox" id="trabajador-s" name="trabajador-s">
+                        <input type="checkbox">
                     </div>
                     <div class="icon-box">
                         <label>No</label>
-                        <input type="checkbox" id="trabajador-n" name="trabajador-n">
+                        <input type="checkbox">
                     </div>
                 </div>
             </div>
@@ -201,7 +188,7 @@
                 <div class="dato" style="width: 100%;">
                     <h3>Numero de hijos</h3>
                     <div class="icon-box">
-                        <input type="text" id="usuario" name="usuario" placeholder="Ingrese el numero de hijos">
+                        <input type="text" placeholder="Ingrese el numero de hijos">
                     </div>
                 </div>
             </div>
@@ -209,7 +196,7 @@
                 <div class="dato" style="width: 100%;">
                     <h3>Peso</h3>
                     <div class="icon-box">
-                        <input type="text" id="usuario" name="usuario" placeholder="Ingrese su peso">
+                        <input type="text" placeholder="Ingrese su peso">
                     </div>
                 </div>
             </div>
@@ -217,7 +204,7 @@
                 <div class="dato" style="width: 100%;">
                     <h3>Talla</h3>
                     <div class="icon-box">
-                        <input type="text" id="usuario" name="usuario" placeholder="Ingrese su talla">
+                        <input type="text" placeholder="Ingrese su talla">
                     </div>
                 </div>
             </div>
@@ -225,7 +212,7 @@
                 <div class="dato" style="width: 100%;">
                     <h3>Religión</h3>
                     <div class="icon-box">
-                        <input type="text" id="usuario" name="usuario" placeholder="Ingrese la religión">
+                        <input type="text" placeholder="Ingrese la religión">
                     </div>
                 </div>
             </div>
@@ -233,7 +220,7 @@
                 <div class="dato" style="width: 100%;">
                     <h3>Lengua Materna</h3>
                     <div class="icon-box">
-                        <input type="text" id="usuario" name="usuario" placeholder="Ingrese la lengua materna">
+                        <input type="text" placeholder="Ingrese la lengua materna">
                     </div>
                 </div>
             </div>
@@ -245,13 +232,13 @@
                 <div class="dato">
                     <h3>Lugar de procedencia</h3>
                     <div class="icon-box">
-                        <input type="text" id="usuario" name="usuario" placeholder="Ingrese el lugar de procedencia">
+                        <input type="text" placeholder="Ingrese el lugar de procedencia">
                     </div>
                 </div>
                 <div class="dato">
                     <h3>Dirección</h3>
                     <div class="icon-box">
-                        <input type="text" id="usuario" name="usuario" placeholder="Ingrese la dirección">
+                        <input type="text" placeholder="Ingrese la dirección">
                     </div>
                 </div>
             </div>
@@ -259,13 +246,13 @@
                 <div class="dato">
                     <h3>Color de piel</h3>
                     <div class="icon-box">
-                        <input type="text" id="usuario" name="usuario" placeholder="Ingrese color de piel">
+                        <input type="text" placeholder="Ingrese color de piel">
                     </div>
                 </div>
                 <div class="dato">
                     <h3>Raza</h3>
                     <div class="icon-box">
-                        <input type="text" id="usuario" name="usuario" placeholder="Ingrese la raza">
+                        <input type="text" placeholder="Ingrese la raza">
                     </div>
                 </div>
             </div>
@@ -273,59 +260,53 @@
                 <div class="dato">
                     <h3>Grupo Sanguineo</h3>
                     <div class="icon-box">
-                        <input type="text" id="usuario" name="usuario" placeholder="Ingrese el grupo sanguineo">
+                        <input type="text" placeholder="Ingrese el grupo sanguineo">
                     </div>
                 </div>
                 <div class="dato">
                     <h3>Nivel de Estudio</h3>
                     <div class="icon-box">
-                        <input type="text" id="usuario" name="usuario" placeholder="Ingrese el nivel de estudio">
+                        <input type="text" placeholder="Ingrese el nivel de estudio">
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="antecedentes-container" style="display: flex;">
+        <div class="antecedentes-container" style="display: flex; gap: 10px;">
     
             <div class="sub-container" style="width: 50%;">
                 <div class="formulario">
                     <div class="line">
                         <div class="dato" style="width: 100%;">
                             <h3>Hábitos</h3>
-                            <div class="icon-box">
-                                <input type="text" id="usuario" name="usuario">
-                            </div>
                         </div>
                     </div>
-                    <div class="line">
+                    <div *ngFor="let habito of habitos; let i = index" class="line">
                         <div class="dato" style="width: 100%;">
                             <div class="icon-box">
-                                <input type="text" id="usuario" name="usuario">
+                                <input type="text" #habito>
                             </div>
                         </div>
                     </div>
                     <div class="button-container">
-                        <button type="submit" class="btn btn-danger"><i class="fa fa-plus-circle" style="font-size: 20px;"></i></button>
+                        <button type="submit" class="btn btn-danger" (click)="agregarHabitos()"><i class="fa fa-plus-circle" style="font-size: 20px;"></i></button>
                     </div>
                 </div>
                 <div class="formulario">
                     <div class="line">
                         <div class="dato" style="width: 100%;">
                             <h3>Ant. Familiares</h3>
-                            <div class="icon-box">
-                                <input type="text" id="usuario" name="usuario">
-                            </div>
                         </div>
                     </div>
-                    <div class="line">
+                    <div *ngFor="let antfamiliar of antfamiliares; let i = index" class="line">
                         <div class="dato" style="width: 100%;">
                             <div class="icon-box">
-                                <input type="text" id="usuario" name="usuario">
+                                <input type="text" #antfamiliar>
                             </div>
                         </div>
                     </div>
                     <div class="button-container">
-                        <button type="submit" class="btn btn-danger"><i class="fa fa-plus-circle" style="font-size: 20px;"></i></button>
+                        <button type="submit" class="btn btn-danger" (click)="agregarAntFamiliar()"><i class="fa fa-plus-circle" style="font-size: 20px;"></i></button>
                     </div>
                 </div>
             </div>
@@ -335,46 +316,40 @@
                     <div class="line">
                         <div class="dato" style="width: 100%;">
                             <h3>Antecedentes</h3>
-                            <div class="icon-box">
-                                <input type="text" id="usuario" name="usuario">
-                            </div>
                         </div>
                     </div>
-                    <div class="line">
+                    <div *ngFor="let antecedente of antecedentes; let i = index" class="line">
                         <div class="dato" style="width: 100%;">
                             <div class="icon-box">
-                                <input type="text" id="usuario" name="usuario">
+                                <input type="text" #antecedente>
                             </div>
                         </div>
                     </div>
                     <div class="button-container">
-                        <button type="submit" class="btn btn-danger"><i class="fa fa-plus-circle" style="font-size: 20px;"></i></button>
+                        <button type="submit" class="btn btn-danger" (click)="agregarAntecedente()"><i class="fa fa-plus-circle" style="font-size: 20px;"></i></button>
                     </div>
                 </div>
                 <div class="formulario">
                     <div class="line">
                         <div class="dato" style="width: 100%;">
                             <h3>Ant. Epidemiológicos</h3>
-                            <div class="icon-box">
-                                <input type="text" id="usuario" name="usuario">
-                            </div>
                         </div>
                     </div>
-                    <div class="line">
+                    <div *ngFor="let antepidemiologico of antepidemiologicos; let i = index" class="line">
                         <div class="dato" style="width: 100%;">
                             <div class="icon-box">
-                                <input type="text" id="usuario" name="usuario">
+                                <input type="text" #antepidemiologico>
                             </div>
                         </div>
                     </div>
                     <div class="button-container">
-                        <button type="submit" class="btn btn-danger"><i class="fa fa-plus-circle" style="font-size: 20px;"></i></button>
+                        <button type="submit" class="btn btn-danger" (click)="agregarAntEpidemiologico()"><i class="fa fa-plus-circle" style="font-size: 20px;"></i></button>
                     </div>
                 </div>
             </div>
         </div>
         <div class="button-container">
-            <button type="submit" class="btn btn-danger"><b>Guardar</b></button>
+            <button type="submit" class="btn btn-danger" style="width: 200px; font-size: 16px;"><b>Guardar</b></button>
         </div>
     </div>
 </div>

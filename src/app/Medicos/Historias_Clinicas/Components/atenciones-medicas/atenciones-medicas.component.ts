@@ -1,8 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, TemplateRef} from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Observable, of } from 'rxjs';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { VerHojaAtencionComponent } from './ver-hoja-atencion/ver-hoja-atencion.component';
+import { EditarHojaAtencionComponent } from './editar-hoja-atencion/editar-hoja-atencion.component';
 
 interface Atenciones_Medicas {
   fecha: string;
@@ -17,12 +20,17 @@ interface Atenciones_Medicas {
 @Component({
   selector: 'atenciones-medicas',
   standalone: true,
-  imports: [RouterModule, CommonModule, FontAwesomeModule ],
+  imports: [RouterModule, CommonModule, FontAwesomeModule, EditarHojaAtencionComponent, VerHojaAtencionComponent ],
   templateUrl: './atenciones-medicas.component.html',
-  styleUrl: './atenciones-medicas.component.sass'
+  styleUrl: './atenciones-medicas.component.sass',
 })
 export class AtencionesMedicasComponent {
   atenciones: Atenciones_Medicas[] = [];
+  private modalService = inject(NgbModal);
+
+	openModal(content: TemplateRef<any>) {
+		this.modalService.open(content, { size: 'xl', centered: true });
+	}
 
   ngOnInit() {
     this.getPeople('').subscribe(atenciones => {

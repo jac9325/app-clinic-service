@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { NgbCalendar, NgbDatepickerModule, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { JsonPipe } from '@angular/common';
+import { FechaSeleccionadaService } from '../../Services/Fecha_Seleccionada/fecha-seleccionada.service';
 
 interface Actividad {
   nombre: string;
@@ -28,7 +29,7 @@ export class CalendarioComponent {
   actividades: Actividad[] = [];
   actividadesFiltradas: Actividad[] = [];
 
-  constructor(private cdr: ChangeDetectorRef) {
+  constructor(private cdr: ChangeDetectorRef, private fechaSeleccionadaService: FechaSeleccionadaService) {
     this.getActividades();
   }
 
@@ -40,18 +41,22 @@ export class CalendarioComponent {
     this.actividadesFiltradas = this.actividades.filter(actividad => this.compararFechas(actividad.fecha, this.model));
     console.log('Fecha seleccionada:', this.model); // Agrega esta línea
     this.cdr.markForCheck();
+    this.fechaSeleccionadaService.establecerFechaSeleccionada(this.model);
   }
 
   getActividades() {
     // Aquí debes implementar la lógica para recuperar las actividades desde el backend.
     // Por ahora, solo voy a generar algunas actividades de ejemplo.
     this.actividades = [
-      { nombre: 'Actividad 1', horaInicio: '08:00', horaFin: '10:00', fecha: { year: 2024, month: 2, day: 24 } },
-      { nombre: 'Actividad 2', horaInicio: '10:30', horaFin: '12:00', fecha: { year: 2024, month: 2, day: 24 } },
-      { nombre: 'Actividad 3', horaInicio: '13:00', horaFin: '15:00', fecha: { year: 2024, month: 2, day: 25 } },
-      { nombre: 'Actividad 4', horaInicio: '15:30', horaFin: '17:00', fecha: { year: 2024, month: 2, day: 26 } },
-      { nombre: 'Actividad 5', horaInicio: '17:30', horaFin: '19:00', fecha: { year: 2024, month: 2, day: 27 } }
+      { nombre: 'Actividad 1', horaInicio: '08:00', horaFin: '10:00', fecha: { year: 2024, month: 4, day: 6 } },
+      { nombre: 'Actividad 1', horaInicio: '08:00', horaFin: '10:00', fecha: { year: 2024, month: 4, day: 6 } },
+      { nombre: 'Actividad 1', horaInicio: '08:00', horaFin: '10:00', fecha: { year: 2024, month: 4, day: 6 } },
+      { nombre: 'Actividad 1', horaInicio: '08:00', horaFin: '10:00', fecha: { year: 2024, month: 4, day: 6 } },
+      { nombre: 'Actividad 2', horaInicio: '10:30', horaFin: '12:00', fecha: { year: 2024, month: 4, day: 6 } },
+      { nombre: 'Actividad 3', horaInicio: '13:00', horaFin: '15:00', fecha: { year: 2024, month: 4, day: 5 } },
+      { nombre: 'Actividad 4', horaInicio: '15:30', horaFin: '17:00', fecha: { year: 2024, month: 4, day: 6 } },
+      { nombre: 'Actividad 5', horaInicio: '17:30', horaFin: '19:00', fecha: { year: 2024, month: 4, day: 5 } }
     ];
-    this.filtrarActividadesPorFecha();
+    this.filtrarActividadesPorFecha();  
   }
 }

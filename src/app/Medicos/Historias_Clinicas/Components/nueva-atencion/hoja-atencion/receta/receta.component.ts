@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormGroup, FormControl, AbstractControl } from '@angular/forms';
+import { FormArray, FormGroup, FormControl } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms'; // Importa ReactiveFormsModule aquí
+import { ExportPdfService } from '../../../../Services/export-pdf/export-pdf.service'; 
 
 
 @Component({
@@ -14,6 +15,8 @@ import { ReactiveFormsModule } from '@angular/forms'; // Importa ReactiveFormsMo
 
 export class RecetaComponent implements OnInit {
   form!: FormGroup;
+
+  constructor(private exportPdfService: ExportPdfService) {}
 
   ngOnInit() {
     this.form = new FormGroup({
@@ -57,4 +60,14 @@ export class RecetaComponent implements OnInit {
   isRowFilled(row: FormGroup): boolean {
     return Object.values(row.controls).every(control => control.value);
   }
+
+
+  getTableData(): any[] {
+    return this.formRows.map(row => [
+      row.get('farmaco')?.value || '', 
+      row.get('concentracion')?.value || '', 
+      row.get('frecuencia')?.value || ''
+    ]);
+  }
+
 }

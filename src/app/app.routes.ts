@@ -13,7 +13,6 @@ import { CajaCerradaComponent } from './Medicos/Caja/Components/Alerta/caja-cerr
 import { CajaComponent } from './Medicos/Caja/caja.component';
 import { ConfiguracionesComponent } from './Medicos/Configuraciones/configuraciones.component';
 import { CuentaPacienteComponent } from './Medicos/Cuenta_Paciente/cuenta_paciente.component';
-import { BuscadorComponent } from './Medicos/Historias_Clinicas/Components/buscador/buscador.component';
 import { HomeComponent } from './Medicos/Home/home.component';
 import { NuevaCitaComponent } from './Medicos/Nueva_Cita/nueva-cita.component';
 import { TablaPacientesComponent } from './Medicos/Pacientes/Components/Tabla_pacientes/tabla_pacientes.component';
@@ -22,6 +21,7 @@ import { ImagenesComponent } from './Medicos/Pacientes/Components/pendientes/ima
 import { PacientesComponent } from './Medicos/Pacientes/pacientes.component';
 import { NavegacionComponent } from './Navegacion/navegacion.component';
 import { authGuard } from './auth.guard';
+
 
 export const routes: Routes = [
   // {
@@ -117,9 +117,5 @@ export const routes: Routes = [
   {
     path: 'nueva_cita',
     component: NuevaCitaComponent,
-  },
-  {
-    path: 'buscador',
-    component: BuscadorComponent,
   }
 ];
