@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { selectEspecialistaMedico } from '../../../../../States/Login/login.selector';
+import { AppState } from '../../../../../States/app.state';
 
 
 @Component({
@@ -10,13 +13,37 @@ import { RouterModule } from '@angular/router';
   styleUrl: './bienvenida.component.sass'
 })
 export class BienvenidaComponent {
-  nombre: string = 'Doctor!'; // Valor por defecto
-  saludo: string = 'Buenos días'; // Valor por defecto
-
-  constructor() {
-    this.actualizarSaludo();
+  nombre: string; // Valor por defecto
+  saludo: string; // Valor por defecto
+    //especialista:Especialista
+  //especialista$: Observable<Especialista>;
+  especialistaNombre: string;
+  constructor(private store: Store<AppState>) {
+    this.actualizarSaludo(); 
   }
-
+  especialista$ = this.store.select(selectEspecialistaMedico);
+  ngOnInit(): void {
+    debugger;
+    // Seleccionar datos del estado inicial usando el selector
+    this.especialista$.subscribe(especialista => {
+      this.especialistaNombre = especialista.primer_nombre;
+       // Acceder a la información del especialista
+    });
+    // this.store.pipe(
+    //   select(selectorLoginMedicoState),
+    //   catchError(error => {
+    //     console.error('Error al suscribirse al estado:', error);
+    //     // Puedes manejar el error aquí o lanzarlo nuevamente para que otros manejen el error más adelante
+    //     return of(null); // Devuelve un observable vacío o con un valor por defecto
+    //   })
+    // ).subscribe(especialista => {
+      
+    //   if (especialista) {
+    //     console.log(especialista);
+    //     // Aquí puedes realizar cualquier otra lógica necesaria con los datos obtenidos
+    //   }
+    // });
+  }
   // Método para actualizar el saludo en función de la hora del día
   actualizarSaludo() {
     const hora = new Date().getHours();

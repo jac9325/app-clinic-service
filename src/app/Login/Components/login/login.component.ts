@@ -2,7 +2,10 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { RolesSend, UsuarioAndRoles } from '../../../Models/Usuario/UsuarioAndRoles';
+import { loginMedicoSuccess } from '../../../States/Login/login.actions';
+import { AppState } from '../../../States/app.state';
 import { LoginService } from '../../Services/ServicesLogin/Login.service';
 import { StorageService } from '../../Services/ServicesLogin/storage.service';
 import { UsuarioService } from '../../Services/ServicesUsuario/Usuario.service';
@@ -31,7 +34,8 @@ import { UsuarioService } from '../../Services/ServicesUsuario/Usuario.service';
       private storageService: StorageService,
       private usuarioAndRoles: UsuarioAndRoles,
       private usuarioService: UsuarioService,
-      private router: Router
+      private router: Router,
+      private store:Store<AppState>
       ) { }
 
     ngOnInit(): void {
@@ -54,29 +58,27 @@ import { UsuarioService } from '../../Services/ServicesUsuario/Usuario.service';
           this.storageService.saveUser(token);
           this.isLoginFailed = false;
           this.isLoggedIn = true;
-          
+         
           //-- como la sesion es exitosa se procede a buscar el usuario por el username
           this.usuarioService.getUserWihtAllRols(data.username).subscribe({
             next: (data: any) => {
-
+              debugger;
               if (data.status == 200) {
                 this.usuarioAndRoles = data.data;
-                console.log(data.data);
-                this.router.navigate(['']);
-                this.handleDashBoard(data.data.rolesSend);
+                this.store.dispatch(loginMedicoSuccess({ data: data.data }));
+                //this.handleDashBoard(data.data.rolesSend);
+                this.store.subscribe(state => console.log(state));
+                this.router.navigateByUrl('')
 
               } else {
                 // El status no es 200
                 this.errorMessage = data.message;
               }
             },
-
             error: err => {
-              console.error("Ocurrió un error al obtener los roles del usuario:", err);
-              
+              console.error("Ocurrió un error al obtener los roles del usuario:", err);              
             }
-          });
-          
+          });         
         error: err => {
           this.errorMessage = err.error.message;
           this.isLoginFailed = true;
@@ -88,10 +90,6 @@ import { UsuarioService } from '../../Services/ServicesUsuario/Usuario.service';
     };
 
     handleDashBoard(roles: RolesSend): void{
-    }
-
-    reloadPage(): void {
-      window.location.reload();
     }
   };
 
