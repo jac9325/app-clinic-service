@@ -4,22 +4,16 @@
             <div class="line">
                 <div class="dato">
                     <h3>Tipo de Documento</h3>
-                    <div ngbDropdown class="d-inline-block">
-                        <button type="button" class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>
-                            Seleccione
-                        </button>
-                        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                            <button ngbDropdownItem>DNI</button>
-                            <button ngbDropdownItem>Carnet de Extrangería</button>
-                            <button ngbDropdownItem>Pasaporte</button>
-                        </div>
-                    </div>
+                    <select class="custom-select rounded-left" [(ngModel)]="paciente.tipo_documento" disabled>
+                        <option [value]="'DNI'">DNI</option>
+                        <option [value]="'Carnet de Extrangería'">Carnet de Extrangería</option>
+                    </select>
                 </div>
                 <div class="dato">
                     <h3>Número de Documento</h3>
                     <div class="icon-box">
                         <i class="fas fa-id-card"></i>
-                        <input type="text" id="numero_documento" name="numero_documento" placeholder="Ingrese el numero de Documento">
+                        <input type="text" [(ngModel)]="paciente.numero_documento" placeholder="Ingrese el numero de Documento" disabled>
                     </div>
                 </div>
             </div>
@@ -29,14 +23,14 @@
                     <h3>Primer Nombre</h3>
                     <div class="icon-box">
                         <i class="fas fa-user"></i>
-                        <input type="text" id="primer_nombre" name="primer_nombre" placeholder="Ingrese el primer nombre">
+                        <input type="text" [(ngModel)]="paciente.primer_nombre" placeholder="Ingrese el primer nombre" disabled>
                     </div>
                 </div>
                 <div class="dato">
                     <h3>Segundo Nombre</h3>
                     <div class="icon-box">
                         <i class="fas fa-user"></i>
-                        <input type="text" id="segundo_nombre" name="segundo_nombre" placeholder="Ingrese el segundo nombre">
+                        <input type="text" [(ngModel)]="paciente.segundo_nombre" placeholder="Ingrese el segundo nombre" disabled>
                     </div>
                 </div>
             </div>
@@ -46,14 +40,14 @@
                     <h3>Primer Apellido</h3>
                     <div class="icon-box">
                         
-                        <input type="text" id="primer_apellido" name="primer_apellido" placeholder="Ingrese el primer apellido">
+                        <input type="text" [(ngModel)]="paciente.primer_apellido" placeholder="Ingrese el primer apellido" disabled>
                     </div>
                 </div>
                 <div class="dato">
                     <h3>Segundo Apellido</h3>
                     <div class="icon-box">
                         
-                        <input type="text" id="segundo_apellido" name="segundo_apellido" placeholder="Ingrese el segundo apellido">
+                        <input type="text" [(ngModel)]="paciente.segundo_apellido" placeholder="Ingrese el segundo apellido" disabled>
                     </div>
                 </div>
             </div>
@@ -62,14 +56,14 @@
                 <div class="dato">
                     <h3>Fecha de Nacimiento</h3>
                     <div class="icon-box">
-                        <input type="date" id="fecha" name="fecha" placeholder="Ingrese su fecha de naciemiento">
+                        <input type="date" [(ngModel)]="paciente.fecha_nacimiento" placeholder="Ingrese su fecha de naciemiento" disabled>
                     </div>
                 </div>
                 <div class="dato">
                     <h3>Correo Electrónico</h3>
                     <div class="icon-box">
                         <i class="fas fa-envelope"></i>
-                        <input type="text" id="correo_electronico" name="correo_electronico" placeholder="Ingrese su correo electrónico">
+                        <input type="text" [(ngModel)]="paciente.correo_electronico" placeholder="Ingrese su correo electrónico" disabled>
                     </div>
                 </div>
             </div>
@@ -79,14 +73,14 @@
                     <h3>Número de Celular</h3>
                     <div class="icon-box">
                         <i class="fas fa-tablet" style="transform: scale(0.8, 1);"></i>
-                        <input type="text" id="numero_celular" name="numero_celular" placeholder="Ingrese su número de celular">
+                        <input type="text" [(ngModel)]="paciente.numero_celular" placeholder="Ingrese su número de celular" disabled>
                     </div>
                 </div>
                 <div class="dato">
                     <h3>Teléfono</h3>
                     <div class="icon-box">
                         <i class="fas fa-phone"></i>
-                        <input type="text" id="telefono" name="telefono" placeholder="Ingrese su teléfono">
+                        <input type="text" [(ngModel)]="paciente.telefono" placeholder="Ingrese su teléfono" disabled>
                     </div>
                 </div>
             </div>
@@ -95,19 +89,19 @@
                 <div class="dato">
                     <h3>País</h3>
                     <div class="icon-box">
-                        <input type="text" id="pais" name="pais" placeholder="Ingrese el país">
+                        <input type="text" [(ngModel)]="paciente.pais" placeholder="Ingrese el país" disabled>
                     </div>
                 </div>
                 <div class="dato">
                     <h3>Departamento</h3>
                     <div class="icon-box">
-                        <input type="text" id="departamento" name="departamento" placeholder="Ingrese el departamento">
+                        <input type="text" [(ngModel)]="paciente.departamento" placeholder="Ingrese el departamento" disabled>
                     </div>
                 </div>
                 <div class="dato">
                     <h3>Provincia</h3>
                     <div class="icon-box">
-                        <input type="text" id="provincia" name="provincia" placeholder="Ingrese la provincia">
+                        <input type="text" [(ngModel)]="paciente.provincia" placeholder="Ingrese la provincia" disabled>
                     </div>
                 </div>
             </div>
@@ -116,7 +110,7 @@
                 <div class="dato">
                     <h3>Foto</h3>
                     <div class="image-box">
-                        <img src="../../../../assets/User-img.png">
+                        <img src={{paciente.imagen}}>
                     </div>
                 </div>
             </div>
@@ -129,11 +123,11 @@
                 <div class="line">
                     <div class="icon-box">
                         <label>Masculino</label>
-                        <input type="checkbox" id="masculino" name="masculino">
+                        <input type="checkbox" [(ngModel)]="esMasculino" disabled>
                     </div>
                     <div class="icon-box">
                         <label>Femenino</label>
-                        <input type="checkbox" id="femenino" name="femenino">
+                        <input type="checkbox" [(ngModel)]="esFemenino" disabled>
                     </div>
                 </div>
             </div>
@@ -142,11 +136,11 @@
                 <div class="line">
                     <div class="icon-box">
                         <label>Si</label>
-                        <input type="checkbox" id="donador-s" name="donador-s">
+                        <input type="checkbox" [(ngModel)]="esDonadorP" disabled>
                     </div>
                     <div class="icon-box">
                         <label>No</label>
-                        <input type="checkbox" id="donador-n" name="donador-n">
+                        <input type="checkbox" [(ngModel)]="esDonadorN" disabled>
                     </div>
                 </div>
             </div>
@@ -155,11 +149,11 @@
                 <div class="line">
                     <div class="icon-box">
                         <label>Si</label>
-                        <input type="checkbox" id="casado-s" name="casado-s">
+                        <input type="checkbox" [(ngModel)]="esCasadoP" disabled>
                     </div>
                     <div class="icon-box">
                         <label>No</label>
-                        <input type="checkbox" id="casado-n" name="casado-n">
+                        <input type="checkbox" [(ngModel)]="esCasadoN" disabled>
                     </div>
                 </div>
             </div>
@@ -168,11 +162,11 @@
                 <div class="line">
                     <div class="icon-box">
                         <label>Si</label>
-                        <input type="checkbox" id="trabajador-s" name="trabajador-s">
+                        <input type="checkbox" [(ngModel)]="esTrabajadorP" disabled>
                     </div>
                     <div class="icon-box">
                         <label>No</label>
-                        <input type="checkbox" id="trabajador-n" name="trabajador-n">
+                        <input type="checkbox" [(ngModel)]="esTrabajadorN" disabled>
                     </div>
                 </div>
             </div>
@@ -182,7 +176,7 @@
                 <div class="dato" style="width: 100%;">
                     <h3>Numero de hijos</h3>
                     <div class="icon-box">
-                        <input type="text" id="usuario" name="usuario" placeholder="Ingrese el numero de hijos">
+                        <input type="text" [(ngModel)]="paciente.numero_hijos" placeholder="Ingrese el numero de hijos" disabled>
                     </div>
                 </div>
             </div>
@@ -190,7 +184,7 @@
                 <div class="dato" style="width: 100%;">
                     <h3>Peso</h3>
                     <div class="icon-box">
-                        <input type="text" id="usuario" name="usuario" placeholder="Ingrese su peso">
+                        <input type="text" [(ngModel)]="paciente.peso" placeholder="Ingrese su peso" disabled>
                     </div>
                 </div>
             </div>
@@ -198,7 +192,7 @@
                 <div class="dato" style="width: 100%;">
                     <h3>Talla</h3>
                     <div class="icon-box">
-                        <input type="text" id="usuario" name="usuario" placeholder="Ingrese su talla">
+                        <input type="text" [(ngModel)]="paciente.talla" placeholder="Ingrese su talla" disabled>
                     </div>
                 </div>
             </div>
@@ -206,7 +200,7 @@
                 <div class="dato" style="width: 100%;">
                     <h3>Religión</h3>
                     <div class="icon-box">
-                        <input type="text" id="usuario" name="usuario" placeholder="Ingrese la religión">
+                        <input type="text" [(ngModel)]="paciente.religion" placeholder="Ingrese la religión" disabled>
                     </div>
                 </div>
             </div>
@@ -214,7 +208,7 @@
                 <div class="dato" style="width: 100%;">
                     <h3>Lengua Materna</h3>
                     <div class="icon-box">
-                        <input type="text" id="usuario" name="usuario" placeholder="Ingrese la lengua materna">
+                        <input type="text" [(ngModel)]="paciente.lengua_materna" placeholder="Ingrese la lengua materna" disabled>
                     </div>
                 </div>
             </div>
@@ -226,13 +220,13 @@
                 <div class="dato">
                     <h3>Lugar de procedencia</h3>
                     <div class="icon-box">
-                        <input type="text" id="usuario" name="usuario" placeholder="Ingrese el lugar de procedencia">
+                        <input type="text" [(ngModel)]="paciente.lugar_procedencia" placeholder="Ingrese el lugar de procedencia" disabled>
                     </div>
                 </div>
                 <div class="dato">
                     <h3>Dirección</h3>
                     <div class="icon-box">
-                        <input type="text" id="usuario" name="usuario" placeholder="Ingrese la dirección">
+                        <input type="text" [(ngModel)]="paciente.direccion" placeholder="Ingrese la dirección" disabled>
                     </div>
                 </div>
             </div>
@@ -240,13 +234,13 @@
                 <div class="dato">
                     <h3>Color de piel</h3>
                     <div class="icon-box">
-                        <input type="text" id="usuario" name="usuario" placeholder="Ingrese color de piel">
+                        <input type="text" [(ngModel)]="paciente.color_piel" placeholder="Ingrese color de piel" disabled>
                     </div>
                 </div>
                 <div class="dato">
                     <h3>Raza</h3>
                     <div class="icon-box">
-                        <input type="text" id="usuario" name="usuario" placeholder="Ingrese la raza">
+                        <input type="text" [(ngModel)]="paciente.raza" placeholder="Ingrese la raza" disabled>
                     </div>
                 </div>
             </div>
@@ -254,13 +248,13 @@
                 <div class="dato">
                     <h3>Grupo Sanguineo</h3>
                     <div class="icon-box">
-                        <input type="text" id="usuario" name="usuario" placeholder="Ingrese el grupo sanguineo">
+                        <input type="text" [(ngModel)]="paciente.grupo_sanguineo" placeholder="Ingrese el grupo sanguineo" disabled>
                     </div>
                 </div>
                 <div class="dato">
                     <h3>Nivel de Estudio</h3>
                     <div class="icon-box">
-                        <input type="text" id="usuario" name="usuario" placeholder="Ingrese el nivel de estudio">
+                        <input type="text" [(ngModel)]="paciente.nivel_estudio" placeholder="Ingrese el nivel de estudio" disabled>
                     </div>
                 </div>
             </div>
@@ -272,16 +266,13 @@
                 <div class="formulario">
                     <div class="line">
                         <div class="dato" style="width: 100%;">
-                            <h3>Hábitos</h3>
-                            <div class="icon-box">
-                                <input type="text" id="usuario" name="usuario">
-                            </div>
+                            <h3>Habitos: </h3>
                         </div>
                     </div>
-                    <div class="line">
+                    <div class="line" *ngFor="let habito of paciente.habitos">
                         <div class="dato" style="width: 100%;">
                             <div class="icon-box">
-                                <input type="text" id="usuario" name="usuario">
+                                <input type="text" [value]="habito" disabled>
                             </div>
                         </div>
                     </div>
@@ -290,15 +281,12 @@
                     <div class="line">
                         <div class="dato" style="width: 100%;">
                             <h3>Ant. Familiares</h3>
-                            <div class="icon-box">
-                                <input type="text" id="usuario" name="usuario">
-                            </div>
                         </div>
                     </div>
-                    <div class="line">
+                    <div class="line" *ngFor="let antfamiliares of paciente.antecedentes_familiares">
                         <div class="dato" style="width: 100%;">
                             <div class="icon-box">
-                                <input type="text" id="usuario" name="usuario">
+                                <input type="text" [value]="antfamiliares" disabled>
                             </div>
                         </div>
                     </div>
@@ -310,15 +298,12 @@
                     <div class="line">
                         <div class="dato" style="width: 100%;">
                             <h3>Antecedentes</h3>
-                            <div class="icon-box">
-                                <input type="text" id="usuario" name="usuario">
-                            </div>
                         </div>
                     </div>
-                    <div class="line">
+                    <div class="line" *ngFor="let antecedente of paciente.antecedentes">
                         <div class="dato" style="width: 100%;">
                             <div class="icon-box">
-                                <input type="text" id="usuario" name="usuario">
+                                <input type="text" [value]="antecedente" disabled>
                             </div>
                         </div>
                     </div>
@@ -327,15 +312,12 @@
                     <div class="line">
                         <div class="dato" style="width: 100%;">
                             <h3>Ant. Epidemiológicos</h3>
-                            <div class="icon-box">
-                                <input type="text" id="usuario" name="usuario">
-                            </div>
                         </div>
                     </div>
-                    <div class="line">
+                    <div class="line" *ngFor="let antepidemiologico of paciente.antecedentes_epidemiologicos">
                         <div class="dato" style="width: 100%;">
                             <div class="icon-box">
-                                <input type="text" id="usuario" name="usuario">
+                                <input type="text" [value]="antepidemiologico" disabled>
                             </div>
                         </div>
                     </div>

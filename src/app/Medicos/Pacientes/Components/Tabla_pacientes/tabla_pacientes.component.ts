@@ -13,11 +13,10 @@ import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { VerPacienteComponent } from './ver-paciente/ver-paciente.component';
 import { EditarPacienteComponent } from './editar-paciente/editar-paciente.component';
+import { DatosModalService } from '../../Services/Datos_Modal/datos-modal.service';
 
 
 interface Paciente {
-  numero: string;
-  name: string;
   ultima_atencion: string;
   numero_historia: string;
   numero_documento: string;
@@ -29,6 +28,35 @@ interface Paciente {
   alergias: string[];
   enfermedades_cronicas: string[];
   fecha_cita: NgbDateStruct;
+  id_paciente: number;
+  tipo_documento: string;
+  primer_nombre: string;
+  segundo_nombre: string;
+  primer_apellido: string;
+  segundo_apellido: string;
+  fecha_nacimiento: string;
+  correo_electronico: string;
+  numero_celular: string;
+  telefono: string;
+  pais: string;
+  departamento: string;
+  provincia: string;
+  es_donador: number;
+  es_casado: number;
+  es_trabajador: number;
+  numero_hijos: number;
+  religion: string;
+  lengua_materna: string;
+  lugar_procedencia: string;
+  direccion: string;
+  color_piel: string;
+  raza: string;
+  grupo_sanguineo: string;
+  nivel_estudio: string;
+  habitos: string[];
+  antecedentes: string[];
+  antecedentes_familiares: string[];
+  antecedentes_epidemiologicos: string[]
 }
 
 
@@ -51,13 +79,15 @@ export class TablaPacientesComponent implements OnInit {
   selectedPerson: Paciente | null = null;
   filter = new FormControl('');
   filteredText: string = '';
-  private modalService = inject(NgbModal);
 
-	openModal(content: TemplateRef<any>) {
-		this.modalService.open(content, { fullscreen: true });
-	}
+	openModal(content: TemplateRef<any>, person: Paciente) {
+    const modalRef = this.modalService.open(content, { fullscreen: true });
+    
+    // Cambiar el paciente actual
+    this.datosmodalService.cambiarPaciente(person);
+  }
 
-  constructor(private calendar: NgbCalendar) {
+  constructor(private calendar: NgbCalendar, private modalService: NgbModal, private datosmodalService: DatosModalService) {
     this.today = this.calendar.getToday();
     this.model = this.today;
     this.date = { year: this.today.year, month: this.today.month };
@@ -79,7 +109,11 @@ export class TablaPacientesComponent implements OnInit {
 
   filterPeople() {
     const filtered = this.people.filter(person =>
-      (person.name.toLowerCase().includes(this.filteredText.toLowerCase()) || person.numero_documento.includes(this.filteredText)) &&
+      (person.primer_nombre.toLowerCase().includes(this.filteredText.toLowerCase()) || 
+      person.segundo_nombre.toLowerCase().includes(this.filteredText.toLowerCase()) || 
+      person.primer_apellido.toLowerCase().includes(this.filteredText.toLowerCase()) || 
+      person.segundo_apellido.toLowerCase().includes(this.filteredText.toLowerCase()) || 
+      person.numero_documento.includes(this.filteredText)) &&
       this.compararFechas(person.fecha_cita, this.model)
     );
     this.filteredPeople.next(filtered);
@@ -95,65 +129,218 @@ export class TablaPacientesComponent implements OnInit {
     // Por ahora, solo devolveremos una lista de prueba
     return of([
       { 
-        numero: '0001',
-        name: 'Persona 1', 
         ultima_atencion: '02/02/2024',
         numero_historia: 'HC25684526142',
         numero_documento: '25361425',
-        sexo: 'Masculino', 
+        sexo: 'M', 
         edad: '20 años',
         peso: '64 Kg',
         talla: '1.65 m',
         ruta_imagen: 'img.jpg',
         alergias: ['Penicilina', 'Dexametasona', 'Sulfa'],
         enfermedades_cronicas: ['Penicilina', 'Dexametasona', 'Sulfa'],
-        fecha_cita: { year: 2024, month: 4, day: 1 }
+        fecha_cita: { year: 2024, month: 4, day: 1 },
+        id_paciente: 20,
+        tipo_documento: 'DNI',
+        primer_nombre: 'Juan',
+        segundo_nombre: 'Jose',
+        primer_apellido: 'Alvarez',
+        segundo_apellido: 'Bocanegra',
+        fecha_nacimiento: '2001-10-12',
+        correo_electronico: 'juasa@gmail.com',
+        numero_celular: '952361245',
+        telefono: '01254613',
+        pais: 'Perú',
+        departamento: 'Cusco',
+        provincia: 'Acomayo',
+        es_donador: 1,
+        es_casado: 0,
+        es_trabajador: 0,
+        numero_hijos: 0,
+        religion: 'Catolico',
+        lengua_materna: 'castellano',
+        lugar_procedencia: 'Cusco',
+        direccion: 'Los nogales L-1',
+        color_piel: 'trigueña',
+        raza: 'criollo',
+        grupo_sanguineo: 'O+',
+        nivel_estudio: 'secundaria',
+        habitos: [  'tomar cafe diariamente',
+                    'consumir tabaco',
+                    'consumo de alcohol'
+        ],
+        antecedentes: [  'tomar cafe diariamente',
+                    'consumir tabaco',
+                    'consumo de alcohol'
+        ],
+        antecedentes_familiares: [  'tomar cafe diariamente',
+                    'consumir tabaco',
+                    'consumo de alcohol'
+        ],
+        antecedentes_epidemiologicos: [  'tomar cafe diariamente',
+                    'consumir tabaco',
+                    'consumo de alcohol'
+        ],
       },
       { 
-        numero: '0002',
-        name: 'Persona 2', 
         ultima_atencion: '03/02/2024',
         numero_historia: 'HC25684526143',
         numero_documento: '25361426',
-        sexo: 'Femenino', 
+        sexo: 'F', 
         edad: '21 años',
         peso: '65 Kg',
         talla: '1.66 m',
         ruta_imagen: 'img2.jpg',
         alergias: ['Ibuprofeno', 'Amoxicilina', 'Sulfa'],
         enfermedades_cronicas: ['Ibuprofeno', 'Amoxicilina', 'Sulfa'],
-        fecha_cita: { year: 2024, month: 4, day: 1 }
+        fecha_cita: { year: 2024, month: 4, day: 1 },
+        id_paciente: 21,
+        tipo_documento: 'DNI',
+        primer_nombre: 'Maria',
+        segundo_nombre: 'Carmen',
+        primer_apellido: 'Cconcha',
+        segundo_apellido: 'Caceres',
+        fecha_nacimiento: '2002-10-12',
+        correo_electronico: 'maria@gmail.com',
+        numero_celular: '952361245',
+        telefono: '01254613',
+        pais: 'Perú',
+        departamento: 'Cusco',
+        provincia: 'Cusco',
+        es_donador: 1,
+        es_casado: 1,
+        es_trabajador: 1,
+        numero_hijos: 1,
+        religion: 'Catolico',
+        lengua_materna: 'castellano',
+        lugar_procedencia: 'Cusco',
+        direccion: 'Los nogales L-1',
+        color_piel: 'trigueña',
+        raza: 'criollo',
+        grupo_sanguineo: 'O+',
+        nivel_estudio: 'secundaria',
+        habitos: [  'tomar cafe diariamente',
+                    'consumir tabaco diariamente'
+        ],
+        antecedentes: [  'tomar cafe diariamente',
+                    'consumo de alcohol'
+        ],
+        antecedentes_familiares: [
+        ],
+        antecedentes_epidemiologicos: [  'tomar cafe diariamente',
+                    'consumir tabaco',
+                    'consumir tabaco',
+                    'consumo de alcohol'
+        ],
       },
       { 
-        numero: '0003',
-        name: 'Persona 3', 
         ultima_atencion: '04/02/2024',
         numero_historia: 'HC25684526144',
         numero_documento: '25361427',
-        sexo: 'Masculino', 
+        sexo: 'M', 
         edad: '22 años',
         peso: '66 Kg',
         talla: '1.67 m',
         ruta_imagen: 'img3.jpg',
         alergias: ['Aspirina', 'Paracetamol', 'Sulfa'],
         enfermedades_cronicas: ['Aspirina', 'Paracetamol', 'Sulfa'],
-        fecha_cita: { year: 2024, month: 4, day: 1 }
+        fecha_cita: { year: 2024, month: 4, day: 1 },
+        id_paciente: 22,
+        tipo_documento: 'DNI',
+        primer_nombre: 'Rodrigo',
+        segundo_nombre: '',
+        primer_apellido: 'Carpio',
+        segundo_apellido: 'Quispe',
+        fecha_nacimiento: '2001-10-12',
+        correo_electronico: 'rodrigo@gmail.com',
+        numero_celular: '952361245',
+        telefono: '01254613',
+        pais: 'Perú',
+        departamento: 'Cusco',
+        provincia: 'Acomayo',
+        es_donador: 1,
+        es_casado: 0,
+        es_trabajador: 0,
+        numero_hijos: 0,
+        religion: 'Catolico',
+        lengua_materna: 'castellano',
+        lugar_procedencia: 'Cusco',
+        direccion: 'Los nogales L-1',
+        color_piel: 'trigueña',
+        raza: 'criollo',
+        grupo_sanguineo: 'O+',
+        nivel_estudio: 'secundaria',
+        habitos: [  'tomar cafe diariamente',
+                    'consumir tabaco',
+                    'consumo de alcohol'
+        ],
+        antecedentes: [  'tomar cafe diariamente',
+                    'consumir tabaco',
+                    'consumo de alcohol'
+        ],
+        antecedentes_familiares: [  'tomar cafe diariamente',
+                    'consumir tabaco',
+                    'consumo de alcohol'
+        ],
+        antecedentes_epidemiologicos: [  'tomar cafe diariamente',
+                    'consumir tabaco',
+                    'consumo de alcohol'
+        ],
       },
       { 
-        numero: '0004',
-        name: 'Persona 4', 
         ultima_atencion: '05/02/2024',
         numero_historia: 'HC25684526145',
         numero_documento: '25361428',
-        sexo: 'Femenino', 
+        sexo: 'F', 
         edad: '23 años',
         peso: '67 Kg',
         talla: '1.68 m',
         ruta_imagen: 'img4.jpg',
         alergias: ['Metamizol', 'Dexametasona', 'Sulfa'],
         enfermedades_cronicas: ['Metamizol', 'Dexametasona', 'Sulfa'],
-        fecha_cita: { year: 2024, month: 4, day: 1 }
-      }
+        fecha_cita: { year: 2024, month: 4, day: 1 },
+        id_paciente: 23,
+        tipo_documento: 'DNI',
+        primer_nombre: 'Juan',
+        segundo_nombre: 'Jose',
+        primer_apellido: 'Alvarez',
+        segundo_apellido: 'Bocanegra',
+        fecha_nacimiento: '2001-10-12',
+        correo_electronico: 'juasa@gmail.com',
+        numero_celular: '952361245',
+        telefono: '01254613',
+        pais: 'Perú',
+        departamento: 'Cusco',
+        provincia: 'Acomayo',
+        es_donador: 1,
+        es_casado: 0,
+        es_trabajador: 0,
+        numero_hijos: 0,
+        religion: 'Catolico',
+        lengua_materna: 'castellano',
+        lugar_procedencia: 'Cusco',
+        direccion: 'Los nogales L-1',
+        color_piel: 'trigueña',
+        raza: 'criollo',
+        grupo_sanguineo: 'O+',
+        nivel_estudio: 'secundaria',
+        habitos: [  'tomar cafe diariamente',
+                    'consumir tabaco',
+                    'consumo de alcohol'
+        ],
+        antecedentes: [  'tomar cafe diariamente',
+                    'consumir tabaco',
+                    'consumo de alcohol'
+        ],
+        antecedentes_familiares: [  'tomar cafe diariamente',
+                    'consumir tabaco',
+                    'consumo de alcohol'
+        ],
+        antecedentes_epidemiologicos: [  'tomar cafe diariamente',
+                    'consumir tabaco',
+                    'consumo de alcohol'
+        ],
+      } 
     ]);
   }
 

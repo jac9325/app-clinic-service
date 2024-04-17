@@ -1,13 +1,15 @@
+import { AsyncPipe, CommonModule, DecimalPipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { Observable, of, BehaviorSubject } from 'rxjs';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { CommonModule } from '@angular/common';
-import { AsyncPipe, DecimalPipe } from '@angular/common';
-import { NgbHighlight } from '@ng-bootstrap/ng-bootstrap';
-import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
+import { NgbDateStruct, NgbHighlight } from '@ng-bootstrap/ng-bootstrap';
+import { Store } from '@ngrx/store';
+import { BehaviorSubject, Observable, of } from 'rxjs';
+import { CitaMedicaResponse } from '../../../../Models/Cita/CitaMedicaResponse';
+import { ConvertCita } from '../../../../Services/ServicesCitaMedica/ConvertCita.service';
+import { selectCitas } from '../../../../States/Cita/cita.selector';
+import { AppState } from '../../../../States/app.state';
 import { FechaSeleccionadaService } from '../../Services/Fecha_Seleccionada/fecha-seleccionada.service';
-
 
 
 @Component({
@@ -21,37 +23,50 @@ import { FechaSeleccionadaService } from '../../Services/Fecha_Seleccionada/fech
 export class BuscarPacientesComponent implements OnInit {
 
   people: any[] = [];
+  citasMedicasResponse: CitaMedicaResponse[];
   filteredPeople: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
   selectedPerson: any;
   filter = new FormControl('');
 
   constructor(
-    private fechaSeleccionadaService: FechaSeleccionadaService
+    private fechaSeleccionadaService: FechaSeleccionadaService,
+    private convertCitaMedicaService: ConvertCita,
+    private store: Store<AppState>
   ) {
     this.fechaSeleccionadaService.fechaSeleccionada$.subscribe(fecha => {
       this.fechaSeleccionada = fecha;
       this.applyFilters();
     });
   }
-
+  /* Oninit */
   ngOnInit() {
+    this.store.select(selectCitas).subscribe(item => {
+        this.citasMedicasResponse = item;
+    });
+
     this.getPeople('').subscribe(people => {
       this.people = people;
-      if (people.length > 0) {
-        this.selectedPerson = people[0];
-      }
+      console.log("este es el objeto", this.people)
       this.filteredPeople.next(this.people);
+      // Mover la selección de la primera persona después de aplicar los filtros
+      this.applyFilters();
     });
+  
     this.filter.valueChanges.subscribe(text => {
       this.filteredPeople.next(this.filterPeople(text || ''));
+      this.applyFilters(); // Asegúrate de aplicar los filtros después de cada cambio
     });
+  
     this.fechaSeleccionadaService.fechaSeleccionada$.subscribe(fechaSeleccionada => {
       if (fechaSeleccionada) {
         this.filteredPeople.next(this.filterPeopleByDate(fechaSeleccionada));
+        this.applyFilters(); // Aplicar los filtros también aquí
       }
     });
   }
 
+
+  /* Metodos necesarios */
   filterPeopleByDate(fechaSeleccionada: NgbDateStruct): any[] {
     return this.people.filter(person => {
       // Asumiendo que cada persona tiene una propiedad 'fecha' de tipo NgbDateStruct
@@ -107,27 +122,7 @@ export class BuscarPacientesComponent implements OnInit {
   getPeople(filter: string): Observable<any[]> {
     // Aquí debes implementar la lógica para obtener la lista de personas desde tu backend
     // Por ahora, solo devolveremos una lista de prueba
-    return of([
-      { 
-        name: 'Persona 1', 
-        appointmentTime: '9:00 AM' , 
-        tipoCita: 'Nuevo', 
-        sexo: 'Masculino', 
-        edad: '20 años',
-        symptoms: ['Fiebre', 'Tos', 'Acidez'],
-        lastReview: 'Dr. Carlos 12 de enero 2024',
-        observation: 'Fuerte fiebre y tos leve y normal hemoglobina',
-        prescription: 'Paracetamol - 2 veces al dia Dizoman - Dia y noche antes de dormir',
-        fecha: { year: 2024, month: 4, day: 6 }
-      },
-      { name: 'Persona 2', appointmentTime: '10:00 AM', tipoCita: 'Reevaluacion', sexo: 'Femenino', edad: '30 años', fecha: { year: 2024, month: 4, day: 6 } },
-      { name: 'Persona 3', appointmentTime: '11:00 AM', tipoCita: 'Nuevo', sexo: 'Masculino', edad: '25 años', fecha: { year: 2024, month: 4, day: 6 } },
-      { name: 'Persona 4', appointmentTime: '12:00 AM', tipoCita: 'Reevaluacion', sexo: 'Femenino', edad: '48 años', fecha: { year: 2024, month: 4, day: 5 } },
-      { name: 'Persona 5', appointmentTime: '13:00 AM', tipoCita: 'Nuevo', sexo: 'Femenino', edad: '53 años', fecha: { year: 2024, month: 4, day: 6 } },
-      { name: 'Persona 6', appointmentTime: '14:00 AM', tipoCita: 'Reevaluacion', sexo: 'Masculino', edad: '27 años', fecha: { year: 2024, month: 4, day: 6 } },
-      { name: 'Persona 7', appointmentTime: '15:00 AM', tipoCita: 'Nuevo', sexo: 'Femenino', edad: '21 años', fecha: { year: 2024, month: 4, day: 5 } },
-      { name: 'Persona 8', appointmentTime: '16:00 AM', tipoCita: 'Reevaluacion', sexo: 'Masculino', edad: '72 años', fecha: { year: 2024, month: 4, day: 5 } }
-    ]);
+    return of(this.convertCitaMedicaService.convertToAppointmentList(this.citasMedicasResponse));
   }
 
   getColor(appointmentTime: string): string {

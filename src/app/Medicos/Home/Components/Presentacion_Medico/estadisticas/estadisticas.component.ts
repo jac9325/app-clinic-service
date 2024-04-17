@@ -1,5 +1,8 @@
-import { Component , OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { selectCitasAntiguas, selectCitasHoy, selectCitasNuevos } from '../../../../../States/Cita/cita.selector';
+import { AppState } from '../../../../../States/app.state';
 
 
 
@@ -14,11 +17,16 @@ import { RouterModule } from '@angular/router';
 
 export class EstadisticasComponent implements OnInit {
   nuevosPacientes: number = 0; // Valor por defecto
+  antiguosPacientes:number = 0;
+  hoyPacientes: number = 0;
+
   porcentajeNuevos: number = 0; // Valor por defecto
   pacientesAntiguos: number = 0; // Valor por defecto
   porcentajeAntiguos: number = 0; // Valor por defecto
 
-  constructor() { }
+  constructor(
+    private store: Store<AppState>
+  ) { }
 
   ngOnInit(): void {
     this.obtenerDatos();
@@ -26,11 +34,16 @@ export class EstadisticasComponent implements OnInit {
 
   // Suponiendo que tienes un método para obtener los datos desde el backend
   obtenerDatos() {
-    // Aquí iría la lógica para obtener los datos del backend
-    // Y asignarlos a las variables correspondientes
-    this.nuevosPacientes = 40; // Esto es solo un ejemplo, deberías reemplazarlo con el valor obtenido del backend
-    this.porcentajeNuevos = 51; // Esto es solo un ejemplo, deberías reemplazarlo con el valor obtenido del backend
-    this.pacientesAntiguos = 64; // Esto es solo un ejemplo, deberías reemplazarlo con el valor obtenido del backend
-    this.porcentajeAntiguos = 20; // Esto es solo un ejemplo, deberías reemplazarlo con el valor obtenido del backend
+    this.store.select(selectCitasAntiguas).subscribe(item => {
+      this.antiguosPacientes = item;
+    });
+
+    this.store.select(selectCitasHoy).subscribe(item => {
+      this.hoyPacientes = item;
+    });
+
+    this.store.select(selectCitasNuevos).subscribe(item => {
+      this.nuevosPacientes = item;
+    });
   }
 }

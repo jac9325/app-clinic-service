@@ -1,25 +1,25 @@
 <div class="title-container">
     <div class="formulario">
-        <h2>Registrar Nuevo Paciente</h2>
+        <h2>Nuevo Paciente</h2>
     </div>
 </div>
+
 <div class="main-container">
     <div class="sub-container">
         <div class="formulario">
             <div class="line">
                 <div class="dato">
                     <h3>Tipo de Documento</h3>
-                    <select class="custom-select rounded-left">
-                        <option selected>Seleccionar</option>
-                        <option value="1">DNI</option>
-                        <option value="2">Carnet de Extrangería</option>
+                    <select class="custom-select rounded-left" [(ngModel)]="paciente.tipo_documento">
+                        <option [value]="'DNI'">DNI</option>
+                        <option [value]="'Carnet de Extrangería'">Carnet de Extrangería</option>
                     </select>
                 </div>
                 <div class="dato">
                     <h3>Número de Documento</h3>
                     <div class="icon-box">
                         <i class="fas fa-id-card"></i>
-                        <input type="text" placeholder="Ingrese el numero de Documento">
+                        <input type="text" [(ngModel)]="paciente.numero_documento" placeholder="Ingrese el numero de Documento">
                     </div>
                 </div>
             </div>
@@ -29,14 +29,14 @@
                     <h3>Primer Nombre</h3>
                     <div class="icon-box">
                         <i class="fas fa-user"></i>
-                        <input type="text" placeholder="Ingrese el primer nombre">
+                        <input type="text" [(ngModel)]="paciente.primer_nombre" placeholder="Ingrese el primer nombre">
                     </div>
                 </div>
                 <div class="dato">
                     <h3>Segundo Nombre</h3>
                     <div class="icon-box">
                         <i class="fas fa-user"></i>
-                        <input type="text" placeholder="Ingrese el segundo nombre">
+                        <input type="text" [(ngModel)]="paciente.segundo_nombre" placeholder="Ingrese el segundo nombre">
                     </div>
                 </div>
             </div>
@@ -46,14 +46,14 @@
                     <h3>Primer Apellido</h3>
                     <div class="icon-box">
                         
-                        <input type="text" placeholder="Ingrese el primer apellido">
+                        <input type="text" [(ngModel)]="paciente.primer_apellido" placeholder="Ingrese el primer apellido">
                     </div>
                 </div>
                 <div class="dato">
                     <h3>Segundo Apellido</h3>
                     <div class="icon-box">
                         
-                        <input type="text" placeholder="Ingrese el segundo apellido">
+                        <input type="text" [(ngModel)]="paciente.segundo_apellido" placeholder="Ingrese el segundo apellido">
                     </div>
                 </div>
             </div>
@@ -62,14 +62,14 @@
                 <div class="dato">
                     <h3>Fecha de Nacimiento</h3>
                     <div class="icon-box">
-                        <input type="date" placeholder="Ingrese su fecha de naciemiento">
+                        <input type="date" [(ngModel)]="paciente.fecha_nacimiento" placeholder="Ingrese su fecha de naciemiento">
                     </div>
                 </div>
                 <div class="dato">
                     <h3>Correo Electrónico</h3>
                     <div class="icon-box">
                         <i class="fas fa-envelope"></i>
-                        <input type="text" placeholder="Ingrese su correo electrónico">
+                        <input type="text" [(ngModel)]="paciente.correo_electronico" placeholder="Ingrese su correo electrónico">
                     </div>
                 </div>
             </div>
@@ -79,14 +79,14 @@
                     <h3>Número de Celular</h3>
                     <div class="icon-box">
                         <i class="fas fa-tablet" style="transform: scale(0.8, 1);"></i>
-                        <input type="text" placeholder="Ingrese su número de celular">
+                        <input type="text" [(ngModel)]="paciente.numero_celular" placeholder="Ingrese su número de celular">
                     </div>
                 </div>
                 <div class="dato">
                     <h3>Teléfono</h3>
                     <div class="icon-box">
                         <i class="fas fa-phone"></i>
-                        <input type="text" placeholder="Ingrese su teléfono">
+                        <input type="text" [(ngModel)]="paciente.telefono" placeholder="Ingrese su teléfono">
                     </div>
                 </div>
             </div>
@@ -95,19 +95,19 @@
                 <div class="dato">
                     <h3>País</h3>
                     <div class="icon-box">
-                        <input type="text" placeholder="Ingrese el país">
+                        <input type="text" [(ngModel)]="paciente.pais" placeholder="Ingrese el país">
                     </div>
                 </div>
                 <div class="dato">
                     <h3>Departamento</h3>
                     <div class="icon-box">
-                        <input type="text" placeholder="Ingrese el departamento">
+                        <input type="text" [(ngModel)]="paciente.departamento" placeholder="Ingrese el departamento">
                     </div>
                 </div>
                 <div class="dato">
                     <h3>Provincia</h3>
                     <div class="icon-box">
-                        <input type="text" placeholder="Ingrese la provincia">
+                        <input type="text" [(ngModel)]="paciente.provincia" placeholder="Ingrese la provincia">
                     </div>
                 </div>
             </div>
@@ -117,7 +117,7 @@
                     <h3>Foto</h3>
                     <div class="image-box">
                         <img *ngIf="selectedImage" [src]="getObjectUrl(selectedImage)">
-                        <img *ngIf="!selectedImage" src="../../../../assets/User-img.png">
+                        <img *ngIf="!selectedImage" src={{paciente.ruta_imagen}}>
                     </div>
                     <div class="button-container" style="justify-content: left;">
                         <input type="file" #fileInput style="display: none" (change)="onFileSelected($event)">
@@ -135,11 +135,11 @@
                 <div class="line">
                     <div class="icon-box">
                         <label>Masculino</label>
-                        <input type="checkbox">
+                        <input type="checkbox" [(ngModel)]="esMasculino" (change)="esFemenino = !esMasculino">
                     </div>
                     <div class="icon-box">
                         <label>Femenino</label>
-                        <input type="checkbox">
+                        <input type="checkbox" [(ngModel)]="esFemenino" (change)="esMasculino = !esFemenino">
                     </div>
                 </div>
             </div>
@@ -148,11 +148,11 @@
                 <div class="line">
                     <div class="icon-box">
                         <label>Si</label>
-                        <input type="checkbox">
+                        <input type="checkbox" [(ngModel)]="esDonadorP" (change)="esDonadorN = !esDonadorP">
                     </div>
                     <div class="icon-box">
                         <label>No</label>
-                        <input type="checkbox">
+                        <input type="checkbox" [(ngModel)]="esDonadorN" (change)="esDonadorP = !esDonadorN">
                     </div>
                 </div>
             </div>
@@ -161,11 +161,11 @@
                 <div class="line">
                     <div class="icon-box">
                         <label>Si</label>
-                        <input type="checkbox">
+                        <input type="checkbox" [(ngModel)]="esCasadoP" (change)="esCasadoN = !esCasadoP">
                     </div>
                     <div class="icon-box">
                         <label>No</label>
-                        <input type="checkbox">
+                        <input type="checkbox" [(ngModel)]="esCasadoN" (change)="esCasadoP = !esCasadoN">
                     </div>
                 </div>
             </div>
@@ -174,11 +174,11 @@
                 <div class="line">
                     <div class="icon-box">
                         <label>Si</label>
-                        <input type="checkbox">
+                        <input type="checkbox" [(ngModel)]="esTrabajadorP" (change)="esTrabajadorN = !esTrabajadorP">
                     </div>
                     <div class="icon-box">
                         <label>No</label>
-                        <input type="checkbox">
+                        <input type="checkbox" [(ngModel)]="esTrabajadorN" (change)="esTrabajadorP = !esTrabajadorN">
                     </div>
                 </div>
             </div>
@@ -188,7 +188,7 @@
                 <div class="dato" style="width: 100%;">
                     <h3>Numero de hijos</h3>
                     <div class="icon-box">
-                        <input type="text" placeholder="Ingrese el numero de hijos">
+                        <input type="text" [(ngModel)]="paciente.numero_hijos" placeholder="Ingrese el numero de hijos">
                     </div>
                 </div>
             </div>
@@ -196,7 +196,7 @@
                 <div class="dato" style="width: 100%;">
                     <h3>Peso</h3>
                     <div class="icon-box">
-                        <input type="text" placeholder="Ingrese su peso">
+                        <input type="text" [(ngModel)]="paciente.peso" placeholder="Ingrese su peso">
                     </div>
                 </div>
             </div>
@@ -204,7 +204,7 @@
                 <div class="dato" style="width: 100%;">
                     <h3>Talla</h3>
                     <div class="icon-box">
-                        <input type="text" placeholder="Ingrese su talla">
+                        <input type="text" [(ngModel)]="paciente.talla" placeholder="Ingrese su talla">
                     </div>
                 </div>
             </div>
@@ -212,7 +212,7 @@
                 <div class="dato" style="width: 100%;">
                     <h3>Religión</h3>
                     <div class="icon-box">
-                        <input type="text" placeholder="Ingrese la religión">
+                        <input type="text" [(ngModel)]="paciente.religion" placeholder="Ingrese la religión">
                     </div>
                 </div>
             </div>
@@ -220,7 +220,7 @@
                 <div class="dato" style="width: 100%;">
                     <h3>Lengua Materna</h3>
                     <div class="icon-box">
-                        <input type="text" placeholder="Ingrese la lengua materna">
+                        <input type="text" [(ngModel)]="paciente.lengua_materna" placeholder="Ingrese la lengua materna">
                     </div>
                 </div>
             </div>
@@ -232,13 +232,13 @@
                 <div class="dato">
                     <h3>Lugar de procedencia</h3>
                     <div class="icon-box">
-                        <input type="text" placeholder="Ingrese el lugar de procedencia">
+                        <input type="text" [(ngModel)]="paciente.lugar_procedencia" placeholder="Ingrese el lugar de procedencia">
                     </div>
                 </div>
                 <div class="dato">
                     <h3>Dirección</h3>
                     <div class="icon-box">
-                        <input type="text" placeholder="Ingrese la dirección">
+                        <input type="text" [(ngModel)]="paciente.direccion" placeholder="Ingrese la dirección">
                     </div>
                 </div>
             </div>
@@ -246,13 +246,13 @@
                 <div class="dato">
                     <h3>Color de piel</h3>
                     <div class="icon-box">
-                        <input type="text" placeholder="Ingrese color de piel">
+                        <input type="text" [(ngModel)]="paciente.color_piel" placeholder="Ingrese color de piel">
                     </div>
                 </div>
                 <div class="dato">
                     <h3>Raza</h3>
                     <div class="icon-box">
-                        <input type="text" placeholder="Ingrese la raza">
+                        <input type="text" [(ngModel)]="paciente.raza" placeholder="Ingrese la raza">
                     </div>
                 </div>
             </div>
@@ -260,13 +260,13 @@
                 <div class="dato">
                     <h3>Grupo Sanguineo</h3>
                     <div class="icon-box">
-                        <input type="text" placeholder="Ingrese el grupo sanguineo">
+                        <input type="text" [(ngModel)]="paciente.grupo_sanguineo" placeholder="Ingrese el grupo sanguineo">
                     </div>
                 </div>
                 <div class="dato">
                     <h3>Nivel de Estudio</h3>
                     <div class="icon-box">
-                        <input type="text" placeholder="Ingrese el nivel de estudio">
+                        <input type="text" [(ngModel)]="paciente.nivel_estudio" placeholder="Ingrese el nivel de estudio">
                     </div>
                 </div>
             </div>
@@ -281,15 +281,15 @@
                             <h3>Hábitos</h3>
                         </div>
                     </div>
-                    <div *ngFor="let habito of habitos; let i = index" class="line">
+                    <div *ngFor="let habito of habitos; trackBy: trackByDato; let i = index" class="line">
                         <div class="dato" style="width: 100%;">
                             <div class="icon-box">
-                                <input type="text" #habito>
+                                <input type="text" #habito [ngModel]="habitos[i]" (ngModelChange)="actualizarHabito($event, i)">
                             </div>
                         </div>
                     </div>
                     <div class="button-container">
-                        <button type="submit" class="btn btn-danger" (click)="agregarHabitos()"><i class="fa fa-plus-circle" style="font-size: 20px;"></i></button>
+                        <button type="submit" class="btn btn-danger" (click)="agregarHabito()"><i class="fa fa-plus-circle" style="font-size: 20px;"></i></button>
                     </div>
                 </div>
                 <div class="formulario">
@@ -298,10 +298,10 @@
                             <h3>Ant. Familiares</h3>
                         </div>
                     </div>
-                    <div *ngFor="let antfamiliar of antfamiliares; let i = index" class="line">
+                    <div *ngFor="let antfamiliar of antecedentes_familiares; trackBy: trackByDato; let i = index" class="line">
                         <div class="dato" style="width: 100%;">
                             <div class="icon-box">
-                                <input type="text" #antfamiliar>
+                                <input type="text" #antfamiliar [ngModel]="antecedentes_familiares[i]" (ngModelChange)="actualizarAntFamiliar($event, i)">
                             </div>
                         </div>
                     </div>
@@ -318,15 +318,17 @@
                             <h3>Antecedentes</h3>
                         </div>
                     </div>
-                    <div *ngFor="let antecedente of antecedentes; let i = index" class="line">
+                    <div *ngFor="let antecedente of antecedentes; trackBy: trackByDato; let i = index" class="line">
                         <div class="dato" style="width: 100%;">
                             <div class="icon-box">
-                                <input type="text" #antecedente>
+                                <input type="text" #antecedente [ngModel]="antecedentes[i]" (ngModelChange)="actualizarAntecedente($event, i)">
                             </div>
                         </div>
                     </div>
                     <div class="button-container">
-                        <button type="submit" class="btn btn-danger" (click)="agregarAntecedente()"><i class="fa fa-plus-circle" style="font-size: 20px;"></i></button>
+                        <button type="submit" class="btn btn-danger" (click)="agregarAntecedente()">
+                            <i class="fa fa-plus-circle" style="font-size: 20px;"></i>
+                        </button>
                     </div>
                 </div>
                 <div class="formulario">
@@ -335,10 +337,10 @@
                             <h3>Ant. Epidemiológicos</h3>
                         </div>
                     </div>
-                    <div *ngFor="let antepidemiologico of antepidemiologicos; let i = index" class="line">
+                    <div *ngFor="let antepidemiologico of antecedentes_epidemiologicos; trackBy: trackByDato; let i = index" class="line">
                         <div class="dato" style="width: 100%;">
                             <div class="icon-box">
-                                <input type="text" #antepidemiologico>
+                                <input type="text" #antepidemiologico [ngModel]="antecedentes_epidemiologicos[i]" (ngModelChange)="actualizarAntEpidemiologico($event, i)">
                             </div>
                         </div>
                     </div>
@@ -349,7 +351,7 @@
             </div>
         </div>
         <div class="button-container">
-            <button type="submit" class="btn btn-danger" style="width: 200px; font-size: 16px;"><b>Guardar</b></button>
+            <button type="submit" class="btn btn-danger" style="width: 200px; font-size: 16px;" (click)="guardarPaciente()"><b>Guardar</b></button>
         </div>
     </div>
 </div>

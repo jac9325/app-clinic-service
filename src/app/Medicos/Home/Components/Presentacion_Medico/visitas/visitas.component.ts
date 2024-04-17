@@ -1,5 +1,8 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { selectCitasHoy } from '../../../../../States/Cita/cita.selector';
+import { AppState } from '../../../../../States/app.state';
 
 
 @Component({
@@ -13,7 +16,9 @@ import { RouterModule } from '@angular/router';
 export class VisitasComponent implements OnInit {
   visitas: number = 0; // Valor por defecto
 
-  constructor() { }
+  constructor(
+    private store: Store<AppState>
+  ) { }
 
   ngOnInit(): void {
     this.obtenerVisitas();
@@ -21,8 +26,8 @@ export class VisitasComponent implements OnInit {
 
   // Suponiendo que tienes un método para obtener el número de visitas desde el backend
   obtenerVisitas() {
-    // Aquí iría la lógica para obtener el número de visitas del backend
-    // Y asignarlo a la variable 'visitas'
-    this.visitas = 104; // Esto es solo un ejemplo, deberías reemplazarlo con el valor obtenido del backend
+    this.store.select(selectCitasHoy).subscribe(item => {
+      this.visitas = item;
+    }); // Esto es solo un ejemplo, deberías reemplazarlo con el valor obtenido del backend
   }
 }

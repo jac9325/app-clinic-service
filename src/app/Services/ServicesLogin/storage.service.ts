@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@angular/core';
-import { WINDOW } from '../../Helpers/window.token';
+import { WINDOW } from '../../Login/Helpers/window.token';
 
 const USER_KEY = 'TOKEN_CLINIC_SERVICE_JPA';
 

@@ -1,19 +1,20 @@
-import { Component, HostListener, OnInit, inject, TemplateRef} from '@angular/core';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { ViewChild } from '@angular/core';
-import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
-import { NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
-import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
-import { HomeComponent } from '../Medicos/Home/home.component';
+import { Component, HostListener, TemplateRef, ViewChild, inject } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { NgbCollapseModule, NgbDropdownModule, NgbModal, NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
+import { Store } from '@ngrx/store';
 import { CajaComponent } from '../Medicos/Caja/caja.component';
 import { ConfiguracionesComponent } from '../Medicos/Configuraciones/configuraciones.component';
-import { PacientesComponent } from '../Medicos/Pacientes/pacientes.component';
 import { CuentaPacienteComponent } from '../Medicos/Cuenta_Paciente/cuenta_paciente.component';
-import { NuevoPacienteComponent } from '../Medicos/Nuevo-Paciente/nuevo-paciente.component';
 import { HistoriasClinicasComponent } from '../Medicos/Historias_Clinicas/historias-clinicas.component';
+import { HomeComponent } from '../Medicos/Home/home.component';
 import { NuevaCitaComponent } from '../Medicos/Nueva_Cita/nueva-cita.component';
+import { NuevoPacienteComponent } from '../Medicos/Nuevo-Paciente/nuevo-paciente.component';
+import { PacientesComponent } from '../Medicos/Pacientes/pacientes.component';
+import { Rol } from '../Models/Usuario/UsuarioAndRoles';
+import { CitaMedicaService } from '../Services/ServicesCitaMedica/CitaMedica.service';
+import { selectEspecialistaMedico, selectRolesMedico } from '../States/Login/login.selector';
+import { AppState } from '../States/app.state';
 
 
 @Component({
@@ -25,6 +26,14 @@ import { NuevaCitaComponent } from '../Medicos/Nueva_Cita/nueva-cita.component';
   styleUrl: './navegacion.component.sass'
 })
 export class NavegacionComponent {
+
+  /* Constructor */
+  constructor(
+    private store: Store<AppState>,
+    private citaMedicaService: CitaMedicaService
+  ) {
+   }
+
   private modalService = inject(NgbModal);
 
 	openModal(content: TemplateRef<any>) {
@@ -36,6 +45,11 @@ export class NavegacionComponent {
   isCollapsed = true;
   isExpanded = false;
   isHidden = false;
+  nombre: string;
+  rols:Rol[];
+  rol:string;
+  currentIdConsultorioprivado:number = 0;
+  currentDate:Date = new Date();
 
   toggleSidebar() {
     this.isExpanded = !this.isExpanded;
@@ -49,6 +63,16 @@ export class NavegacionComponent {
   }
 
   ngOnInit() {
+    /* Cantidad de Citas*/
+    //this.store.select()
+    this.store.select(selectEspecialistaMedico).subscribe(item=>{
+      this.nombre = item.primer_apellido + " " + item.primer_nombre;
+    })
+
+    this.store.select(selectRolesMedico).subscribe(item=>{
+      this.rols = item;
+      this.rol = this.selecctionarRol(this.rols);
+    })
     if (typeof window !== 'undefined') {
       this.isSmallScreen = window.innerWidth < 1000;
     }
@@ -78,5 +102,15 @@ export class NavegacionComponent {
     if (this.cajaComponent) {
       this.cajaComponent.tablasActive = tablasActive;
     }
+  }
+
+  selecctionarRol(rols:Rol[]):string{
+    if (rols.some(rol => rol.nombre === 'ROLE_ADMIN')) {
+      return 'ADMIN';
+  } else if (rols.some(rol => rol.nombre === 'ROLE_USUARIO_INSTITUCION_ESPECIAL')) {
+      return 'ESPECIALISTA';
+  } else {
+      return 'USER';
+  }
   }
 }

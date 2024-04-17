@@ -36,29 +36,27 @@
       <table class="table">
         <thead>
           <tr>
-            <th>Número</th>
+            <th>Nº de Documento</th>
             <th>Nombre</th>
             <th>Atención Prev.</th>
             <th>Nº Historia</th>
-            <th>Nº de Documento</th>
             <th>  </th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let person of (filteredPeople | async)" [class.selected]="person === selectedPerson" (click)="selectPerson(person)" class="table-row">
-            <td>{{ person.numero }}</td>
-            <td>{{ person.name }}</td>
+            <td>{{ person.numero_documento }}</td>
+            <td>{{ person.primer_nombre }} {{ person.segundo_nombre }} {{ person.primer_apellido }} {{ person.segundo_apellido }}</td>
             <td>{{ person.ultima_atencion }}</td>
             <td>{{ person.numero_historia }}</td>
-            <td>{{ person.numero_documento }}</td>
             <td>
               <div class="custom-dropdown" (mouseenter)="toggleDropdown(person.numero_documento)" (mouseleave)="toggleDropdown(person.numero_documento)">
                 <i class="fas fa-ellipsis-v"></i>
                 <div class="dropdown-content" [class.show]="dropdownStates[person.numero_documento]">
-                  <button class="icons" (click)="openModal(ver_paciente)">
+                  <button class="icons" (click)="openModal(ver_paciente, person)">
                     <i class="fas fa-eye"></i>
                   </button>
-                  <button class="icons" (click)="openModal(editar_paciente)">
+                  <button class="icons" (click)="openModal(editar_paciente, person)">
                     <i class="fas fa-edit"></i>
                   </button>
                   <button class="icons">
@@ -78,7 +76,7 @@
   <div class="sub-container2">
     <div class="titulo-container">
       <div class="text">
-        <h3>{{ selectedPerson?.name }}</h3>
+        <h3>{{ selectedPerson?.primer_nombre }} {{ selectedPerson?.segundo_nombre }} {{ selectedPerson?.primer_apellido }} {{ selectedPerson?.segundo_apellido }}</h3>
         <h4>Edad: </h4> <p>{{ selectedPerson?.edad }}</p>
         <div class="text2">
           <div class="col1">

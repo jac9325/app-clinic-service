@@ -4,11 +4,12 @@ import { FormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { RolesSend, UsuarioAndRoles } from '../../../Models/Usuario/UsuarioAndRoles';
+import { CitaMedicaService } from '../../../Services/ServicesCitaMedica/CitaMedica.service';
+import { LoginService } from '../../../Services/ServicesLogin/Login.service';
+import { StorageService } from '../../../Services/ServicesLogin/storage.service';
+import { UsuarioService } from '../../../Services/ServicesUsuario/Usuario.service';
 import { loginMedicoSuccess } from '../../../States/Login/login.actions';
 import { AppState } from '../../../States/app.state';
-import { LoginService } from '../../Services/ServicesLogin/Login.service';
-import { StorageService } from '../../Services/ServicesLogin/storage.service';
-import { UsuarioService } from '../../Services/ServicesUsuario/Usuario.service';
 
   @Component({
     selector: 'login',
@@ -28,14 +29,15 @@ import { UsuarioService } from '../../Services/ServicesUsuario/Usuario.service';
     errorMessage = '';
     currentUsername!: string;
     roles: string[] = [];
-
+    currentDate: Date = new Date();
     constructor(
       private loginService: LoginService, 
       private storageService: StorageService,
       private usuarioAndRoles: UsuarioAndRoles,
       private usuarioService: UsuarioService,
       private router: Router,
-      private store:Store<AppState>
+      private store:Store<AppState>,
+      private citaMedicaService: CitaMedicaService
       ) { }
 
     ngOnInit(): void {
@@ -62,13 +64,12 @@ import { UsuarioService } from '../../Services/ServicesUsuario/Usuario.service';
           //-- como la sesion es exitosa se procede a buscar el usuario por el username
           this.usuarioService.getUserWihtAllRols(data.username).subscribe({
             next: (data: any) => {
-              debugger;
               if (data.status == 200) {
                 this.usuarioAndRoles = data.data;
                 this.store.dispatch(loginMedicoSuccess({ data: data.data }));
                 //this.handleDashBoard(data.data.rolesSend);
                 this.store.subscribe(state => console.log(state));
-                this.router.navigateByUrl('')
+                this.router.navigateByUrl('/loader')
 
               } else {
                 // El status no es 200
@@ -78,7 +79,8 @@ import { UsuarioService } from '../../Services/ServicesUsuario/Usuario.service';
             error: err => {
               console.error("Ocurrió un error al obtener los roles del usuario:", err);              
             }
-          });         
+          });      
+          
         error: err => {
           this.errorMessage = err.error.message;
           this.isLoginFailed = true;

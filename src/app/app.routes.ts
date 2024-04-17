@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { CompletarDatosComponent } from './Login/Components/completar_datos/completar_datos.component';
 import { CompletarRegistroComponent } from './Login/Components/completar_registro/completar_registro.component';
+import { LoaderComponent } from './Login/Components/loader/loader.component';
 import { LoginComponent } from './Login/Components/login/login.component';
 import { RecuperarCuentaComponent } from './Login/Components/recuperar_cuenta/recuperar_cuenta.component';
 import { ReestablecerContraseñaComponent } from './Login/Components/reestablecer_contraseña_/reestablecer_contraseña.component';
@@ -117,5 +118,10 @@ export const routes: Routes = [
   {
     path: 'nueva_cita',
     component: NuevaCitaComponent,
+  },
+  {
+    path: 'loader',
+    component: LoaderComponent,
   }
+
 ];

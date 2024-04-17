@@ -1,11 +1,11 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable, catchError, throwError } from "rxjs";
-import { environment } from "../../../../environments/environment";
-import { UsuarioMedico } from "../../../Models/Responses/UsuarioMedico";
+import { environment } from "../../../environments/environment";
+import { UsuarioMedico } from "../../Models/Responses/UsuarioMedico";
 
 //const URL_BASE_USUARIO_DOMAIN = environment.URI_BASE_USUARIO_DOMAIN;
-const URL_BASE_USUARIO_INSTITUCION_ESPECIALISTA = environment.URI_BASE_USUARIO_INSTITUCION_ESPECIALISTA
+const URL_BASE_USUARIO_INSTITUCION_ESPECIALISTA = environment.URI_BASE_USUARIO_INSTITUCION_ESPECIALISTA_DOMAIN;
 @Injectable({
     providedIn: 'root'
 })

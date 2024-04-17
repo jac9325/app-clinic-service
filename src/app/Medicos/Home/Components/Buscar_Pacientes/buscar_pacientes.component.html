@@ -78,11 +78,11 @@
           <h4>Síntomas</h4>
           <div class="symptom-list">
             <div
-              *ngFor="let symptom of selectedPerson.symptoms"
+              
               class="symptom-item"
             >
               <i class="fas fa-heart" style="font-size: var(--size-s)"></i>
-              <span>{{ symptom }}</span>
+              <span>{{ selectedPerson.symptoms }}</span>
             </div>
           </div>
         </div>
